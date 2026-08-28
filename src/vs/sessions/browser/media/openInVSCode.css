@@ -23,7 +23,7 @@
 	width: 16px;
 	height: 16px;
 	flex: 0 0 auto;
-	/* Dev fallback: the VS Code shield logo bundled in the sessions media folder.
+	/* Dev fallback: the Khatmax logo bundled in the sessions media folder.
 	 * In production builds the distro mixin overwrites
 	 * vs/workbench/browser/media/code-icon.svg with the quality-branded icon;
 	 * the per-quality rules below then take precedence. */

@@ -689,7 +689,7 @@ export function isLegacyChatTerminalToolInvocationData(data: unknown): data is I
  *   MCP servers whose state lives in the workbench.
  * - `agentHost`: routes through {@link IAgentHostService.handleMcpRequest}
  *   on an AHP `mcp://` side channel. Used for MCP servers owned by an
- *   agent host (e.g. Copilot CLI).
+ *   agent host (e.g. Khatmax Agent).
  */
 export type ChatMcpAppData =
 	| {

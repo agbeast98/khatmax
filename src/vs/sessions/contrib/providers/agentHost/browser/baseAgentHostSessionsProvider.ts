@@ -163,10 +163,10 @@ function isGitHubInfoEqual(a: IGitHubInfo | undefined, b: IGitHubInfo | undefine
 // AgentHostSessionAdapter — shared adapter for local and remote sessions
 // ============================================================================
 
-/** Copilot CLI session type */
+/** Khatmax Agent session type */
 export const CopilotCLISessionType: ISessionType = {
 	id: 'copilotcli',
-	label: localize('copilotCLI', "Copilot"),
+	label: localize('copilotCLI', "Khatmax AI"),
 	icon: Codicon.copilot,
 };
 
@@ -240,7 +240,7 @@ export interface IAgentHostAdapterOptions {
 	readonly gitHubService?: IGitHubService;
 	/**
 	 * Instantiation service used to construct the session's changeset
-	 * resolvers. Shared with the Copilot chat sessions provider so all
+	 * resolvers. Shared with the Khatmax AI sessions provider so all
 	 * agent-host sessions surface the same set of changesets.
 	 */
 	readonly instantiationService: IInstantiationService;
@@ -2731,8 +2731,8 @@ export abstract class BaseAgentHostSessionsProvider extends Disposable implement
 	getModelPickerOptions(sessionId: string): ISessionModelPickerOptions {
 		// A session type that requires an explicit model selection cannot fall
 		// back to Auto. When it has no models (e.g. the Claude agent host for a
-		// Copilot Free / Student user), the picker shows a "No models available"
-		// state instead of Auto. Harnesses that support Auto (e.g. the Copilot
+		// Khatmax Free / Student user), the picker shows a "No models available"
+		// state instead of Auto. Harnesses that support Auto (e.g. the Khatmax AI
 		// CLI agent host) keep the Auto fallback. Derive this from the
 		// contribution's declarative `showAutoModel` flag (keyed by the
 		// session's resource scheme, which is the registered

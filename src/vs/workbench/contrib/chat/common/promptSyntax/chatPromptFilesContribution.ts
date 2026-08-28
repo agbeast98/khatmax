@@ -182,7 +182,7 @@ CommandsRegistry.registerCommand('_listExtensionPromptFiles', async (accessor): 
 	]);
 
 	// Combine all files and collect extension- and plugin-contributed ones.
-	// Plugin files are included so the copilot extension can trust them and
+	// Plugin files are included so the Khatmax AI extension can trust them and
 	// serve them to the LLM without a confirmation dialog when connected to a
 	// remote (where they are emitted as vscode-local:/... URIs).
 	const result: IExtensionPromptFileResult[] = [];

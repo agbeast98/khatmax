@@ -32,7 +32,7 @@ export function getModelProviderIcon(model: ILanguageModelChatMetadataAndIdentif
 	if (identity.includes('openai') || identity.includes('gpt') || identity.includes('codex') || /\bo[134]\b/.test(identity)) {
 		return openAIModelProviderIcon;
 	}
-	if (identity.includes('copilot')) {
+	if (identity.includes('Khatmax AI')) {
 		return copilotModelProviderIcon;
 	}
 	return genericModelProviderIcon;

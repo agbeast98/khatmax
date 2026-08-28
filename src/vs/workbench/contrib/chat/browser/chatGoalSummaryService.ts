@@ -81,7 +81,7 @@ export class ChatGoalSummaryService implements IChatGoalSummaryService {
 	}
 
 	private async _invokeModel(prompt: string, token: CancellationToken): Promise<string | undefined> {
-		const models = await this._languageModelsService.selectLanguageModels({ vendor: 'copilot', id: 'copilot-utility-small' });
+		const models = await this._languageModelsService.selectLanguageModels({ vendor: 'Khatmax AI', id: 'copilot-utility-small' });
 		if (!models.length || token.isCancellationRequested) {
 			return undefined;
 		}

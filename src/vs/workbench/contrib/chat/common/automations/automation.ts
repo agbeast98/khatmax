@@ -89,7 +89,7 @@ export type AutomationRunStatus = 'pending' | 'running' | 'completed' | 'failed'
 
 /**
  * What kicked off a run. `catch_up` fires once at startup for a due-time that
- * passed while VS Code was closed.
+ * passed while Khatmax was closed.
  */
 export type AutomationRunTrigger = 'schedule' | 'catch_up' | 'manual';
 

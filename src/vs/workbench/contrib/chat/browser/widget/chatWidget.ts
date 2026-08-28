@@ -6,6 +6,7 @@
 import './media/chat.css';
 import './media/chatAgentHover.css';
 import './media/chatViewWelcome.css';
+import './media/khatmaxChat.css';
 import * as dom from '../../../../../base/browser/dom.js';
 import { status } from '../../../../../base/browser/ui/aria/aria.js';
 import { IMouseWheelEvent } from '../../../../../base/browser/mouseEvent.js';
@@ -794,7 +795,7 @@ export class ChatWidget extends Disposable implements IChatWidget {
 		}));
 
 		// Forward wheel events from the area around the chat widget (e.g. the
-		// max-width margins in the classic VS Code chat view) to the chat list.
+		// max-width margins in the classic Khatmax chat view) to the chat list.
 		this._register(dom.addDisposableListener(parent, dom.EventType.MOUSE_WHEEL, (e: IMouseWheelEvent) => {
 			if (e.defaultPrevented) {
 				return;
@@ -1204,7 +1205,7 @@ export class ChatWidget extends Disposable implements IChatWidget {
 		// Start checking for instruction files immediately if not already done
 		if (!this._instructionFilesCheckPromise) {
 			this._instructionFilesCheckPromise = this._checkForAgentInstructionFiles();
-			// Use VS Code's idiomatic pattern for disposal-safe promise callbacks
+			// Use Khatmax's idiomatic pattern for disposal-safe promise callbacks
 			this._register(thenIfNotDisposed(this._instructionFilesCheckPromise, hasFiles => {
 				this._instructionFilesExist = hasFiles;
 				// Only re-render if the current view still doesn't have items and we're showing the welcome message
@@ -1274,11 +1275,11 @@ export class ChatWidget extends Disposable implements IChatWidget {
 
 		let title: string;
 		if (this.input.currentModeKind === ChatModeKind.Ask) {
-			title = localize('chatDescription', "Ask about your code");
+			title = localize('chatDescription', "Ask Khatmax anything");
 		} else if (this.input.currentModeKind === ChatModeKind.Edit) {
-			title = localize('editsTitle', "Edit in context");
+			title = localize('editsTitle', "Edit with Khatmax");
 		} else {
-			title = localize('agentTitle', "Build with Agent");
+			title = localize('agentTitle', "Build with Khatmax Agent");
 		}
 
 		return {
@@ -2500,7 +2501,7 @@ export class ChatWidget extends Disposable implements IChatWidget {
 		}
 
 		// The advanced autopilot goal banner is only supported in the local chat
-		// harness. Agent-host backed sessions (Copilot CLI, Claude, Codex and the
+		// harness. Agent-host backed sessions (Khatmax Agent, Claude, Codex and the
 		// local/remote agent hosts) must never render it.
 		const sessionResource = this.viewModel?.model.sessionResource;
 		const isLocalHarness = !!sessionResource && getChatSessionType(sessionResource) === localChatSessionType;

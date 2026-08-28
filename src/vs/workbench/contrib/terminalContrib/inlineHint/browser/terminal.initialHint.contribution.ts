@@ -270,30 +270,30 @@ class TerminalInitialHintWidget extends Disposable {
 
 		const aiFeaturesHidden = this._chatEntitlementService.sentiment.hidden;
 
-		// Copilot CLI hint (only shown when AI features are enabled)
+		// Khatmax Agent hint (only shown when AI features are enabled)
 		if (!aiFeaturesHidden) {
 			const handleCopilotCliClick = () => {
 				this._telemetryService.publicLog2<WorkbenchActionExecutedEvent, WorkbenchActionExecutedClassification>('workbenchActionExecuted', {
 					id: 'terminalCopilotCli.hintAction',
 					from: 'hint'
 				});
-				this._instance.sendText('copilot', false);
+				this._instance.sendText('Khatmax AI', false);
 			};
 			const copilotCliHint = localize({
 				key: 'copilotCliHint',
 				comment: [
 					'Preserve double-square brackets and their order',
 				]
-			}, "Type [[copilot]] to use Copilot CLI.");
+			}, "Type [[copilot]] to use Khatmax Agent.");
 			const copilotCliHintHandler: IContentActionHandler = {
 				callback: () => handleCopilotCliClick(),
 				disposables: this._toDispose
 			};
 			hintElement.appendChild(renderFormattedText(copilotCliHint, { actionHandler: copilotCliHintHandler }));
-			ariaLabelParts.push(localize('copilotCliHintAriaLabel', "Type copilot to use Copilot CLI."));
+			ariaLabelParts.push(localize('copilotCliHintAriaLabel', "Type Khatmax AI to use Khatmax Agent."));
 		}
 
-		// Suggest hint - only shown when AI features are hidden (otherwise the Copilot CLI hint takes precedence)
+		// Suggest hint - only shown when AI features are hidden (otherwise the Khatmax Agent hint takes precedence)
 		const suggestEnabled = aiFeaturesHidden && this._configurationService.getValue<boolean>(TerminalSuggestSettingId.Enabled);
 		const suggestKeybinding = suggestEnabled ? this._keybindingService.lookupKeybinding(TerminalSuggestCommandId.TriggerSuggest) : undefined;
 		const suggestKeybindingLabel = suggestKeybinding?.getLabel();

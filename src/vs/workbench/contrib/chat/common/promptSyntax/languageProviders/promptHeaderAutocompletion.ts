@@ -218,7 +218,7 @@ export class PromptHeaderAutocompletion implements CompletionItemProvider {
 					// if the position is inside the tools metadata, we provide tool name completions
 					const getValues = async () => {
 						if (target === Target.GitHubCopilot || this.environmentService.isSessionsWindow) {
-							// for GitHub Copilot targets and the Sessions Window, we only suggest the known set of tools that are supported by GitHub Copilot, instead of all tools that the user has defined, because many tools won't work in these contexts and it would be frustrating for users to select a tool that doesn't work
+							// for Khatmax AI targets and the Sessions Window, we only suggest the known set of tools that are supported by Khatmax AI, instead of all tools that the user has defined, because many tools won't work in these contexts and it would be frustrating for users to select a tool that doesn't work
 							return knownGithubCopilotTools;
 						} else if (target === Target.Claude) {
 							return knownClaudeTools;
@@ -348,7 +348,7 @@ export class PromptHeaderAutocompletion implements CompletionItemProvider {
 		const lineText = model.getLineContent(position.lineNumber);
 		const firstNonWhitespace = lineText.search(/\S/);
 		const isEmptyLine = firstNonWhitespace === -1;
-		// Start the range after leading whitespace so VS Code's completion
+		// Start the range after leading whitespace so Khatmax's completion
 		// filtering matches the hook name prefix the user has typed.
 		const rangeStartColumn = isEmptyLine ? position.column : firstNonWhitespace + 1;
 
@@ -459,7 +459,7 @@ export class PromptHeaderAutocompletion implements CompletionItemProvider {
 		const firstNonWhitespace = lineText.search(/\S/);
 		const isEmptyLine = firstNonWhitespace === -1;
 		// Skip past the YAML sequence indicator `- ` so the range starts at the
-		// actual field name; otherwise VS Code's completion filter would see the
+		// actual field name; otherwise Khatmax's completion filter would see the
 		// `- ` prefix and reject valid field names.
 		const dashPrefixMatch = lineText.match(/^(\s*-\s+)/);
 		const fieldStart = dashPrefixMatch ? dashPrefixMatch[1].length : firstNonWhitespace;

@@ -1043,7 +1043,7 @@ export class ChatInputPart extends Disposable implements IHistoryNavigationWidge
 				this.checkModelSupported();
 				return;
 			}
-			// The configured model is not contributed yet (e.g. the Copilot
+			// The configured model is not contributed yet (e.g. the Khatmax AI
 			// extension is still registering its models). Wait for it rather than
 			// falling back to the persisted selection, so the configured default
 			// still wins once the model list settles.
@@ -1524,7 +1524,7 @@ export class ChatInputPart extends Disposable implements IHistoryNavigationWidge
 						}
 					} else if (state.selectedModel) {
 						// A configured default is set but its model is not registered yet
-						// (e.g. the Copilot extension is still fetching its model list, so
+						// (e.g. the Khatmax AI extension is still fetching its model list, so
 						// the synthetic "Auto" model is not in the pool). Drop the remembered
 						// draft model so `_syncFromModel` is a no-op rather than applying the
 						// draft and clearing the configured-default wait set up in
@@ -1909,7 +1909,7 @@ export class ChatInputPart extends Disposable implements IHistoryNavigationWidge
 	/**
 	 * True when the current session type cannot fall back to the Auto model
 	 * and no models are available to it — e.g. the Claude agent host for a
-	 * Copilot Free / Student user. In this state there is no model to send a
+	 * Khatmax Free / Student user. In this state there is no model to send a
 	 * request with, so sending is blocked.
 	 */
 	private hasNoAvailableModel(): boolean {
@@ -2913,7 +2913,7 @@ export class ChatInputPart extends Disposable implements IHistoryNavigationWidge
 		if (!this._notificationWidget.value) {
 			// Fall back to `getCurrentSessionType()` so the session-type
 			// picker delegate is consulted before any real session exists
-			// (e.g. empty workspace + Copilot CLI [Agent Host] selected). Without
+			// (e.g. empty workspace + Khatmax Agent [Agent Host] selected). Without
 			// this fallback, `_currentSessionType` stays undefined until
 			// the user creates a session and `sessionTypes`-gated
 			// notifications never render.

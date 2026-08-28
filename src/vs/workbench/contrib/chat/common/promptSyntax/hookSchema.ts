@@ -102,7 +102,7 @@ export const HOOK_COMMAND_FIELD_DESCRIPTIONS: Record<string, string> = {
 };
 
 /**
- * JSON Schema for GitHub Copilot hook configuration files.
+ * JSON Schema for Khatmax AI hook configuration files.
  * Hooks enable executing custom shell commands at strategic points in an agent's workflow.
  */
 const vscodeHookCommandSchema: IJSONSchema = {
@@ -176,12 +176,12 @@ function buildHookProperties(target: Target, arraySchema: IJSONSchema): Record<s
 }
 
 /**
- * Hook properties for the VS Code format.
+ * Hook properties for the Khatmax format.
  */
 const vscodeHookProperties: Record<string, IJSONSchema> = buildHookProperties(Target.VSCode, hookArraySchema);
 
 /**
- * Hook command schema for the Copilot CLI format.
+ * Hook command schema for the Khatmax Agent format.
  * Adds `bash`, `powershell`, and `timeoutSec` fields alongside the standard ones.
  */
 const copilotCliHookCommandSchema: IJSONSchema = {
@@ -230,14 +230,14 @@ const copilotCliHookArraySchema: IJSONSchema = {
 };
 
 /**
- * Hook properties for the Copilot CLI format.
+ * Hook properties for the Khatmax Agent format.
  */
 const copilotCliHookProperties: Record<string, IJSONSchema> = buildHookProperties(Target.GitHubCopilot, copilotCliHookArraySchema);
 
 export const hookFileSchema: IJSONSchema = {
 	$schema: 'http://json-schema.org/draft-07/schema#',
 	type: 'object',
-	description: nls.localize('hookFile.description', 'GitHub Copilot hook configuration file. Hooks enable executing custom shell commands at strategic points in an agent\'s workflow.'),
+	description: nls.localize('hookFile.description', 'Khatmax AI hook configuration file. Hooks enable executing custom shell commands at strategic points in an agent\'s workflow.'),
 	additionalProperties: true,
 	required: ['hooks'],
 	properties: {
@@ -248,7 +248,7 @@ export const hookFileSchema: IJSONSchema = {
 		}
 	},
 	// Conditionally apply PascalCase or camelCase hook properties based on
-	// whether the file uses the Copilot CLI format (detected by the "version" field).
+	// whether the file uses the Khatmax Agent format (detected by the "version" field).
 	if: {
 		required: ['version'],
 		properties: {
@@ -256,7 +256,7 @@ export const hookFileSchema: IJSONSchema = {
 		}
 	},
 	then: {
-		// Copilot CLI format: camelCase hook names, bash/powershell/timeoutSec fields
+		// Khatmax Agent format: camelCase hook names, bash/powershell/timeoutSec fields
 		properties: {
 			version: {
 				type: 'number',
@@ -268,7 +268,7 @@ export const hookFileSchema: IJSONSchema = {
 		}
 	},
 	else: {
-		// VS Code / PascalCase format
+		// Khatmax / PascalCase format
 		properties: {
 			hooks: {
 				properties: vscodeHookProperties
@@ -307,7 +307,7 @@ export const HOOK_SCHEMA_URI = 'vscode://schemas/hooks';
 
 /**
  * Normalizes a raw hook type identifier to the canonical HookType enum value.
- * Only matches exact enum values. For tool-specific naming conventions (e.g., Claude, Copilot CLI),
+ * Only matches exact enum values. For tool-specific naming conventions (e.g., Claude, Khatmax Agent),
  * use the corresponding compat module's resolver function.
  */
 export function toHookType(rawHookTypeId: string): HookType | undefined {

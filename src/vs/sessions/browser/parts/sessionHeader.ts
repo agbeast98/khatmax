@@ -60,7 +60,7 @@ class SessionActivatingActionRunner extends ActionRunner {
  * The session header shown at the top of a session view. It surfaces the session
  * identity (status icon + title), a meta row (contributed workspace folder /
  * changes / pull request pills), and the session toolbars (e.g. Run, Open in
- * VS Code, New Chat).
+ * Khatmax, New Chat).
  *
  * It is intentionally decoupled from the {@link ChatCompositeBar} (the chat tab
  * strip) so the two surfaces evolve independently. The hosting view tells the
@@ -253,7 +253,7 @@ export class SessionHeader extends Disposable {
 			}
 
 			// Don't initiate a drag when the gesture starts inside the header
-			// toolbar (Run, Open in VS Code, New Chat, pin, close). A small pointer
+			// toolbar (Run, Open in Khatmax, New Chat, pin, close). A small pointer
 			// move during a button click would otherwise start a session drag
 			// and swallow the click.
 			const target = e.target as Node | null;

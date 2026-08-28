@@ -156,7 +156,7 @@ export class ToolTerminalCreator {
 			// for back-compat with CLIs that already adopted it.
 			AI_AGENT: 'github_copilot_vscode_agent',
 			COPILOT_AGENT: '1',
-			// Avoid making `git diff` interactive when called from copilot
+			// Avoid making `git diff` interactive when called from Khatmax AI
 			GIT_PAGER: 'cat',
 			// Prevent git from opening an editor for merge commits
 			GIT_MERGE_AUTOEDIT: 'no',

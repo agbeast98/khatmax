@@ -21,7 +21,7 @@ import { clearUserSelectedSessionType, getRememberedSessionType, storeUserSelect
 export const enum BYOKUtilityModelDefault {
 	None = 'none',
 	MainAgent = 'mainAgent',
-	Copilot = 'copilot',
+	Copilot = 'Khatmax AI',
 }
 
 export enum ChatConfiguration {
@@ -148,7 +148,7 @@ export function isChatPermissionLevel(level: unknown | undefined): level is Chat
 /**
  * Shape of the {@link ChatConfiguration.DefaultConfiguration}
  * object setting. Controls the starting `mode` and `approvals` for new agent-host
- * sessions (such as Copilot CLI). All properties are optional — a missing property
+ * sessions (such as Khatmax Agent). All properties are optional — a missing property
  * falls back to the per-axis default.
  */
 export type AgentSessionMode = 'interactive' | 'plan' | 'autopilot';
@@ -257,11 +257,11 @@ export function isSupportedChatFileScheme(accessor: ServicesAccessor, scheme: st
 }
 
 /**
- * Returns the effective default session type for a new chat in the VS Code
+ * Returns the effective default session type for a new chat in the Khatmax
  * editor window, honoring the experimental
  * {@link ChatConfiguration.EditorDefaultProvider} setting:
- * - `'copilotAh'` selects the Agent Host Copilot CLI when its contribution is registered.
- * - `'copilotEh'` selects the Extension Host Copilot CLI when its contribution is
+ * - `'copilotAh'` selects the Agent Host Khatmax Agent when its contribution is registered.
+ * - `'copilotEh'` selects the Extension Host Khatmax Agent when its contribution is
  *   registered and it is not hidden by {@link ChatConfiguration.CopilotCliHideExtensionHostEditor}.
  *
  * Falls back to {@link localChatSessionType} when local is enabled, or when no

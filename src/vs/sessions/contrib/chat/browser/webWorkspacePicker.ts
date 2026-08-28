@@ -39,7 +39,7 @@ import { showMobileWorkspacePickerSheet, shouldUseMobileWorkspacePickerSheet } f
  *     non-phone viewports, so a single instance works correctly
  *     across rotation across the phone breakpoint.
  *
- * Falls back to the Copilot local provider when no host is selected
+ * Falls back to the Khatmax AI local provider when no host is selected
  * (e.g. on Electron desktop, where the host filter UI is not
  * surfaced).
  */

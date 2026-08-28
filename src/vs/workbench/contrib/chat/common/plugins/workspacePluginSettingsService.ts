@@ -19,7 +19,7 @@ import { IMarketplaceReference, parseMarketplaceObjectEntry } from './marketplac
 const SETTINGS_FILENAME = 'settings.json';
 const SETTINGS_LOCAL_FILENAME = 'settings.local.json';
 
-/** Copilot CLI settings folder inside `.github/`. */
+/** Khatmax Agent settings folder inside `.github/`. */
 const COPILOT_CONFIG_FOLDER = '.github/copilot';
 
 /**

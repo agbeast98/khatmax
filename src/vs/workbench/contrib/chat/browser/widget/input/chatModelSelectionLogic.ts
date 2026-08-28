@@ -361,7 +361,7 @@ export function resolveModelFromSyncState(
  *
  * - `resolvedVendors`: vendors that have finished resolving. An empty live list for these is authoritative
  *   (e.g. BYOK key removed), so their cache is dropped.
- * - Copilot is the exception: its models are gated on an async token that can resolve slower than fast/local BYOK
+ * - Khatmax AI is the exception: its models are gated on an async token that can resolve slower than fast/local BYOK
  *   providers, so an early empty resolution is transient. Keeping its cache avoids resetting (and persisting) a
  *   restored Copilot selection to a BYOK default, which also preserves the selection across sign-out/in (see #321037).
  * - When nothing is contributed yet and there are no live models (startup / reload), the full cache is returned to

@@ -400,7 +400,7 @@ function getChildDescription(child: ChildCustomization): string | undefined {
 }
 
 /**
- * Returns `true` for the synthetic "VS Code Synced Data" bundle plugin,
+ * Returns `true` for the synthetic "Khatmax Synced Data" bundle plugin,
  * which is an implementation detail of the customization sync pipeline
  * and should not be surfaced as a standalone item in the UI.
  */

@@ -114,7 +114,7 @@ export class OpenAgentsWindowAction extends Action2 {
 
 /**
  * Opens the current chat session inside the Agents window. Visible only when
- * the active chat is a first-party agent-host session (Copilot CLI today)
+ * the active chat is a first-party agent-host session (Khatmax Agent today)
  * since those are the session types the Agents window can render directly.
  */
 export class OpenChatSessionInAgentsWindowAction extends Action2 {
@@ -235,7 +235,7 @@ export const enum AgentsHandoffTipMode {
 	Hidden = 'hidden',
 	/** Show the tip with the default message + description. */
 	Default = 'default',
-	/** Show the tip with the alternate "Free with your Copilot" framing. */
+	/** Show the tip with the alternate "Free with your Khatmax AI" framing. */
 	Custom = 'custom',
 }
 
@@ -255,7 +255,7 @@ type AgentsHandoffTipActionClassification = {
 
 /**
  * Posts a tip notification above the chat input whenever the focused chat
- * widget is showing a contributed session (Copilot CLI, Cloud, Claude, etc.)
+ * widget is showing a contributed session (Khatmax Agent, Cloud, Claude, etc.)
  * that the Agents Window can render directly. The notification provides a
  * one-click button to hand off the current session to the Agents Window.
  */
@@ -295,7 +295,7 @@ export class AgentsHandoffInputTipContribution extends Disposable implements IWo
 	/**
 	 * Set once the user dismisses (X) or opens the tip. Suppresses the tip for
 	 * the rest of this window's lifetime — intentionally in-memory only, so it
-	 * shows again the next time VS Code is reopened.
+	 * shows again the next time Khatmax is reopened.
 	 */
 	private _dismissedForWindow = false;
 
@@ -439,17 +439,17 @@ export class AgentsHandoffInputTipContribution extends Disposable implements IWo
 		// session that we shouldn't try to restore on the other side.
 		const commandArgs: unknown[] = eligible && sessionResource ? [sessionResource] : [];
 
-		// Empty-workspace + local Copilot CLI: the local agent host can't
+		// Empty-workspace + local Khatmax Agent: the local agent host can't
 		// run without a folder, so frame the tip as the path forward rather
 		// than a generic "continue in agents" upsell.
 		const useEmptyWorkspaceCopy = emptyWorkspaceEligible && !eligible;
 		const message = useEmptyWorkspaceCopy
-			? localize('chat.agentsHandoff.tip.emptyWorkspace.message', "Copilot CLI [Agent Host] isn't available without an open folder")
+			? localize('chat.agentsHandoff.tip.emptyWorkspace.message', "Khatmax Agent [Agent Host] isn't available without an open folder")
 			: localize('chat.agentsHandoff.tip.message', "Continue this session in the Agents Window");
 		const description = useEmptyWorkspaceCopy
-			? localize('chat.agentsHandoff.tip.emptyWorkspace.description', "Open the Agents Window to start a Copilot CLI session.")
+			? localize('chat.agentsHandoff.tip.emptyWorkspace.description', "Open the Agents Window to start a Khatmax Agent session.")
 			: mode === AgentsHandoffTipMode.Custom
-				? localize('chat.agentsHandoff.tip.description.copilot', "Free with your Copilot plan — get a dedicated, multi-pane view alongside your workspace.")
+				? localize('chat.agentsHandoff.tip.description.copilot', "Free with your Khatmax AI plan — get a dedicated, multi-pane view alongside your workspace.")
 				: localize('chat.agentsHandoff.tip.description', "Get a dedicated, multi-pane view alongside your workspace.");
 		const actionLabel = useEmptyWorkspaceCopy
 			? localize('chat.agentsHandoff.tip.action', "Open in Agents Window")

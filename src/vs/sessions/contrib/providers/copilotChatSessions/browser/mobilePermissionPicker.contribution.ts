@@ -14,7 +14,7 @@ import { CopilotPermissionPickerDelegate } from './permissionPicker.js';
 
 /**
  * Web-only contribution that registers the mobile-aware
- * {@link MobilePermissionPicker} for the Copilot CLI permission picker
+ * {@link MobilePermissionPicker} for the Khatmax Agent permission picker
  * action. The desktop contribution
  * (`CopilotPickerActionViewItemContribution` in
  * `copilotChatSessionsActions.ts`) skips this picker when `isWeb`, so

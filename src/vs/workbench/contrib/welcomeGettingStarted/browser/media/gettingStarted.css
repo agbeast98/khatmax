@@ -18,6 +18,10 @@
 	user-select: initial;
 	-webkit-user-select: initial;
 	outline: none;
+	background:
+		radial-gradient(circle at top left, rgba(73, 213, 224, 0.12), transparent 34%),
+		radial-gradient(circle at top right, rgba(124, 108, 255, 0.12), transparent 30%),
+		linear-gradient(180deg, rgba(4, 13, 22, 0.78), rgba(4, 13, 22, 0.94));
 }
 
 .monaco-workbench .part.editor > .content .gettingStartedContainer.loading {
@@ -52,6 +56,60 @@
 	margin-top: 1em;
 	margin-bottom: 1em;
 	flex: 1 100%;
+}
+
+.monaco-workbench .part.editor > .content .gettingStartedContainer .product-mark {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 18px 20px;
+	border: 1px solid color-mix(in srgb, var(--vscode-foreground) 10%, transparent);
+	border-radius: 24px;
+	background: color-mix(in srgb, var(--vscode-editor-background) 72%, transparent);
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+	backdrop-filter: blur(18px);
+}
+
+.monaco-workbench .part.editor > .content .gettingStartedContainer .product-mark-logo {
+	width: 56px;
+	height: 56px;
+	flex: 0 0 auto;
+}
+
+.monaco-workbench .part.editor > .content .gettingStartedContainer .product-mark-copy {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.monaco-workbench .part.editor > .content .gettingStartedContainer .product-mark-eyebrow {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--vscode-textLink-foreground);
+	margin-bottom: 6px;
+}
+
+.monaco-workbench .part.editor > .content .gettingStartedContainer .product-mark-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-left: auto;
+	align-self: center;
+}
+
+.monaco-workbench .part.editor > .content .gettingStartedContainer .product-mark-chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 7px 12px;
+	border-radius: 999px;
+	border: 1px solid color-mix(in srgb, var(--vscode-foreground) 12%, transparent);
+	background: color-mix(in srgb, var(--vscode-editor-background) 64%, transparent);
+	color: var(--vscode-foreground);
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
 .monaco-workbench .part.editor > .content .gettingStartedContainer .subtitle {

@@ -59,14 +59,14 @@ function getUpdateHoverContent(updateState: StateType): MarkdownString {
 	const hoverContent = new MarkdownString('', { isTrusted: true, supportThemeIcons: true });
 	switch (updateState) {
 		case StateType.AvailableForDownload:
-			hoverContent.appendMarkdown(localize('chat.modelPicker.downloadUpdateHover', "This model requires a newer version of VS Code. [Download Update](command:update.downloadUpdate) to access it."));
+			hoverContent.appendMarkdown(localize('chat.modelPicker.downloadUpdateHover', "This model requires a newer version of Khatmax. [Download Update](command:update.downloadUpdate) to access it."));
 			break;
 		case StateType.Downloaded:
 		case StateType.Ready:
-			hoverContent.appendMarkdown(localize('chat.modelPicker.restartUpdateHover', "This model requires a newer version of VS Code. [Restart to Update](command:update.restartToUpdate) to access it."));
+			hoverContent.appendMarkdown(localize('chat.modelPicker.restartUpdateHover', "This model requires a newer version of Khatmax. [Restart to Update](command:update.restartToUpdate) to access it."));
 			break;
 		default:
-			hoverContent.appendMarkdown(localize('chat.modelPicker.checkUpdateHover', "This model requires a newer version of VS Code. [Update VS Code](command:update.checkForUpdate) to access it."));
+			hoverContent.appendMarkdown(localize('chat.modelPicker.checkUpdateHover', "This model requires a newer version of Khatmax. [Update Khatmax](command:update.checkForUpdate) to access it."));
 			break;
 	}
 	return hoverContent;
@@ -95,7 +95,7 @@ const ModelPickerSection = {
 const RESTRICTED_MODE_TRUST_ACTION_ID = 'restrictedModeTrust';
 
 /**
- * Id of the synthetic "Sign in to use Copilot..." entry shown when Chat still
+ * Id of the synthetic "Sign in to use Khatmax AI..." entry shown when Chat still
  * requires sign-in / setup. Like the Trust entry it is a command, so it gets a
  * plain `menuitem` role.
  */
@@ -114,9 +114,9 @@ const CACHE_BREAK_HINT_DISMISSED_STORAGE_KEY = 'chat.cacheBreakHintDismissed';
  */
 function getVendorDisplayName(languageModelsService: ILanguageModelsService, vendor: string): string {
 	if (vendor === 'copilotcli') {
-		// @vritant24: This is temporary until we we have 2 distinct vendors for Copilot CLI vs Copilot Chat.
-		// For now, we want to show "Copilot" in the model picker for both.
-		return localize('chat.modelPicker.copilotGroup', "Copilot");
+		// @vritant24: This is temporary until we we have 2 distinct vendors for Khatmax Agent vs Khatmax AI Chat.
+		// For now, we want to show "Khatmax AI" in the model picker for both.
+		return localize('chat.modelPicker.copilotGroup', "Khatmax AI");
 	}
 	const descriptor = languageModelsService.getVendors().find(v => v.vendor === vendor);
 	if (descriptor?.displayName) {
@@ -249,7 +249,7 @@ type ChatContextSizeChangeEvent = {
 
 /**
  * Returns true if the model uses multiplier-based pricing (e.g. "2x").
- * The copilot extension always sets multiplierNumeric alongside multiplier pricing strings.
+ * the Khatmax AI extension always sets multiplierNumeric alongside multiplier pricing strings.
  */
 function isMultiplierPricing(model: ILanguageModelChatMetadataAndIdentifier): boolean {
 	return model.metadata.multiplierNumeric !== undefined;
@@ -469,7 +469,7 @@ function createManageModelsAction(commandService: ICommandService): IActionWidge
  * models..." action (invoking `onRequestTrust`) replace all of the above.
  * Likewise, when
  * `setupRequired` is set (trusted, but Chat still needs sign-in / setup), a
- * "Sign in to use Copilot" header and a Sign In action (invoking
+ * "Sign in to use Khatmax AI" header and a Sign In action (invoking
  * `onRequestSetup`) replace all of the above. `restrictedMode` takes precedence.
  */
 export function buildModelPickerItems(
@@ -535,7 +535,7 @@ export function buildModelPickerItems(
 		// entries can make `models` non-empty.
 		items.push({
 			kind: ActionListItemKind.Header,
-			label: localize('chat.modelPicker.setupRequired', "Sign in to use Copilot"),
+			label: localize('chat.modelPicker.setupRequired', "Sign in to use Khatmax AI"),
 		});
 		items.push({
 			item: {
@@ -543,12 +543,12 @@ export function buildModelPickerItems(
 				enabled: !!onRequestSetup,
 				checked: false,
 				class: undefined,
-				tooltip: localize('chat.modelPicker.setupRequired.signInTooltip', "Sign in to GitHub Copilot to choose a model."),
-				label: localize('chat.modelPicker.setupRequired.signIn', "Sign in to use Copilot..."),
+				tooltip: localize('chat.modelPicker.setupRequired.signInTooltip', "Sign in to Khatmax AI to choose a model."),
+				label: localize('chat.modelPicker.setupRequired.signIn', "Sign in to use Khatmax AI..."),
 				run: () => onRequestSetup?.()
 			},
 			kind: ActionListItemKind.Action,
-			label: localize('chat.modelPicker.setupRequired.signIn', "Sign in to use Copilot..."),
+			label: localize('chat.modelPicker.setupRequired.signIn', "Sign in to use Khatmax AI..."),
 			group: { title: '', icon: ThemeIcon.fromId(Codicon.signIn.id) },
 			disabled: !onRequestSetup,
 			hideIcon: false,
@@ -559,7 +559,7 @@ export function buildModelPickerItems(
 		if (!showAutoModel) {
 			// Auto is not available for this session type (e.g. the Claude agent
 			// host), so the empty list cannot fall back to Auto. Surface a single
-			// disabled "No models available" entry. For Copilot Free / Student
+			// disabled "No models available" entry. For Khatmax Free / Student
 			// users, attach an inline upgrade link on the right (matching the
 			// unavailable-model upgrade affordance elsewhere in the picker).
 			const entitlement = chatEntitlementService.entitlement;
@@ -570,7 +570,7 @@ export function buildModelPickerItems(
 			let hover: MarkdownString | undefined;
 			if (canUpgrade) {
 				hover = new MarkdownString('', { isTrusted: true, supportThemeIcons: true });
-				hover.appendMarkdown(localize('chat.modelPicker.upgradeHover', "[Upgrade to GitHub Copilot Pro](command:workbench.action.chat.upgradePlan \" \") to use the best models."));
+				hover.appendMarkdown(localize('chat.modelPicker.upgradeHover', "[Upgrade to Khatmax AI Pro](command:workbench.action.chat.upgradePlan \" \") to use the best models."));
 			}
 			items.push({
 				item: {
@@ -871,8 +871,8 @@ export function buildModelPickerItems(
 
 				// Sort buckets: copilot vendor first, then alphabetically by group name
 				const sortedBuckets = [...providerGroups.values()].sort((a, b) => {
-					if (a.vendor === 'copilot' && b.vendor !== 'copilot') { return -1; }
-					if (b.vendor === 'copilot' && a.vendor !== 'copilot') { return 1; }
+					if (a.vendor === 'Khatmax AI' && b.vendor !== 'Khatmax AI') { return -1; }
+					if (b.vendor === 'Khatmax AI' && a.vendor !== 'Khatmax AI') { return 1; }
 					return a.groupName.localeCompare(b.groupName);
 				});
 
@@ -994,7 +994,7 @@ function createUnavailableModelItem(
 	if (reason === 'upgrade') {
 		description = new MarkdownString(localize('chat.modelPicker.upgradeLink', "[Upgrade](command:workbench.action.chat.upgradePlan \" \")"), { isTrusted: true });
 	} else if (reason === 'update') {
-		description = localize('chat.modelPicker.updateDescription', "Update VS Code");
+		description = localize('chat.modelPicker.updateDescription', "Update Khatmax");
 	} else {
 		description = manageSettingsUrl
 			? new MarkdownString(localize('chat.modelPicker.adminLink', "[Contact your admin]({0})", manageSettingsUrl), { isTrusted: true })
@@ -1005,9 +1005,9 @@ function createUnavailableModelItem(
 	if (reason === 'upgrade') {
 		hoverContent = new MarkdownString('', { isTrusted: true, supportThemeIcons: true });
 		if (chatEntitlementService.entitlement === ChatEntitlement.Pro) {
-			hoverContent.appendMarkdown(localize('chat.modelPicker.upgradeHoverProPlus', "[Upgrade to GitHub Copilot Pro+](command:workbench.action.chat.upgradePlan \" \") to use the best models."));
+			hoverContent.appendMarkdown(localize('chat.modelPicker.upgradeHoverProPlus', "[Upgrade to Khatmax AI Pro+](command:workbench.action.chat.upgradePlan \" \") to use the best models."));
 		} else {
-			hoverContent.appendMarkdown(localize('chat.modelPicker.upgradeHover', "[Upgrade to GitHub Copilot Pro](command:workbench.action.chat.upgradePlan \" \") to use the best models."));
+			hoverContent.appendMarkdown(localize('chat.modelPicker.upgradeHover', "[Upgrade to Khatmax AI Pro](command:workbench.action.chat.upgradePlan \" \") to use the best models."));
 		}
 	} else if (reason === 'update') {
 		hoverContent = getUpdateHoverContent(updateStateType);
@@ -1378,8 +1378,8 @@ export class ModelPickerWidget extends Disposable {
 
 		const onSelect = (model: ILanguageModelChatMetadataAndIdentifier) => {
 			this._telemetryService.publicLog2<ChatModelChangeEvent, ChatModelChangeClassification>('chat.modelChange', {
-				fromModel: previousModel?.metadata.vendor === 'copilot' ? new TelemetryTrustedValue(previousModel.identifier) : 'unknown',
-				toModel: model.metadata.vendor === 'copilot' ? new TelemetryTrustedValue(model.identifier) : 'unknown',
+				fromModel: previousModel?.metadata.vendor === 'Khatmax AI' ? new TelemetryTrustedValue(previousModel.identifier) : 'unknown',
+				toModel: model.metadata.vendor === 'Khatmax AI' ? new TelemetryTrustedValue(model.identifier) : 'unknown',
 				chatSessionId: this._delegate.getChatSessionId?.()
 			});
 			this._selectedModel = model;
@@ -1610,7 +1610,7 @@ export class ModelPickerWidget extends Disposable {
 		const ariaLabel = restrictedMode
 			? localize('chat.modelPicker.ariaLabelRestricted', "Models, unavailable while in Restricted mode")
 			: setupRequired
-				? localize('chat.modelPicker.ariaLabelSetupRequired', "Models, sign in to use Copilot")
+				? localize('chat.modelPicker.ariaLabelSetupRequired', "Models, sign in to use Khatmax AI")
 				: localize('chat.modelPicker.ariaLabel', "Models, {0}", modelLabel);
 		this._domNode.ariaLabel = ariaLabel;
 		this._nameButton.ariaLabel = ariaLabel;
@@ -1720,7 +1720,7 @@ export class ModelPickerWidget extends Disposable {
 			(value, enumLabel) => enumLabel ?? String(value),
 			(value, previousValue) => {
 				this._telemetryService.publicLog2<ChatThinkingEffortChangeEvent, ChatThinkingEffortChangeClassification>('chat.thinkingEffortChange', {
-					model: this._selectedModel?.metadata.vendor === 'copilot' ? new TelemetryTrustedValue(modelIdentifier) : 'unknown',
+					model: this._selectedModel?.metadata.vendor === 'Khatmax AI' ? new TelemetryTrustedValue(modelIdentifier) : 'unknown',
 					fromValue: previousValue,
 					toValue: String(value),
 				});
@@ -1734,7 +1734,7 @@ export class ModelPickerWidget extends Disposable {
 			(value, enumLabel) => enumLabel ?? formatTokenCount(Number(value)),
 			(value, previousValue) => {
 				this._telemetryService.publicLog2<ChatContextSizeChangeEvent, ChatContextSizeChangeClassification>('chat.contextSizeChange', {
-					model: this._selectedModel?.metadata.vendor === 'copilot' ? new TelemetryTrustedValue(modelIdentifier) : 'unknown',
+					model: this._selectedModel?.metadata.vendor === 'Khatmax AI' ? new TelemetryTrustedValue(modelIdentifier) : 'unknown',
 					fromValue: previousValue,
 					toValue: String(value),
 				});

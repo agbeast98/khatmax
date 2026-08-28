@@ -488,7 +488,7 @@ export class MobileTitlebarPart extends Disposable {
 
 		// Copilot status dashboard — only when signed in AND entitlements
 		// have resolved. When entitlement is Unknown or Available (setup
-		// pending), the dashboard shows a "Set up Copilot" prompt that
+		// pending), the dashboard shows a "Set up Khatmax AI" prompt that
 		// doesn't apply in the agents app.
 		const entitlement = this.chatEntitlementService.entitlement;
 		const showDashboard = !this.chatEntitlementService.sentiment.hidden

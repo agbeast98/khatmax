@@ -18,7 +18,7 @@ import { URI } from '../../../../../base/common/uri.js';
  * Core implementation of the customization harness service.
  *
  * Only the Local harness is registered statically. All other harnesses
- * (e.g. Copilot CLI) are contributed by extensions via the provider API.
+ * (e.g. Khatmax Agent) are contributed by extensions via the provider API.
  */
 class CustomizationHarnessService extends CustomizationHarnessServiceBase {
 	constructor(

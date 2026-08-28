@@ -118,7 +118,7 @@ export class SetupAgent extends Disposable implements IChatAgentImplementation {
 			const disposables = new DisposableStore();
 
 			// Register VSCode agent
-			const { disposable: vscodeDisposable } = SetupAgent.doRegisterAgent(instantiationService, chatAgentService, 'setup.vscode', 'vscode', false, localize2('vscodeAgentDescription', "Ask questions about VS Code").value, ChatAgentLocation.Chat, ChatModeKind.Agent, context, controller);
+			const { disposable: vscodeDisposable } = SetupAgent.doRegisterAgent(instantiationService, chatAgentService, 'setup.vscode', 'vscode', false, localize2('vscodeAgentDescription', "Ask questions about Khatmax").value, ChatAgentLocation.Chat, ChatModeKind.Agent, context, controller);
 			disposables.add(vscodeDisposable);
 
 			// Register workspace agent
@@ -135,8 +135,8 @@ export class SetupAgent extends Disposable implements IChatAgentImplementation {
 				source: ToolDataSource.Internal,
 				icon: Codicon.newFolder,
 				displayName: localize('setupToolDisplayName', "New Workspace"),
-				modelDescription: 'Scaffold a new workspace in VS Code',
-				userDescription: localize('setupToolsDescription', "Scaffold a new workspace in VS Code"),
+				modelDescription: 'Scaffold a new workspace in Khatmax',
+				userDescription: localize('setupToolsDescription', "Scaffold a new workspace in Khatmax"),
 				canBeReferencedInPrompt: true,
 				toolReferenceName: 'new',
 				when: ContextKeyExpr.true(),
@@ -175,7 +175,7 @@ export class SetupAgent extends Disposable implements IChatAgentImplementation {
 		return { agent, disposable: disposables };
 	}
 
-	private static readonly SETUP_NEEDED_MESSAGE = new MarkdownString(localize('settingUpCopilotNeeded', "You need to set up GitHub Copilot and be signed in to use Chat."));
+	private static readonly SETUP_NEEDED_MESSAGE = new MarkdownString(localize('settingUpCopilotNeeded', "You need to set up Khatmax AI and be signed in to use Chat."));
 	private static readonly TRUST_NEEDED_MESSAGE = new MarkdownString(localize('trustNeeded', "You need to trust this workspace to use Chat."));
 
 	private static readonly CHAT_RETRY_COMMAND_ID = 'workbench.action.chat.retrySetup';
@@ -928,7 +928,7 @@ export class ChatCodeActionsProvider {
 
 		if (generateOrModifyTitle && generateOrModifyCommand) {
 			actions.push({
-				kind: CodeActionKind.RefactorRewrite.append('copilot').value,
+				kind: CodeActionKind.RefactorRewrite.append('Khatmax AI').value,
 				isAI: true,
 				title: generateOrModifyTitle,
 				command: generateOrModifyCommand,
@@ -940,7 +940,7 @@ export class ChatCodeActionsProvider {
 
 			// "Fix" if there are diagnostics in the range
 			actions.push({
-				kind: CodeActionKind.QuickFix.append('copilot').value,
+				kind: CodeActionKind.QuickFix.append('Khatmax AI').value,
 				isAI: true,
 				diagnostics: markers,
 				title: localize('fix', "Fix"),
@@ -949,7 +949,7 @@ export class ChatCodeActionsProvider {
 
 			// "Explain" if there are diagnostics in the range
 			actions.push({
-				kind: CodeActionKind.QuickFix.append('explain').append('copilot').value,
+				kind: CodeActionKind.QuickFix.append('explain').append('Khatmax AI').value,
 				isAI: true,
 				diagnostics: markers,
 				title: localize('explain', "Explain"),

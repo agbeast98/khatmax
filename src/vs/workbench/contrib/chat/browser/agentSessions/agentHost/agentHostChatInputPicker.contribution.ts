@@ -12,10 +12,10 @@ import { ChatContextKeys, ChatContextKeyExprs } from '../../../common/actions/ch
 /**
  * Agent-host pickers live under `MenuId.ChatInputSecondary` group
  * `'navigation'` because non-navigation groups are routed to the overflow
- * menu by VS Code's menu/toolbar convention.
+ * menu by Khatmax's menu/toolbar convention.
  *
  * Order layout in the secondary toolbar (existing items annotated):
- *   0    OpenSessionTargetPickerAction        (Copilot CLI - Agent Host)
+ *   0    OpenSessionTargetPickerAction        (Khatmax Agent - Agent Host)
  *   0.5  OpenDelegationPickerAction
  *   0.6  OpenWorkspacePickerAction
  *   0.7  OpenAgentHostModePickerAction        (NEW — Mode)
@@ -24,7 +24,7 @@ import { ChatContextKeys, ChatContextKeyExprs } from '../../../common/actions/ch
  *   1    OpenPermissionPickerAction           (Default Approvals)
  *   1.1  OpenAgentHostFolderPickerAction      (NEW — Folder, multi-root only;
  *                                              ordered last to match the
- *                                              extension-host Copilot CLI)
+ *                                              extension-host Khatmax Agent)
  */
 
 export class OpenAgentHostFolderPickerAction extends Action2 {
@@ -45,7 +45,7 @@ export class OpenAgentHostFolderPickerAction extends Action2 {
 				// Only relevant when there is more than one root folder to choose
 				// from and we are in a regular editor window (the agent sessions
 				// window has its own workspace picker). Ordered last in the chip
-				// row to match the extension-host Copilot CLI layout.
+				// row to match the extension-host Khatmax Agent layout.
 				when: ContextKeyExpr.and(
 					ChatContextKeyExprs.isAgentHostSession,
 					WorkspaceFolderCountContext.greater(1),

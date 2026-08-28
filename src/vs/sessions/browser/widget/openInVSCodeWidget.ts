@@ -14,7 +14,7 @@ import { IKeybindingService } from '../../../platform/keybinding/common/keybindi
 import { IProductService } from '../../../platform/product/common/productService.js';
 
 /**
- * Renders the "Open in VS Code" titlebar entry as an icon-only button that
+ * Renders the "Open in Khatmax" titlebar entry as an icon-only button that
  * expands to reveal a label on hover / keyboard focus.
  */
 export class OpenInVSCodeTitleBarWidget extends BaseActionViewItem {
@@ -44,7 +44,7 @@ export class OpenInVSCodeTitleBarWidget extends BaseActionViewItem {
 		}
 
 		const label = this.action.label;
-		const hoverText = this.keybindingService.appendKeybinding(localize('openInVSCodeHover', "Open in VS Code Editor Window"), this.keybindingCommandId);
+		const hoverText = this.keybindingService.appendKeybinding(localize('openInVSCodeHover', "Open in Khatmax Editor Window"), this.keybindingCommandId);
 		container.setAttribute('aria-label', hoverText);
 		this._register(this.hoverService.setupManagedHover(getDefaultHoverDelegate('element'), container, hoverText));
 

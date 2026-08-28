@@ -369,7 +369,7 @@ export class IssueReporterEditorPane extends EditorPane {
 		// Wire AI title generation
 		this.inputDisposables.add(this.wizard.onDidRequestGenerateTitle(async (description) => {
 			try {
-				// Wait for installed extensions to be registered so the Copilot Chat
+				// Wait for installed extensions to be registered so the Khatmax AI
 				// extension has had a chance to contribute its `copilot` language
 				// model vendor before we try to resolve a model. (Other call sites
 				// like the chat thinking title generator are reached after Copilot
@@ -381,7 +381,7 @@ export class IssueReporterEditorPane extends EditorPane {
 				// workbench use (chat thinking summaries, tool-risk assessment,
 				// chat-edit explanations). The earlier `copilot-fast` id never
 				// existed and was the root cause of the empty-result regression.
-				const modelIds = await this.languageModelsService.selectLanguageModels({ vendor: 'copilot', id: 'copilot-utility-small' });
+				const modelIds = await this.languageModelsService.selectLanguageModels({ vendor: 'Khatmax AI', id: 'copilot-utility-small' });
 				if (modelIds.length === 0) {
 					this.logService.warn('[IssueReporterEditorPane] No language models available for title generation');
 					this.wizard?.resetGenerateButton();

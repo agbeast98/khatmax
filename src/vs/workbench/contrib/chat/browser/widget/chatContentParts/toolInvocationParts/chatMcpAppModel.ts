@@ -60,7 +60,7 @@ export class ChatMcpAppModel extends Disposable {
 	/**
 	 * In-memory origin map for agent-host MCP servers. Agent-host server
 	 * ids embed the session id, so they're effectively single-use across
-	 * VS Code restarts — using {@link WebviewOriginStore} for them would
+	 * Khatmax restarts — using {@link WebviewOriginStore} for them would
 	 * accumulate one persisted entry per agent-host session forever. The
 	 * in-memory map keeps origins stable for the lifetime of the app
 	 * (enough for webview state to persist across re-renders) without
@@ -474,7 +474,7 @@ export class ChatMcpAppModel extends Disposable {
 					break;
 
 				case 'ui/request-display-mode':
-					// VS Code only supports inline display mode
+					// Khatmax only supports inline display mode
 					result = { mode: 'inline' } satisfies McpApps.McpUiRequestDisplayModeResult;
 					break;
 
@@ -603,7 +603,7 @@ export class ChatMcpAppModel extends Disposable {
 	/**
 	 * Picks a stable webview origin for this server. Local MCP servers
 	 * get a persisted origin via {@link WebviewOriginStore} since their
-	 * server-definition id is stable across VS Code restarts. Agent-host
+	 * server-definition id is stable across Khatmax restarts. Agent-host
 	 * servers fall back to the static in-memory {@link _agentHostOrigins}
 	 * map keyed by `serverId`, so origins are stable within the app
 	 * lifetime without leaking entries into application storage for

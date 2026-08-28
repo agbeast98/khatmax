@@ -24,6 +24,19 @@
 	text-transform: uppercase;
 }
 
+.monaco-workbench .part.sidebar > .title > .title-label h2::before {
+	content: '';
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	margin-right: 8px;
+	vertical-align: -3px;
+	background-image: var(--khatmax-sidebar-logo-url);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
 .monaco-workbench .viewlet .collapsible.header .title {
 	overflow: hidden;
 	text-overflow: ellipsis;

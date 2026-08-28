@@ -52,7 +52,7 @@ const PERSONALIZE_ACTION_IDS: readonly string[] = [
 const SIGN_OUT_ACTION_ID = 'workbench.action.agenticSignOut';
 const SIGN_IN_ACTION_ID = 'workbench.action.agenticSignIn';
 
-// Register the shared VS Code update title bar entry into the Agents titlebar layout.
+// Register the shared Khatmax update title bar entry into the Agents titlebar layout.
 // Placed as the first (leftmost) item of the leftmost right-cluster container so that, in
 // the right-aligned title bar, the update button grows into the empty space on its left
 // when it appears and every other control (session toggles, account widget) stays anchored

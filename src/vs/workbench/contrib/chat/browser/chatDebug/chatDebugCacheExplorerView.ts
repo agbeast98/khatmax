@@ -405,7 +405,7 @@ export class ChatDebugCacheExplorerView extends Disposable {
 		}
 
 		// When the request-side prompt was not captured (e.g. agent-host /
-		// Copilot CLI sessions, whose log records the model's output but not the
+		// Khatmax Agent sessions, whose log records the model's output but not the
 		// request sent to it), the reported cache-hit numbers are still accurate
 		// but there is nothing to diff. Show the token-based performance only and
 		// skip the divergence analysis — running it against absent data would
@@ -1134,7 +1134,7 @@ export class ChatDebugCacheExplorerView extends Disposable {
 	/**
 	 * Render the token-based cache performance for a request pair when the
 	 * request-side prompt signature (system, tools, input messages) was not
-	 * captured for the session — e.g. agent-host (Copilot CLI) sessions, whose
+	 * captured for the session — e.g. agent-host (Khatmax Agent) sessions, whose
 	 * log records the model's output but not the request sent to it. The reported
 	 * cache-hit numbers are still accurate, but there is nothing to diff, so the
 	 * divergence-based root-cause analysis is deliberately skipped.

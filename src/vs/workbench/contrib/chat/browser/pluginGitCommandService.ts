@@ -263,7 +263,7 @@ export class BrowserPluginGitCommandService implements IPluginGitService {
 			this._logService.trace('[BrowserPluginGitCommandService] GitHub session request failed:', err);
 			throw new Error(localize(
 				'pluginsBrowserGitHubSignInRequired',
-				"Sign in to GitHub with an account that has access to '{0}' to install this plugin.",
+				"Sign in to Khatmax with an account that has access to '{0}' to install this plugin.",
 				`${repo.owner}/${repo.repo}`,
 			));
 		}

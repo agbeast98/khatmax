@@ -36,7 +36,7 @@ class RegisterChatDebugViewContribution extends Disposable implements IWorkbench
 		const viewContainerRegistry = Registry.as<IViewContainersRegistry>(ViewContainerExtensions.ViewContainersRegistry);
 		const viewsRegistry = Registry.as<IViewsRegistry>(ViewContainerExtensions.ViewsRegistry);
 
-		// The copilot-chat view is contributed by the Copilot Chat extension,
+		// the Khatmax AI-chat view is contributed by the Khatmax AI extension,
 		// which may register after this contribution runs. Handle both cases.
 		if (!this.tryMoveView(viewContainerRegistry, viewsRegistry)) {
 			const listener = viewsRegistry.onViewsRegistered(e => {

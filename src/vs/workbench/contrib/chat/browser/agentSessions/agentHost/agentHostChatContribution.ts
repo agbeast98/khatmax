@@ -181,7 +181,7 @@ export class AgentHostContribution extends Disposable implements IWorkbenchContr
 	/**
 	 * Whether this window wants the given agent registered, given the
 	 * per-window AH/EH preference settings. Today only the `claude` provider
-	 * has dual implementations (EH from the Copilot extension, AH from inside
+	 * has dual implementations (EH from the Khatmax AI extension, AH from inside
 	 * the agent host process) and a corresponding preference; all other
 	 * providers are AH-only and unconditionally allowed.
 	 *
@@ -239,7 +239,7 @@ export class AgentHostContribution extends Disposable implements IWorkbenchContr
 
 		// Chat session contribution.
 		// Keep the delegation picker available for local agent host sessions in
-		// both VS Code and the Agents app so users can hand off (continue) their
+		// both Khatmax and the Agents app so users can hand off (continue) their
 		// conversation to any other agent host session or remote target.
 		store.add(this._chatSessionsService.registerChatSessionContribution({
 			type: sessionType,
@@ -268,12 +268,12 @@ export class AgentHostContribution extends Disposable implements IWorkbenchContr
 
 		const itemProvider = store.add(this._instantiationService.createInstance(AgentCustomizationItemProvider, 'local', undefined,
 			syncedUri => agentRegistration.bundler.getOrigin(syncedUri)));
-		// `[Agent Host]` suffix disambiguates from the extension-host Copilot CLI harness, which uses the same displayName.
+		// `[Agent Host]` suffix disambiguates from the extension-host Khatmax Agent harness, which uses the same displayName.
 		store.add(this._customizationHarnessService.registerExternalHarness({
 			id: sessionType,
 			label: localize('agentHostHarnessLabel.local', "{0} [Agent Host]", agent.displayName),
 			icon: ThemeIcon.fromId(Codicon.server.id),
-			// The Tools section is surfaced for the Copilot CLI agent host only.
+			// The Tools section is surfaced for the Khatmax Agent agent host only.
 			hiddenSections: agent.provider === 'copilotcli' ? [AICustomizationManagementSection.Prompts] : [AICustomizationManagementSection.Tools, AICustomizationManagementSection.Prompts],
 			hideGenerateButton: true,
 			syncProvider,
@@ -324,7 +324,7 @@ export class AgentHostContribution extends Disposable implements IWorkbenchContr
 
 	/**
 	 * Authenticate using protectedResources from agent info in root state.
-	 * Resolves tokens via the standard VS Code authentication service.
+	 * Resolves tokens via the standard Khatmax authentication service.
 	 */
 	private async _authenticateWithServer(agents: readonly AgentInfo[]): Promise<void> {
 		this._agentHostService.setAuthenticationPending(true);

@@ -24,7 +24,7 @@ export interface ISessionReadOnlyBannerContent {
 
 /**
  * A small, self-contained status banner that indicates the current chat is
- * read-only (non-interactive). Mirrors the read-only editor banner in VS Code:
+ * read-only (non-interactive). Mirrors the read-only editor banner in Khatmax:
  * a subtle full-width bar with a leading icon and a single line of text. Shown
  * in place of the composer for read-only chats (e.g. a subagent's transcript,
  * or an archived session), where it explains why there is no input and — when

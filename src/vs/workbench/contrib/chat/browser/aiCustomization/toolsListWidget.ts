@@ -163,7 +163,7 @@ export class ToolsListWidget extends Disposable {
 	private _rows: ITreeRow[] = [];
 	private readonly _rowByElement = new Map<HTMLElement, ITreeRow>();
 
-	/** Read-only tool sets injected for the current session type (e.g. the Copilot CLI built-ins). */
+	/** Read-only tool sets injected for the current session type (e.g. the Khatmax Agent built-ins). */
 	private readonly _staticReadOnlySets: readonly IToolSet[];
 
 	constructor(
@@ -231,7 +231,7 @@ export class ToolsListWidget extends Disposable {
 		DOM.append(DOM.append(this._header, $('.section-title-row')), $('h2.section-title')).textContent = localize('toolsListTitle', "Tools");
 
 		const description = DOM.append(this._header, $('p.section-title-description'));
-		DOM.append(description, $('span.section-title-description-text')).textContent = localize('toolsListSubtitle', "Enable or disable the tools available to chat. Disabled tools are not advertised to the agent. Tools other than Copilot CLI run on the client and require it to be connected.");
+		DOM.append(description, $('span.section-title-description-text')).textContent = localize('toolsListSubtitle', "Enable or disable the tools available to chat. Disabled tools are not advertised to the agent. Tools other than Khatmax Agent run on the client and require it to be connected.");
 		// Whitespace node so the gap collapses when the link wraps.
 		description.appendChild(document.createTextNode(' '));
 
@@ -327,8 +327,8 @@ export class ToolsListWidget extends Disposable {
 			referenceName: 'copilotCli',
 			icon: Codicon.copilot,
 			source: ToolDataSource.Internal,
-			description: localize('clientToolSet.copilotCli.description', "Copilot CLI"),
-			detail: localize('clientToolSet.copilotCli.detail', "Built-in tools the Copilot CLI agent runs inside its own runtime."),
+			description: localize('clientToolSet.copilotCli.description', "Khatmax Agent"),
+			detail: localize('clientToolSet.copilotCli.detail', "Built-in tools the Khatmax Agent agent runs inside its own runtime."),
 			getTools: () => tools,
 		};
 		return [copilotCliSet];
@@ -977,7 +977,7 @@ export class ToolsListWidget extends Disposable {
 }
 
 /**
- * The Copilot CLI's built-in tools, surfaced read-only for reference. Mirrored from the published
+ * The Khatmax Agent's built-in tools, surfaced read-only for reference. Mirrored from the published
  * "Tool availability values" table (the SDK does not expose this list at runtime); keep in sync:
  * https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference#tool-availability-values
  */

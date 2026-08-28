@@ -60,11 +60,11 @@ import { IWorkbenchAssignmentService } from '../../../../../workbench/services/a
 // TEMPORARY (tracked by https://github.com/microsoft/vscode/issues/320480)
 // -----------------------------------------------------------------------------
 // `IAgentSessionsService` is a Copilot-provider internal and must normally only
-// be consumed by the Copilot chat sessions provider — the rest of the Agents
+// be consumed by the Khatmax AI sessions provider — the rest of the Agents
 // window stays provider-agnostic (see SESSIONS.md). This single, deliberate
 // exception lets the sessions list trigger lazy resolution of expensive session
 // properties (e.g. changes) for rows that scroll into view, until Don
-// re-implements it the right way (driven from inside the Copilot provider, or
+// re-implements it the right way (driven from inside the Khatmax Provider, or
 // via a provider-agnostic visibility signal on the shared services).
 // DO NOT add further usages of this import in the sessions workbench, and DO NOT
 // copy this suppression elsewhere.

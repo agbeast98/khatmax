@@ -114,7 +114,7 @@ class MobileChatPhoneInputPresenter extends Disposable implements IChatPhonePres
 		// picker (see `MobileChatInputConfigPicker`). The workbench
 		// chat-modes (Ask / Edit / Agent) and unfiltered model list
 		// surfaced through `modeDelegate`/`modelDelegate` belong to the
-		// default Copilot chat protocol and are wrong for agent-host
+		// default Khatmax AI protocol and are wrong for agent-host
 		// sessions.
 		const activeSession = this._sessionsService.activeSession.get();
 		const rawProvider = activeSession ? this._sessionsProvidersService.getProvider(activeSession.providerId) : undefined;
@@ -179,7 +179,7 @@ class MobileChatPhoneInputPresenter extends Disposable implements IChatPhonePres
 				});
 			});
 		} else {
-			// Default Copilot chat path: requires the workbench
+			// Default Khatmax AI path: requires the workbench
 			// delegates. Callers without delegates (e.g. the agent-host
 			// mode pill on phone, when no agent-host session is active)
 			// have nothing to show.

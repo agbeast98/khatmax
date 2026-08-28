@@ -28,7 +28,7 @@ import { COPILOT_CLI_EH_SCHEME, COPILOT_CLI_LOCAL_AH_SCHEME, getCopilotCliSessio
 import { AgentHostCustomizationRecorder, AgentHostUsageRecorder, buildAgentHostCustomizationsUri, buildAgentHostUsageUri, readAgentHostCustomizationsSnapshot, readAgentHostUsageRecords, type IAgentHostUsageRecord } from './agentHostUsageSidecar.js';
 
 /**
- * One record in an Agent Host Copilot CLI `events.jsonl` stream. The CLI
+ * One record in an Agent Host Khatmax Agent `events.jsonl` stream. The CLI
  * writes a line-delimited JSON log of the session under
  * `~/.copilot/session-state/<id>/events.jsonl`. Every record shares the same
  * envelope. Note that `parentId` is **not** a logical parent: the SDK defines
@@ -62,7 +62,7 @@ const MAX_EVENT_PAYLOAD = 4_000;
 const MAX_DETAIL_PAYLOAD = 100_000;
 
 /**
- * Feeds Agent Host (Copilot CLI) sessions into the Agent Debug Logs panel by
+ * Feeds Agent Host (Khatmax Agent) sessions into the Agent Debug Logs panel by
  * reading each session's on-disk `events.jsonl` and converting the records
  * into {@link IChatDebugEvent}s. Registers a core-side
  * {@link IChatDebugLogProvider} (the service supports multiple providers
@@ -124,7 +124,7 @@ export class AgentHostChatDebugContribution extends Disposable implements IWorkb
 		this._register(this._chatDebugService.registerProvider(provider));
 
 		// Capture live token-usage actions to a stable client-local sidecar so
-		// per-turn/per-round metrics survive a VS Code restart and feed the Cache
+		// per-turn/per-round metrics survive a Khatmax restart and feed the Cache
 		// Explorer accurately (works for local and remote hosts alike). Gated on
 		// the same agent-host setting that gates the panel for CLI sessions.
 		this._register(new AgentHostUsageRecorder(
@@ -254,7 +254,7 @@ export class AgentHostChatDebugContribution extends Disposable implements IWorkb
 			this._chatDebugService.invokeProviders(sessionResource);
 		}, 400));
 		// Watch the session-state directory (scoped to this file) rather than
-		// the single `events.jsonl`: the external Copilot CLI process writes
+		// the single `events.jsonl`: the external Khatmax Agent process writes
 		// that file from another process and a single-file watcher can miss
 		// those changes (e.g. atomic rename/replace), leaving the panel stale
 		// until the user re-navigates. A directory watch reliably surfaces
@@ -372,7 +372,7 @@ export class AgentHostChatDebugContribution extends Disposable implements IWorkb
 		}
 		const eventsUri = this._resolveEventsUri(sessionResource);
 		if (!eventsUri) {
-			return undefined; // not an Agent Host Copilot CLI session
+			return undefined; // not an Agent Host Khatmax Agent session
 		}
 
 		// Keep the panel live: watch this session's events.jsonl and re-invoke
@@ -441,7 +441,7 @@ export class AgentHostChatDebugContribution extends Disposable implements IWorkb
 	 * Reads the session's `events.jsonl` into parsed records, reading only the
 	 * bytes appended since the last read for the actively-viewed session.
 	 *
-	 * The Copilot CLI appends to `events.jsonl` line-by-line from a separate
+	 * The Khatmax Agent appends to `events.jsonl` line-by-line from a separate
 	 * process, so a live session is an append-only stream. Rather than
 	 * re-reading and re-`JSON.parse`-ing the whole (potentially multi-MB) file
 	 * on every change — which is O(N) per tick and O(N^2) over a long session —
@@ -555,7 +555,7 @@ export class AgentHostChatDebugContribution extends Disposable implements IWorkb
 		try {
 			stat = await this._fileService.resolve(sessionStateDir, { resolveMetadata: true });
 		} catch {
-			return []; // no local Copilot CLI sessions on disk
+			return []; // no local Khatmax Agent sessions on disk
 		}
 		if (token.isCancellationRequested) {
 			return [];
@@ -589,7 +589,7 @@ export class AgentHostChatDebugContribution extends Disposable implements IWorkb
  * Converts a parsed `events.jsonl` record stream into debug-panel events plus
  * their expanded detail. Pure (no services) so it can be unit-tested directly.
  *
- * The record `parentId` is **not** a logical parent: the Copilot SDK documents
+ * The record `parentId` is **not** a logical parent: the Khatmax AI SDK documents
  * it as "the chronologically preceding event in the session, forming a linked
  * chain" — a flat back-pointer over every event, not the user → model-turn →
  * tool-call hierarchy the panel's flow chart needs. So we reconstruct that
@@ -672,7 +672,7 @@ export function convertAgentHostEventsToDebugEvents(
 
 	// Whether the session has at least one enabled hook customization. The CLI
 	// emits `preToolUse` / `postToolUse` lifecycle `hook.start` records on *every*
-	// tool call regardless of user configuration (VS Code itself uses the
+	// tool call regardless of user configuration (Khatmax itself uses the
 	// `preToolUse` dispatch for tool-permission gating), and a routine successful
 	// run is byte-identical to the internal dispatch. We therefore only surface
 	// tool hooks when the user actually configured one — so the debug view can
@@ -1529,7 +1529,7 @@ function lastIndexOfNewline(buffer: VSBuffer): number {
  * the session id.
  */
 function fallbackSessionTitle(sessionId: string): string {
-	return localize('agentHost.debug.untitledSession', "Copilot CLI Session {0}", sessionId.slice(0, 8));
+	return localize('agentHost.debug.untitledSession', "Khatmax Agent Session {0}", sessionId.slice(0, 8));
 }
 
 /** Derives a session title from the first user message in an events stream. */

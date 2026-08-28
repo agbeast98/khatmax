@@ -59,6 +59,7 @@ extensions/html-language-features/server/src/test/pathCompletionFixtures/src/fea
 extensions/html-language-features/server/src/test/pathCompletionFixtures/src/test.js
 extensions/html-language-features/server/test/index.js
 extensions/html/build/update-grammar.mjs
+extensions/khatmax-ai/esbuild.mjs
 extensions/json/build/update-grammars.js
 extensions/latex/build/update-grammars.js
 extensions/less/build/update-grammar.js

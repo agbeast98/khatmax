@@ -31,9 +31,9 @@ import { InEditorZenModeContext } from '../../../../common/contextkeys.js';
 import { ChatConfiguration } from '../../common/constants.js';
 
 /**
- * Tracks whether Copilot is currently blocked by a reached quota limit, has
+ * Tracks whether Khatmax AI is currently blocked by a reached quota limit, has
  * resumed after a limit reset, or neither. Persisted across sessions so a reset
- * that happens while VS Code is closed can still be surfaced on next launch.
+ * that happens while Khatmax is closed can still be surfaced on next launch.
  */
 export type ChatQuotaResumeState = 'none' | 'blocked' | 'resumed';
 
@@ -72,7 +72,7 @@ function hasResolvedQuota(quotas: ChatQuotas): boolean {
 }
 
 /**
- * Pure state transition for the Copilot quota "resumed" indicator:
+ * Pure state transition for the Khatmax AI quota "resumed" indicator:
  * - Enters `blocked` while a limit is reached and the user is not on additional spend.
  * - Moves `blocked` -> `resumed` only on a genuine limit reset (fresh quota, no additional spend).
  * - Moves `blocked` -> `none` when unblocked via additional spend (not a reset).
@@ -289,7 +289,7 @@ export class ChatStatusBarEntry extends Disposable implements IWorkbenchContribu
 	private initializeQuotaResumeState(): void {
 		if (this.quotaResumeState === 'blocked') {
 			// A blocked state was recorded in a previous session: verify against fresh
-			// quota data whether the limit has since reset while VS Code was closed.
+			// quota data whether the limit has since reset while Khatmax was closed.
 			this.refreshQuotaAndEvaluate();
 		} else {
 			this.evaluateQuotaResumeState();
@@ -331,7 +331,7 @@ export class ChatStatusBarEntry extends Disposable implements IWorkbenchContribu
 
 	private getEntryProps(): IStatusbarEntry {
 		let text = '$(copilot)';
-		let ariaLabel = localize('chatStatusAria', "Copilot status");
+		let ariaLabel = localize('chatStatusAria', "Khatmax AI status");
 		let kind: StatusbarEntryKind | undefined;
 
 		if (isNewUser(this.chatEntitlementService)) {
@@ -352,7 +352,7 @@ export class ChatStatusBarEntry extends Disposable implements IWorkbenchContribu
 			// Disabled
 			if (this.chatEntitlementService.sentiment.disabled || this.chatEntitlementService.sentiment.untrusted) {
 				text = '$(copilot-unavailable)';
-				ariaLabel = localize('copilotDisabledStatus', "Copilot disabled");
+				ariaLabel = localize('copilotDisabledStatus', "Khatmax AI disabled");
 			}
 
 			// Signed out — keep showing Sign-in affordance even when BYOK models are present
@@ -371,7 +371,7 @@ export class ChatStatusBarEntry extends Disposable implements IWorkbenchContribu
 
 			// Copilot Resumed (limit reset after the user was previously blocked)
 			else if (this.quotaResumeState === 'resumed') {
-				const resumedLabel = localize('chatResumedStatus', "Copilot Resumed");
+				const resumedLabel = localize('chatResumedStatus', "Khatmax AI Resumed");
 				text = `$(copilot) ${resumedLabel}`;
 				ariaLabel = resumedLabel;
 				kind = 'prominent';
@@ -391,7 +391,7 @@ export class ChatStatusBarEntry extends Disposable implements IWorkbenchContribu
 		}
 
 		const baseResult = {
-			name: localize('chatStatus', "Copilot Status"),
+			name: localize('chatStatus', "Khatmax AI Status"),
 			text,
 			ariaLabel,
 			command: ShowTooltipCommand,
@@ -408,9 +408,9 @@ export class ChatStatusBarEntry extends Disposable implements IWorkbenchContribu
 		const showSignInLabel = !this.isSignInTitleBarAffordanceVisible();
 		const signInLabel = localize('signIn', "Sign In");
 		return {
-			name: localize('chatStatus', "Copilot Status"),
+			name: localize('chatStatus', "Khatmax AI Status"),
 			text: showSignInLabel ? `$(copilot) ${signInLabel}` : '$(copilot)',
-			ariaLabel: showSignInLabel ? signInLabel : localize('chatStatusAria', "Copilot status"),
+			ariaLabel: showSignInLabel ? signInLabel : localize('chatStatusAria', "Khatmax AI status"),
 			command: CHAT_SETUP_ACTION_ID,
 			showInAllWindows: true,
 			kind: undefined,

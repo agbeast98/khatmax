@@ -53,9 +53,7 @@ export function getOnboardingStepSubtitle(stepId: OnboardingStepId): string {
  * Ordered step IDs for the onboarding flow.
  */
 export const ONBOARDING_STEPS: readonly OnboardingStepId[] = [
-	OnboardingStepId.SignIn,
 	OnboardingStepId.Personalize,
-	OnboardingStepId.AgentSessions,
 ];
 
 /**
@@ -103,7 +101,7 @@ export const ONBOARDING_AI_PREFERENCE_OPTIONS: readonly IAiPreferenceOption[] = 
 		id: AiCollaborationMode.AgentForward,
 		label: localize('onboarding.aiPref.agentForward', "AI Takes the Lead"),
 		description: localize('onboarding.aiPref.agentForward.desc', "Let the agent drive — describe what you want and review the result. Great for scaffolding and exploration."),
-		icon: 'copilot',
+		icon: 'Khatmax AI',
 	},
 ];
 

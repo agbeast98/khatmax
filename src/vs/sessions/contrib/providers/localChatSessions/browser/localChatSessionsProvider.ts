@@ -33,14 +33,14 @@ import { createChangesets } from '../../copilotChatSessions/browser/copilotChatS
 import { IMarkdownString } from '../../../../../base/common/htmlContent.js';
 import { CancellationToken } from '../../../../../base/common/cancellation.js';
 
-/** Local session type — in-process VS Code chat, no background agent or worktree. */
+/** Local session type — in-process Khatmax chat, no background agent or worktree. */
 export const LocalSessionType: ISessionType = {
 	id: 'local',
 	label: localize('localSession', "Local"),
 	icon: Codicon.vm,
 };
 
-/** Setting key controlling whether Local VS Code chat sessions are available in the Agents app. */
+/** Setting key controlling whether Local Khatmax chat sessions are available in the Agents app. */
 export const LOCAL_SESSION_ENABLED_SETTING = 'sessions.chat.localAgent.enabled';
 
 export const LOCAL_PROVIDER_ID = 'local-chat';
@@ -396,7 +396,7 @@ class LocalSession extends Disposable {
 export class LocalChatSessionsProvider extends Disposable implements ISessionsProvider {
 
 	readonly id = LOCAL_PROVIDER_ID;
-	readonly label = localize('localChatSessionsProvider', "Copilot Chat");
+	readonly label = localize('localChatSessionsProvider', "Khatmax AI");
 	readonly icon = Codicon.vm;
 	readonly order = 0;
 	readonly browseActions: readonly [] = [];
@@ -735,7 +735,7 @@ export class LocalChatSessionsProvider extends Disposable implements ISessionsPr
 	}
 
 	getModels(_sessionId: string): readonly ILanguageModelChatMetadataAndIdentifier[] {
-		// Local (in-process VS Code chat) sessions use general-purpose models
+		// Local (in-process Khatmax chat) sessions use general-purpose models
 		// (those without a `targetChatSessionType`) that are user-selectable —
 		// no extension registers models specifically targeting the 'local'
 		// session type.
@@ -748,7 +748,7 @@ export class LocalChatSessionsProvider extends Disposable implements ISessionsPr
 	}
 
 	getModelPickerOptions(_sessionId: string): ISessionModelPickerOptions {
-		// Local (in-process VS Code chat) sessions offer the "Manage Models"
+		// Local (in-process Khatmax chat) sessions offer the "Manage Models"
 		// action so users can configure the general-purpose model set.
 		return {
 			useGroupedModelPicker: true,

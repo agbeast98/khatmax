@@ -1025,7 +1025,7 @@ export class McpListWidget extends Disposable {
 		}
 
 		// Add plugin-provided, extension-provided, and built-in servers.
-		// Servers from the Copilot extension (github.copilot / github.copilot-chat)
+		// Servers from the Khatmax AI extension (github.copilot / github.copilot-chat)
 		// are treated as built-in; servers from other extensions go under "Extensions".
 		const collectionSources = new Map(this.mcpRegistry.collections.get().map(c => [c.id, c.source]));
 		const pluginServers: Array<{ server: IMcpServer; activeSessionServer?: AgentHostMcpServer }> = [];
@@ -1115,7 +1115,7 @@ export class McpListWidget extends Disposable {
 				icon: extensionIcon,
 				count: extensionServers.length,
 				isFirst,
-				description: localize('extensionGroupDescription', "MCP servers contributed by installed VS Code extensions."),
+				description: localize('extensionGroupDescription', "MCP servers contributed by installed Khatmax extensions."),
 				collapsed,
 			});
 			if (!collapsed) {
@@ -1136,7 +1136,7 @@ export class McpListWidget extends Disposable {
 				icon: builtinIcon,
 				count: otherBuiltinServers.length,
 				isFirst,
-				description: localize('builtInGroupDescription', "MCP servers built into VS Code. These are available automatically."),
+				description: localize('builtInGroupDescription', "MCP servers built into Khatmax. These are available automatically."),
 				collapsed,
 			});
 			if (!collapsed) {

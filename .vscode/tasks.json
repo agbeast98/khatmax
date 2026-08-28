@@ -382,8 +382,8 @@
 			},
 			"args": [
 				"--agents",
-				"--user-data-dir=${userHome}/.vscode-oss-dev",
-				"--extensions-dir=${userHome}/.vscode-oss-dev/extensions"
+				"--user-data-dir=${userHome}/.khatmax-dev",
+				"--extensions-dir=${userHome}/.khatmax-dev/extensions"
 			],
 			"problemMatcher": []
 		},

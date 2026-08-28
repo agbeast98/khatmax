@@ -77,7 +77,7 @@ function sanitizeSurveySource(source: unknown): string {
 	return 'unknown';
 }
 
-// Programmatic command for extensions to trigger the survey (e.g. from Copilot survey service)
+// Programmatic command for extensions to trigger the survey (e.g. from Khatmax AI survey service)
 CommandsRegistry.registerCommand('_workbench.action.openCopilotSurvey', (accessor: ServicesAccessor, source?: unknown) => {
 	return openSurveyEditor(accessor, sanitizeSurveySource(source));
 });

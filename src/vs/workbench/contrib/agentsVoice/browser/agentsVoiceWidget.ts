@@ -74,7 +74,7 @@ export interface VoiceWidgetOptions {
 	 * visible regardless, since they are important interactive context.
 	 */
 	readonly showStatusCounters?: boolean;
-	/** Show the copilot icon at the start of the header. */
+	/** Show the Khatmax AI icon at the start of the header. */
 	readonly showCopilotIcon?: boolean;
 	/** Center the Connect button horizontally instead of pushing it to the right. */
 	readonly centerConnectButton?: boolean;
@@ -413,7 +413,7 @@ export class AgentsVoiceWidget extends Disposable {
 			// Track which key triggered PTT so keyup releases correctly
 			// even when the user rebinds pushToTalk to a different key.
 			// We capture the last keydown code at the document level (capture
-			// phase) before the VS Code keybinding handler fires pttDown.
+			// phase) before the Khatmax keybinding handler fires pttDown.
 			let pttKeyCode: string | undefined;
 			let lastKeyDownCode: string | undefined;
 			const onDocKeydown = (e: KeyboardEvent) => { lastKeyDownCode = e.code; };

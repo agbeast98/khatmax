@@ -118,11 +118,11 @@ function isSelectedValue(currentValue: unknown | undefined, itemValue: string): 
 function getAutoApproveHover(value: unknown | undefined, fallback: string | undefined): string {
 	switch (value) {
 		case ChatPermissionLevel.Default:
-			return localize('agentHostChatInputPicker.defaultApprovalsHover', "Copilot asks before running tools unless your configured settings allow the tool.");
+			return localize('agentHostChatInputPicker.defaultApprovalsHover', "Khatmax AI asks before running tools unless your configured settings allow the tool.");
 		case ChatPermissionLevel.AutoApprove:
-			return localize('agentHostChatInputPicker.autoApproveHover', "Copilot runs all tools without asking for approval.");
+			return localize('agentHostChatInputPicker.autoApproveHover', "Khatmax AI runs all tools without asking for approval.");
 		case ChatPermissionLevel.Autopilot:
-			return localize('agentHostChatInputPicker.autopilotApprovalsHover', "Copilot runs tools without asking for approval and continues until the task is done.");
+			return localize('agentHostChatInputPicker.autopilotApprovalsHover', "Khatmax AI runs tools without asking for approval and continues until the task is done.");
 	}
 	return fallback ?? localize('agentHostChatInputPicker.approvalsHover', "Controls whether the agent asks before running tools in this session.");
 }
@@ -271,7 +271,7 @@ export function resolveConfigChipValue(isUntitled: boolean, serverValue: unknown
  * One workbench chat-input chip bound to a single agent-host session-config
  * property. Used both for dedicated well-known property chips
  * (`SessionConfigKey.Mode`, `.AutoApprove`) and for generic per-property chips
- * advertised by an agent's config schema but not known to VS Code.
+ * advertised by an agent's config schema but not known to Khatmax.
  */
 export class AgentHostChatInputPicker extends Disposable {
 

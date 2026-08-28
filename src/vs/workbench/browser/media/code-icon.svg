@@ -1,1 +1,15 @@
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><style>.st0{fill:#f6f6f6;fill-opacity:0}.st1{fill:#fff}.st2{fill:#167abf}</style><path class="st0" d="M1024 1024H0V0h1024v1024z"/><path class="st1" d="M1024 85.333v853.333H0V85.333h1024z"/><path class="st2" d="M0 85.333h298.667v853.333H0V85.333zm1024 0v853.333H384V85.333h640zm-554.667 160h341.333v-64H469.333v64zm341.334 533.334H469.333v64h341.333l.001-64zm128-149.334H597.333v64h341.333l.001-64zm0-149.333H597.333v64h341.333l.001-64zm0-149.333H597.333v64h341.333l.001-64z"/></svg>
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bg" x1="14" y1="10" x2="82" y2="88" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0F172A"/>
+<stop offset="1" stop-color="#1D4ED8"/>
+</linearGradient>
+<linearGradient id="accent" x1="26" y1="16" x2="72" y2="80" gradientUnits="userSpaceOnUse">
+<stop stop-color="#38BDF8" stop-opacity="0.35"/>
+<stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<rect x="6" y="6" width="84" height="84" rx="22" fill="url(#bg)"/>
+<path d="M18 26C18 22.6863 20.6863 20 24 20H72C75.3137 20 78 22.6863 78 26V70C78 73.3137 75.3137 76 72 76H24C20.6863 76 18 73.3137 18 70V26Z" fill="url(#accent)"/>
+<text x="48" y="58" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-2" fill="#F8FAFC">KM</text>
+</svg>

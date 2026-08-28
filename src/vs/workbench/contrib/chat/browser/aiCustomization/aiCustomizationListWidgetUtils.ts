@@ -33,7 +33,7 @@ export function getCustomizationSecondaryText(description: string | undefined, f
  * an extension install directory (e.g. `~/.vscode/extensions/<id>-<version>/...`)
  * or an extension's globalStorage directory
  * (e.g. `~/<userdata>/User/globalStorage/<id>/...`). The latter is used by
- * extensions like Copilot Chat that materialize prompt files under their
+ * extensions like Khatmax AI Chat that materialize prompt files under their
  * own globalStorage and register them via the prompt-file provider API.
  *
  * Returns the extension ID (e.g. `github.copilot-chat`) or `undefined`

@@ -54,7 +54,7 @@ export class InlineCompletionLanguageStatusBarContribution extends Disposable im
 		});
 
 		this._register(autorunWithStore((reader, store) => {
-			// Do not show the Copilot icon in the language status when AI features are disabled
+			// Do not show the Khatmax AI icon in the language status when AI features are disabled
 			const sentiment = this._sentiment.read(reader);
 			if (sentiment.hidden) {
 				return;

@@ -102,6 +102,26 @@
 	white-space: normal;
 }
 
+.monaco-dialog-box .khatmax-about-brand {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 12px;
+}
+
+.monaco-dialog-box .khatmax-about-logo {
+	width: 40px;
+	height: 40px;
+	flex: 0 0 auto;
+	object-fit: contain;
+}
+
+.monaco-dialog-box .khatmax-about-copy {
+	font-size: 13px;
+	line-height: 1.4;
+	opacity: 0.9;
+}
+
 .monaco-dialog-box .dialog-footer-row {
 	margin-top: 20px;
 }

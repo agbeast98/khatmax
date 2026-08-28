@@ -76,7 +76,7 @@ class ModelsManagementEditorInputSerializer implements IEditorSerializer {
 Registry.as<IEditorFactoryRegistry>(EditorExtensions.EditorFactory).registerEditorSerializer(ModelsManagementEditorInput.ID, ModelsManagementEditorInputSerializer);
 
 /**
- * Enable + activate the Copilot Chat extension if installed but disabled.
+ * Enable + activate the Khatmax AI Chat extension if installed but disabled.
  */
 async function ensureChatExtensionEnabled(accessor: ServicesAccessor): Promise<void> {
 	const chatExtensionId = accessor.get(IProductService).defaultChatAgent?.chatExtensionId;

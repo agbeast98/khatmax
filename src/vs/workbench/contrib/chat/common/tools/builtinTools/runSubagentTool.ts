@@ -111,7 +111,7 @@ export class RunSubagentTool extends Disposable implements IToolImpl {
 		};
 		properties.model = {
 			type: 'string',
-			description: 'Optional model for the subagent. Format: "Model Name (Vendor)", vendor is usually "copilot". Only use to enforce a specific model.',
+			description: 'Optional model for the subagent. Format: "Model Name (Vendor)", vendor is usually "Khatmax AI". Only use to enforce a specific model.',
 		};
 
 		const inputSchema: IJSONSchema & { properties: IJSONSchemaMap } = {

@@ -25,7 +25,7 @@ import { BaseAgentHostSessionsProvider } from './baseAgentHostSessionsProvider.j
 /**
  * True when the active session (in the Sessions window) is provided by an
  * agent-host sessions provider (local or remote). Used to gate the built-in
- * skill toolbar buttons and to suppress the Copilot CLI extension's own
+ * skill toolbar buttons and to suppress the Khatmax Agent extension's own
  * buttons for the same sessions.
  */
 export const IsAgentHostSession = new RawContextKey<boolean>('sessions.isAgentHostSession', false);
@@ -64,7 +64,7 @@ registerWorkbenchContribution2(IsAgentHostSessionContextContribution.ID, IsAgent
  * (`merge` / `create-pr` / `create-draft-pr` / `update-pr`) for any
  * `agent-host-*` session.
  *
- * They mirror the buttons the Copilot CLI extension contributes for its own
+ * They mirror the buttons the Khatmax Agent extension contributes for its own
  * `chatSessionType == copilotcli` sessions, sending the same `/<skill-name>`
  * prompt as if the user typed it. The skills themselves are bundled into every
  * agent-host session via the synced customization bundler picking up
@@ -153,7 +153,7 @@ const AGENT_HOST_SKILL_BUTTONS: readonly IAgentHostSkillButtonSpec[] = [
 
 /**
  * The `update-pr` button gets the same outgoing-changes count badge styling
- * as the Copilot CLI extension's Sync PR button. Exported so the changes
+ * as the Khatmax Agent extension's Sync PR button. Exported so the changes
  * view can pick it out of the toolbar without re-deriving the ID.
  */
 export const AGENT_HOST_SKILL_BUTTON_UPDATE_PR_ID = `${AGENT_HOST_SKILL_BUTTON_ID_PREFIX}updatePR`;
@@ -202,7 +202,7 @@ function registerAgentHostSkillButton(spec: IAgentHostSkillButtonSpec): void {
 			// `agent-host-copilotcli`), which is the agent id the chat
 			// service uses for routing. The `sessionType` field is the
 			// logical, user-facing id (e.g. `copilotcli`) that is shared
-			// between the Copilot CLI extension and the local/remote
+			// between the Khatmax Agent extension and the local/remote
 			// agent-host providers, so it is NOT a valid agent id here.
 			const agentId = activeSession.resource.scheme;
 			const prompt = `/${spec.skill}`;

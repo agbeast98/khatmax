@@ -409,7 +409,7 @@ export interface IDetachedXTermOptions {
 /**
  * A generic interface implemented in both the {@link ITerminalInstance} (an
  * interface used for terminals attached to the terminal panel or editor) and
- * {@link IDetachedTerminalInstance} (a terminal used elsewhere in VS Code UI).
+ * {@link IDetachedTerminalInstance} (a terminal used elsewhere in Khatmax UI).
  */
 export interface IBaseTerminalInstance {
 	readonly capabilities: ITerminalCapabilityStore;
@@ -461,7 +461,7 @@ export interface IBaseTerminalInstance {
 /**
  * A {@link ITerminalInstance}-like object that emulates a subset of
  * capabilities. This instance is returned from {@link ITerminalService.createDetachedTerminal}
- * to represent terminals that appear in other parts of the VS Code UI outside
+ * to represent terminals that appear in other parts of the Khatmax UI outside
  * of the "Terminal" view or editors.
  */
 export interface IDetachedTerminalInstance extends IDisposable, IBaseTerminalInstance {
@@ -1468,7 +1468,7 @@ export interface IXtermTerminal extends IDisposable {
 	selectAll(): void;
 
 	/**
-	 * Selects the content between the two markers by their VS Code OSC `SetMarker`
+	 * Selects the content between the two markers by their Khatmax OSC `SetMarker`
 	 * ID. It's a no-op if either of the two markers are not found.
 	 *
 	 * @param fromMarkerId Start marker ID
@@ -1569,7 +1569,7 @@ export interface IDetachedXtermTerminal extends IXtermTerminal {
 	updateTheme(): void;
 
 	/**
-	 * Updates the xterm log level to match the given VS Code log level.
+	 * Updates the xterm log level to match the given Khatmax log level.
 	 */
 	updateLogLevel(): void;
 

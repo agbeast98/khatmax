@@ -44,7 +44,7 @@ CommandsRegistry.registerCommand(ADD_SESSION_REFERENCE_COMMAND, (_accessor, arg:
 
 /**
  * Provides `#session` completions in the sessions new-chat input — one item per
- * Copilot CLI session (active, past, or archived). Accepting an item inserts an
+ * Khatmax Agent session (active, past, or archived). Accepting an item inserts an
  * inline `#session:<title>` reference (like `#file:`) and adds the session as a
  * context attachment; the sessions management service later resolves referenced
  * sessions to their event-log paths for the `/troubleshoot` skill. Both Enter
@@ -119,7 +119,7 @@ export class SessionReferenceCompletionHandler extends Disposable {
 		const activeResource = this.sessionsService.activeSession.get()?.resource;
 		const activeResourceStr = activeResource?.toString();
 
-		// Only Copilot CLI sessions have a readable event log; include active,
+		// Only Khatmax Agent sessions have a readable event log; include active,
 		// past, and archived. Resolve the id once, then newest first.
 		const sessions = this.sessionsManagementService.getSessions()
 			.map(session => ({ session, rawId: getCopilotCliSessionRawId(session.resource) }))

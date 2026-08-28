@@ -325,7 +325,7 @@ export class AgentsVoiceWindowService extends Disposable implements IAgentsVoice
 	// --- Bounds persistence ---
 
 	private _defaultBounds(): IRectangle {
-		// Center horizontally within the main VS Code window, near bottom.
+		// Center horizontally within the main Khatmax window, near bottom.
 		const x = Math.round(mainWindow.screenX + (mainWindow.outerWidth - AGENTS_VOICE_WINDOW_DEFAULT_WIDTH) / 2);
 		const y = mainWindow.screenY + mainWindow.outerHeight - AGENTS_VOICE_WINDOW_DEFAULT_HEIGHT - 100;
 		return {
@@ -338,7 +338,7 @@ export class AgentsVoiceWindowService extends Disposable implements IAgentsVoice
 
 	private loadBounds(): IRectangle {
 		// Always compute fresh bounds from the current main window position.
-		// This ensures the aux window is always centered within VS Code.
+		// This ensures the aux window is always centered within Khatmax.
 		return this._defaultBounds();
 	}
 

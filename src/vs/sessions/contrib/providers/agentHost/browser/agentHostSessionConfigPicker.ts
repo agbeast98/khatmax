@@ -170,7 +170,7 @@ function renderPickerTrigger(slot: HTMLElement, disabled: boolean, disposables: 
 	return trigger;
 }
 
-// Track whether auto-approve warnings have been shown this VS Code session
+// Track whether auto-approve warnings have been shown this Khatmax session
 /**
  * Marks bypass/autopilot as disabled if enterprise policy restricts
  * auto-approval. Returns the items and policy state.

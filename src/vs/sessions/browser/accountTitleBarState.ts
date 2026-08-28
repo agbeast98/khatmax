@@ -51,7 +51,7 @@ export async function resolveAccountInfo(
 	return undefined;
 }
 
-export type AccountTitleBarStateSource = 'account' | 'copilot';
+export type AccountTitleBarStateSource = 'account' | 'Khatmax AI';
 export type AccountTitleBarStateKind = 'default' | 'accent' | 'warning' | 'prominent';
 
 export interface IAccountTitleBarStateContext {
@@ -143,7 +143,7 @@ function getCopilotPresentation(
 
 	if (entitlement === ChatEntitlement.Unknown) {
 		return {
-			source: 'copilot',
+			source: 'Khatmax AI',
 			kind: 'prominent',
 			icon: Codicon.account,
 			label: localize('agentsSignedOut', "Agents Signed Out"),
@@ -153,13 +153,13 @@ function getCopilotPresentation(
 
 	if (sentiment.disabled || sentiment.untrusted) {
 		return {
-			source: 'copilot',
+			source: 'Khatmax AI',
 			kind: 'warning',
 			icon: Codicon.account,
-			label: localize('copilotUnavailable', "Copilot Unavailable"),
+			label: localize('copilotUnavailable', "Khatmax AI Unavailable"),
 			ariaLabel: sentiment.untrusted
-				? localize('copilotUnavailableUntrustedAria', "GitHub Copilot is unavailable in untrusted workspaces")
-				: localize('copilotUnavailableDisabledAria', "GitHub Copilot is disabled"),
+				? localize('copilotUnavailableUntrustedAria', "Khatmax AI is unavailable in untrusted workspaces")
+				: localize('copilotUnavailableDisabledAria', "Khatmax AI is disabled"),
 		};
 	}
 
@@ -167,7 +167,7 @@ function getCopilotPresentation(
 	const completionsQuotaExceeded = quotas.completions?.percentRemaining === 0;
 	if (entitlement === ChatEntitlement.Free && (chatQuotaExceeded || completionsQuotaExceeded)) {
 		return {
-			source: 'copilot',
+			source: 'Khatmax AI',
 			kind: 'warning',
 			icon: Codicon.account,
 			label: localize('copilotQuotaReached', "Quota Reached"),
@@ -179,13 +179,13 @@ function getCopilotPresentation(
 	const remainingPercent = getLowestPositivePercent(quotas.chat, quotas.completions);
 	if (entitlement === ChatEntitlement.Free && typeof remainingPercent === 'number' && remainingPercent <= 25) {
 		return {
-			source: 'copilot',
+			source: 'Khatmax AI',
 			kind: remainingPercent <= 10 ? 'warning' : 'accent',
 			icon: Codicon.account,
 			label: localize('copilotTokensRemaining', "Tokens Remaining"),
 			badge: `${remainingPercent}%`,
 			dotBadge: remainingPercent <= 10 ? 'error' : 'warning',
-			ariaLabel: localize('copilotTokensRemainingAria', "{0}% GitHub Copilot tokens remaining", remainingPercent),
+			ariaLabel: localize('copilotTokensRemainingAria', "{0}% Khatmax AI tokens remaining", remainingPercent),
 		};
 	}
 
@@ -209,12 +209,12 @@ function getLowestPositivePercent(...quotas: Array<IQuotaSnapshot | undefined>):
 
 function getQuotaReachedAriaLabel(chatQuotaExceeded: boolean, completionsQuotaExceeded: boolean): string {
 	if (chatQuotaExceeded && completionsQuotaExceeded) {
-		return localize('copilotAllQuotaReachedAria', "GitHub Copilot chat and inline suggestion quota reached");
+		return localize('copilotAllQuotaReachedAria', "Khatmax AI chat and inline suggestion quota reached");
 	}
 
 	if (chatQuotaExceeded) {
-		return localize('copilotChatQuotaReachedAria', "GitHub Copilot chat quota reached");
+		return localize('copilotChatQuotaReachedAria', "Khatmax AI chat quota reached");
 	}
 
-	return localize('copilotCompletionsQuotaReachedAria', "GitHub Copilot inline suggestion quota reached");
+	return localize('copilotCompletionsQuotaReachedAria', "Khatmax AI inline suggestion quota reached");
 }

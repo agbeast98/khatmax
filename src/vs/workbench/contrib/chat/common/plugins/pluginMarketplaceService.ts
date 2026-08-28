@@ -36,7 +36,7 @@ export { deduplicateMarketplaceReferences, extraKnownMarketplacesToConfigDict, M
 export type { IConfiguredMarketplaces, IMarketplaceReference } from './marketplaceReference.js';
 
 export const enum MarketplaceType {
-	Copilot = 'copilot',
+	Copilot = 'Khatmax AI',
 	Claude = 'claude',
 	OpenPlugin = 'openPlugin',
 }

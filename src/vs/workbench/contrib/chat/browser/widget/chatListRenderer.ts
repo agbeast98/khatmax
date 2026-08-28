@@ -125,7 +125,7 @@ import { AgentSessionProviders, isAgentHostTarget } from '../agentSessions/agent
 
 const $ = dom.$;
 
-const COPILOT_USERNAME = 'GitHub Copilot';
+const COPILOT_USERNAME = 'Khatmax AI';
 const WORKING_CAUGHT_UP_DEBOUNCE_MS = 750;
 const DEFAULT_CHAT_ITEM_HORIZONTAL_PADDING = 40;
 
@@ -3234,7 +3234,7 @@ export class ChatListItemRenderer extends Disposable implements ITreeRenderer<Ch
 
 		const widget = isResponseVM(context.element) ? this.chatWidgetService.getWidgetBySessionResource(context.element.sessionResource) : undefined;
 		// Only auto-focus if the chat input is empty AND focus is already within the chat widget
-		// This prevents stealing focus from other VS Code UI (editor, terminal, etc.)
+		// This prevents stealing focus from other Khatmax UI (editor, terminal, etc.)
 		const shouldAutoFocus = !!widget && dom.isAncestorOfActiveElement(widget.domNode) && widget.getInput() === '';
 		const responseId = isResponseVM(context.element) ? context.element.requestId : undefined;
 		const carouselKey = carousel.resolveId ?? `${responseId ?? ''}_${context.contentIndex}`;

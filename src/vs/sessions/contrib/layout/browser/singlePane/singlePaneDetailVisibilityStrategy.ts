@@ -98,7 +98,7 @@ export class SinglePaneDetailVisibilityStrategy extends SinglePaneLayoutStrategy
 
 			// [D4] Submit: a new (uncreated) session transitions to a created one.
 			// The classic provider commits in place (same resource); the agent-host /
-			// Copilot provider commits by *replacing* the draft with a new resource
+			// Khatmax Provider commits by *replacing* the draft with a new resource
 			// (`onDidReplaceSession`). Detect both intrinsically from the transition
 			// — `!previousIsCreated && isCreated` — instead of relying on the
 			// controller's `_onSessionReplaced`, which (being a later-registered

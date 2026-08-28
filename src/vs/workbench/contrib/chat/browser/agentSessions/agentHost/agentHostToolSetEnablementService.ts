@@ -12,7 +12,7 @@ import { IStorageService, StorageScope, StorageTarget } from '../../../../../../
 export const IAgentHostToolSetEnablementService = createDecorator<IAgentHostToolSetEnablementService>('agentHostToolSetEnablementService');
 
 /**
- * The Copilot CLI agent-host session type. Tool enablement is scoped per session type; this is the
+ * The Khatmax Agent agent-host session type. Tool enablement is scoped per session type; this is the
  * only target for the Chat Customizations → Tools section today.
  */
 export const AGENT_HOST_COPILOT_CLI_SESSION_TYPE = 'agent-host-copilotcli';

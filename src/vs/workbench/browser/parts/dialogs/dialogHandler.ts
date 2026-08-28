@@ -18,6 +18,7 @@ import { IMarkdownRendererService, openLinkFromMarkdown } from '../../../../plat
 import { IOpenerService } from '../../../../platform/opener/common/opener.js';
 import { createWorkbenchDialogOptions } from './dialog.js';
 import { IHostService } from '../../../services/host/browser/host.js';
+import { FileAccess } from '../../../../base/common/network.js';
 
 export class BrowserDialogHandler extends AbstractDialogHandler {
 
@@ -83,7 +84,27 @@ export class BrowserDialogHandler extends AbstractDialogHandler {
 				localize('ok', "OK")
 			],
 			details,
-			1
+			1,
+			undefined,
+			undefined,
+			undefined,
+			undefined,
+			container => {
+				const brand = document.createElement('div');
+				brand.className = 'khatmax-about-brand';
+
+				const logo = document.createElement('img');
+				logo.className = 'khatmax-about-logo';
+				logo.alt = title;
+				logo.src = FileAccess.asBrowserUri('resources/khatmax/khatmax-logo.png').toString(true);
+
+				const copy = document.createElement('div');
+				copy.className = 'khatmax-about-copy';
+				copy.textContent = 'AI Workspace for Developers';
+
+				brand.append(logo, copy);
+				container.appendChild(brand);
+			}
 		);
 
 		if (button === 0) {
@@ -91,12 +112,13 @@ export class BrowserDialogHandler extends AbstractDialogHandler {
 		}
 	}
 
-	private async doShow(type: Severity | DialogType | undefined, message: string, buttons?: string[], detail?: string, cancelId?: number, checkbox?: ICheckbox, inputs?: IInputElement[], customOptions?: ICustomDialogOptions, token?: CancellationToken): Promise<IDialogResult> {
+	private async doShow(type: Severity | DialogType | undefined, message: string, buttons?: string[], detail?: string, cancelId?: number, checkbox?: ICheckbox, inputs?: IInputElement[], customOptions?: ICustomDialogOptions, token?: CancellationToken, customRenderBody?: (container: HTMLElement) => void): Promise<IDialogResult> {
 		const dialogDisposables = new DisposableStore();
 
-		const renderBody = customOptions ? (parent: HTMLElement) => {
-			parent.classList.add(...(customOptions.classes || []));
-			customOptions.markdownDetails?.forEach(markdownDetail => {
+		const renderBody = customOptions || customRenderBody ? (parent: HTMLElement) => {
+			parent.classList.add(...(customOptions?.classes || []));
+			customRenderBody?.(parent);
+			customOptions?.markdownDetails?.forEach(markdownDetail => {
 				const result = dialogDisposables.add(this.markdownRendererService.render(markdownDetail.markdown, {
 					actionHandler: markdownDetail.actionHandler || ((link, mdStr) => {
 						return openLinkFromMarkdown(this.openerService, link, mdStr.isTrusted, true /* skip URL validation to prevent another dialog from showing which is unsupported */);

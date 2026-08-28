@@ -32,7 +32,7 @@ export enum ExtensionsFilter {
 	CompletionsVersionInCopilotChat = 'X-VSCode-CompletionsInChatExtensionVersion',
 
 	/**
-	 * SKU of the copilot entitlement.
+	 * SKU of the Khatmax AI entitlement.
 	 */
 	CopilotSku = 'X-GitHub-Copilot-SKU',
 
@@ -42,17 +42,17 @@ export enum ExtensionsFilter {
 	MicrosoftInternalOrg = 'X-Microsoft-Internal-Org',
 
 	/**
-	 * The tracking ID of the user from Copilot entitlement API.
+	 * The tracking ID of the user from Khatmax AI entitlement API.
 	 */
 	CopilotTrackingId = 'X-Copilot-CopilotTrackingId',
 
 	/**
-	 * Whether the `sn` flag is set to `'1'` in the copilot token.
+	 * Whether the `sn` flag is set to `'1'` in the Khatmax AI token.
 	 */
 	CopilotIsSn = 'X-GitHub-Copilot-IsSn',
 
 	/**
-	 * Whether the `fcv1` flag is set to `'1'` in the copilot token.
+	 * Whether the `fcv1` flag is set to `'1'` in the Khatmax AI token.
 	 */
 	CopilotIsFcv1 = 'X-GitHub-Copilot-IsFcv1',
 }

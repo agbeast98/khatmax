@@ -350,7 +350,7 @@ registerAction2(class FocusActiveSessionAction extends Action2 {
 });
 
 // -- Focus Nth Session in the Grid (Cmd/Ctrl+1..9) --
-// Mirrors VS Code's "Focus Editor Group N": Ctrl/Cmd+1..8 focus that grid slot
+// Mirrors Khatmax's "Focus Editor Group N": Ctrl/Cmd+1..8 focus that grid slot
 // and Ctrl/Cmd+9 focuses the LAST slot. Does nothing when the slot doesn't exist.
 
 for (let index = 0; index < 9; index++) {
@@ -599,12 +599,12 @@ registerAction2(class CloseAllChatsAction extends Action2 {
 				weight: CHAT_TAB_KEYBINDING_WEIGHT,
 				when: ContextKeyExpr.and(
 					IsSessionsWindowContext,
-					// While a modal editor has focus, let VS Code's own
+					// While a modal editor has focus, let Khatmax's own
 					// closeEditorsInGroup (same chord) act on the editor group.
 					EditorAreaFocusContext.toNegated(),
 					SessionHasMultipleOpenChatsContext
 				),
-				// Mirror VS Code's "Close All Editors in Group" chord (Ctrl/Cmd+K W):
+				// Mirror Khatmax's "Close All Editors in Group" chord (Ctrl/Cmd+K W):
 				// a session is the Agents-window analogue of an editor group. Note
 				// "Close All Sessions" already owns Ctrl/Cmd+K Ctrl/Cmd+W.
 				primary: KeyChord(KeyMod.CtrlCmd | KeyCode.KeyK, KeyCode.KeyW),

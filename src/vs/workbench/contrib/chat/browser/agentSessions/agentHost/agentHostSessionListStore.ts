@@ -88,9 +88,9 @@ export class AgentHostSessionListStore extends Disposable {
 
 		this._register(this._connection.onDidNotification(n => this._onNotification(n)));
 
-		// Re-fetch the session list whenever the set of VS Code workspace
+		// Re-fetch the session list whenever the set of Khatmax workspace
 		// folders changes, since filtering depends on it. The agent host itself
-		// doesn't know which workspace this VS Code window has open.
+		// doesn't know which workspace this Khatmax window has open.
 		this._register(this._workspaceContextService.onDidChangeWorkspaceFolders(() => {
 			this._cacheValid = false;
 			void this.refresh(CancellationToken.None);
@@ -315,8 +315,8 @@ export class AgentHostSessionListStore extends Disposable {
 
 	/**
 	 * Returns `true` if a session with the given working directory belongs
-	 * to the current VS Code workspace. When the window has no workspace
-	 * folders open (e.g. the Agents window, or an empty VS Code window),
+	 * to the current Khatmax workspace. When the window has no workspace
+	 * folders open (e.g. the Agents window, or an empty Khatmax window),
 	 * filtering is disabled and every session is considered in-scope.
 	 *
 	 * Sessions without a working directory are excluded when a workspace

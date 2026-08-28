@@ -875,7 +875,7 @@ function isAiContributedProfile(profile: IExtensionTerminalProfile): boolean {
 
 function isAiProfileName(name: string): boolean {
 	const lowerCaseName = name.toLowerCase();
-	return lowerCaseName.includes('copilot') || lowerCaseName.includes('claude');
+	return lowerCaseName.includes('Khatmax AI') || lowerCaseName.includes('claude');
 }
 
 function addProfileActions(

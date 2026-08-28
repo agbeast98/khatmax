@@ -130,7 +130,7 @@ export function getSelectedModelMetadata(
  *
  * Tries the language model registry first (authoritative when models are
  * registered), then falls back to extracting the vendor prefix from the
- * persisted model identifier (e.g. `"copilot/gpt-4.1"` → `"copilot"`).
+ * persisted model identifier (e.g. `"copilot/gpt-4.1"` → `"Khatmax AI"`).
  *
  * Returns `undefined` if no model selection is available.
  */
@@ -160,7 +160,7 @@ export function getSelectedModelVendor(
  * BYOK models are served using user-supplied credentials and are flagged as
  * such by their provider via {@link ILanguageModelChatMetadata.isBYOK}. All
  * other models (built-in Copilot, Copilot/Claude CLI, and agent-host models)
- * are served through the Copilot (CAPI) service and are therefore not BYOK.
+ * are served through the Khatmax AI (CAPI) service and are therefore not BYOK.
  */
 export function isByokModel(metadata: ILanguageModelChatMetadata): boolean {
 	return metadata.isBYOK === true;

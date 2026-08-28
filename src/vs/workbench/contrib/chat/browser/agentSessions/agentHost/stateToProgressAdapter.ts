@@ -1104,7 +1104,7 @@ function getToolInputOutputDetails(tc: ToolCallState, isError: boolean, errorStr
  * `ui/notifications/tool-result` notification with the real tool output
  * (see {@link chatMcpAppModel}). Agent-host tool completions only carry our
  * own abstracted content shape (the raw MCP result is consumed by the
- * Copilot CLI's MCP host and never surfaces back over the AHP), so we
+ * Khatmax Agent's MCP host and never surfaces back over the AHP), so we
  * translate each AHP content block into the closest MCP content block:
  *  - `Text` → `MCP.TextContent`
  *  - `EmbeddedResource` with an image/audio MIME → `ImageContent`/`AudioContent`
@@ -1391,7 +1391,7 @@ function fileEditToExternalEdit(edit: FileEdit, undoStopId: string, connectionAu
 /**
  * URI schemes that should NOT be rewritten when they appear inside markdown
  * links received from a remote agent host. These are links that are
- * meaningful outside the agent host's workspace (e.g. web links, VS Code
+ * meaningful outside the agent host's workspace (e.g. web links, Khatmax
  * commands) or are already wrapped in the agent-host scheme.
  */
 const EXTERNAL_LINK_SCHEMES: ReadonlySet<string> = new Set([

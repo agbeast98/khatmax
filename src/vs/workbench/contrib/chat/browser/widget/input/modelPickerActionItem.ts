@@ -52,7 +52,7 @@ export interface IModelPickerDelegate {
 	 * Whether the synthetic "Auto" model is available for the current session,
 	 * so it can fall back to Auto. Defaults to `true` when omitted. When this
 	 * returns `false` and {@link getModels} is empty, the picker shows a
-	 * "No models available" entry (and an upgrade prompt for Copilot Free /
+	 * "No models available" entry (and an upgrade prompt for Khatmax Free /
 	 * Student users) instead of an Auto entry.
 	 */
 	showAutoModel?(): boolean;
@@ -192,7 +192,7 @@ export class ModelPickerActionItem extends BaseActionViewItem {
 			return localize('chat.modelPicker.restrictedHover', "{0} • Unavailable while in Restricted mode. Trust Workspace to enable models.", label);
 		}
 		if (this._pickerWidget.isSetupRequired()) {
-			return localize('chat.modelPicker.setupRequiredHover', "{0} • Sign in to GitHub Copilot to choose a model.", label);
+			return localize('chat.modelPicker.setupRequiredHover', "{0} • Sign in to Khatmax AI to choose a model.", label);
 		}
 		const { statusIcon, tooltip } = this._pickerWidget.selectedModel?.metadata || {};
 		return statusIcon && tooltip ? `${label} • ${tooltip}` : label;

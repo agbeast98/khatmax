@@ -184,7 +184,7 @@ export class NewChatWidget extends Disposable {
 		// scoped to the currently selected agent host. When no hosts are
 		// known there is nothing for the user to pick, so swap the picker
 		// out for the no-agent-host empty state. On Electron desktop the
-		// regular picker is always functional (the local Copilot provider
+		// regular picker is always functional (the local Khatmax Provider
 		// is always available) so this branch is web-only.
 		this._register(isWeb
 			? this._renderEmptyStateGate(workspacePickerContainer, chatWidgetContent)

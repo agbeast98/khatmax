@@ -4147,7 +4147,7 @@ export class AgentHostSessionHandler extends Disposable implements IChatSessionC
 	/**
 	 * Whether this backend reads referenced files from disk (rather than seeing the editor's
 	 * in-memory buffer) and therefore needs the live text of an unsaved / dirty editor inlined as
-	 * an embedded resource. Copilot CLI and Codex both run as separate processes with only disk
+	 * an embedded resource. Khatmax Agent and Codex both run as separate processes with only disk
 	 * access, so a `@path` mention (or an `untitled:` URI) would give them stale or missing content.
 	 */
 	private _backendInlinesUnsavedEditors(): boolean {
@@ -4241,7 +4241,7 @@ export class AgentHostSessionHandler extends Disposable implements IChatSessionC
 
 	private _convertVariableToAttachment(v: IChatRequestVariableEntry, sessionResource: URI, messageText?: string): MessageAttachment | MessageAttachment[] | undefined {
 		const referenceRange = this._toAttachmentReferenceRange(messageText, v.range);
-		// Copilot CLI and Codex can't read unsaved content from disk, so inline the live buffer; drop unreadable schemes.
+		// Khatmax Agent and Codex can't read unsaved content from disk, so inline the live buffer; drop unreadable schemes.
 		if ((v.kind === 'file' || v.kind === 'implicit') && this._backendInlinesUnsavedEditors()) {
 			const uri = isLocation(v.value) ? v.value.uri : (v.value instanceof URI ? v.value : undefined);
 			if (uri && this._isUnsavedResource(uri)) {

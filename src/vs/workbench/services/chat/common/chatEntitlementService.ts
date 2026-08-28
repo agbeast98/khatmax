@@ -179,7 +179,7 @@ export interface IChatSetupRequirement {
 /**
  * Single source of truth for whether Chat still requires setup before it can
  * service a request. Shared by the setup agent (which routes a sent message
- * through setup) and the model picker (which surfaces a "Sign in to use Copilot"
+ * through setup) and the model picker (which surfaces a "Sign in to use Khatmax AI"
  * state instead of a misleading lone "Auto"). BYOK models and anonymous access
  * intentionally satisfy the entitlement-based checks so those flows keep working.
  */
@@ -275,24 +275,24 @@ export function isProUser(chatEntitlement: ChatEntitlement): boolean {
 /**
  * Gets the full plan name for the given chat entitlement
  * @param chatEntitlement The chat entitlement to get the plan name for
- * @returns The localized full plan name (e.g., "Copilot Pro", "Copilot Free")
+ * @returns The localized full plan name (e.g., "Khatmax Pro", "Khatmax Free")
  */
 export function getChatPlanName(chatEntitlement: ChatEntitlement): string {
 	switch (chatEntitlement) {
 		case ChatEntitlement.EDU:
-			return localize('plan.eduName', 'Copilot Student');
+			return localize('plan.eduName', 'Khatmax AI Student');
 		case ChatEntitlement.Pro:
-			return localize('plan.proName', 'Copilot Pro');
+			return localize('plan.proName', 'Khatmax Pro');
 		case ChatEntitlement.ProPlus:
-			return localize('plan.proPlusName', 'Copilot Pro+');
+			return localize('plan.proPlusName', 'Khatmax Pro+');
 		case ChatEntitlement.Max:
-			return localize('plan.maxName', 'Copilot Max');
+			return localize('plan.maxName', 'Khatmax AI Max');
 		case ChatEntitlement.Business:
-			return localize('plan.businessName', 'Copilot Business');
+			return localize('plan.businessName', 'Khatmax AI Business');
 		case ChatEntitlement.Enterprise:
-			return localize('plan.enterpriseName', 'Copilot Enterprise');
+			return localize('plan.enterpriseName', 'Khatmax AI Enterprise');
 		default:
-			return localize('plan.freeName', 'Copilot Free');
+			return localize('plan.freeName', 'Khatmax Free');
 	}
 }
 
@@ -408,7 +408,7 @@ export class ChatEntitlementService extends Disposable implements IChatEntitleme
 		this.anonymousContextKey = ChatEntitlementContextKeys.chatAnonymous.bindTo(this.contextKeyService);
 		this.anonymousContextKey.set(this.anonymous);
 
-		// Only apply the workbench-side default if no other source (e.g. the Copilot extension)
+		// Only apply the workbench-side default if no other source (e.g. the Khatmax AI extension)
 		// has already set this key; binding would otherwise reset it to the declared default.
 		if (this.contextKeyService.getContextKeyValue<boolean>(ChatEntitlementContextKeys.clientByokEnabled.key) === undefined) {
 			ChatEntitlementContextKeys.clientByokEnabled.bindTo(this.contextKeyService);
@@ -1191,7 +1191,7 @@ export class ChatEntitlementRequests extends Disposable {
 		if (!this.lifecycleService.willShutdown) {
 			const { confirmed } = await this.dialogService.confirm({
 				type: Severity.Error,
-				message: localize('unknownSignUpError', "An error occurred while signing up for the GitHub Copilot Free plan. Would you like to try again?"),
+				message: localize('unknownSignUpError', "An error occurred while signing up for the Khatmax AI Free plan. Would you like to try again?"),
 				detail,
 				primaryButton: localize('retry', "Retry")
 			});
@@ -1208,7 +1208,7 @@ export class ChatEntitlementRequests extends Disposable {
 		if (!this.lifecycleService.willShutdown) {
 			this.dialogService.prompt({
 				type: Severity.Error,
-				message: localize('unprocessableSignUpError', "An error occurred while signing up for the GitHub Copilot Free plan."),
+				message: localize('unprocessableSignUpError', "An error occurred while signing up for the Khatmax AI Free plan."),
 				detail: logDetails,
 				buttons: [
 					{

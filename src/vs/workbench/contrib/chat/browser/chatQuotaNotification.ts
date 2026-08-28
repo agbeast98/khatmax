@@ -199,7 +199,7 @@ export class ChatQuotaNotificationContribution extends Disposable implements IWo
 
 		// Once quota recovers (credit is positively available again) drop any
 		// persisted dismissal so the quota-exceeded notification can show the next
-		// time quota runs out. Done before the Copilot/BYOK gate so a recovery is
+		// time quota runs out. Done before the Khatmax AI/BYOK gate so a recovery is
 		// always observed, even while a BYOK model is selected. Guarded on a
 		// present snapshot so the transient "no quota data yet" state at
 		// startup/reload does not wipe the flag.

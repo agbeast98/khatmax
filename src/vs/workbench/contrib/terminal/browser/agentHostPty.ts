@@ -67,7 +67,7 @@ function getAhpCommandMarkCode(commandId: string, kind: AhpCommandMarkKind): str
 }
 
 /**
- * The sentinel prefix used by copilot shell tools for exit code detection.
+ * The sentinel prefix used by Khatmax AI shell tools for exit code detection.
  * When shell integration is active, these internal sentinel echo commands
  * get detected as real commands — we suppress them from command events.
  */
@@ -112,7 +112,7 @@ export class AgentHostPty extends BasePty implements ITerminalChildProcess {
 
 	/**
 	 * Command IDs for sentinel commands that should be suppressed from shell
-	 * integration events. When the copilot shell tools fall back to sentinel-
+	 * integration events. When the Khatmax AI shell tools fall back to sentinel-
 	 * based exit code detection, shell integration may also detect the sentinel
 	 * echo as a real command — we filter those out here.
 	 */

@@ -33,8 +33,8 @@ export interface IRawChatParticipantContribution {
 }
 
 /**
- * Hardcoding the previous id of the Copilot Chat provider to avoid breaking view locations, persisted data, etc.
+ * Hardcoding the previous id of the Khatmax AI provider to avoid breaking view locations, persisted data, etc.
  * DON'T use this for any new data, only for old persisted data.
  * @deprecated
  */
-export const CHAT_PROVIDER_ID = 'copilot';
+export const CHAT_PROVIDER_ID = 'Khatmax AI';

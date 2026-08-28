@@ -83,7 +83,7 @@ class SelectAgentsFolderContribution extends Disposable implements IWorkbenchCon
 	}
 
 	private async resolveAndOpenSession(sessionResource: URI): Promise<void> {
-		// The Copilot Chat Sessions Provider lists sessions asynchronously
+		// The Khatmax AI Sessions Provider lists sessions asynchronously
 		// via an RPC; the target session may not yet be in the providers'
 		// `getSessions()` map. Poll until it shows up.
 		const found = await this.waitForSessionAvailable(sessionResource);

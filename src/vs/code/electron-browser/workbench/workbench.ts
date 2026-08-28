@@ -178,6 +178,55 @@
 				(titleDiv.style as CSSStyleDeclaration & { '-webkit-app-region': string })['-webkit-app-region'] = 'drag';
 				splash.appendChild(titleDiv);
 
+				const brand = document.createElement('div');
+				brand.style.position = 'absolute';
+				brand.style.left = '16px';
+				brand.style.top = '50%';
+				brand.style.transform = 'translateY(-50%)';
+				brand.style.display = 'flex';
+				brand.style.alignItems = 'center';
+				brand.style.gap = '10px';
+				brand.style.padding = '6px 10px 6px 8px';
+				brand.style.borderRadius = '999px';
+				brand.style.backgroundColor = 'rgba(10, 18, 28, 0.42)';
+				brand.style.border = '1px solid rgba(255, 255, 255, 0.08)';
+				brand.style.backdropFilter = 'blur(16px)';
+				(brand.style as CSSStyleDeclaration & { '-webkit-app-region': string })['-webkit-app-region'] = 'no-drag';
+
+				const logo = document.createElement('img');
+				logo.alt = 'Khatmax';
+				logo.src = `vscode-file://vscode-app/${configuration.appRoot.replace(/\\/g, '/')}/resources/khatmax/khatmax-logo.png`;
+				logo.style.width = '40px';
+				logo.style.height = '40px';
+				logo.style.flex = '0 0 auto';
+				logo.style.objectFit = 'contain';
+
+				const brandCopy = document.createElement('div');
+				brandCopy.style.display = 'flex';
+				brandCopy.style.flexDirection = 'column';
+				brandCopy.style.lineHeight = '1';
+
+				const brandName = document.createElement('div');
+				brandName.textContent = 'Khatmax';
+				brandName.style.fontSize = '12px';
+				brandName.style.fontWeight = '700';
+				brandName.style.letterSpacing = '0.08em';
+				brandName.style.textTransform = 'uppercase';
+				brandName.style.color = colorInfo.foreground || 'var(--vscode-foreground)';
+
+				const brandTag = document.createElement('div');
+				brandTag.textContent = 'AI Workspace';
+				brandTag.style.marginTop = '3px';
+				brandTag.style.fontSize = '10px';
+				brandTag.style.letterSpacing = '0.1em';
+				brandTag.style.textTransform = 'uppercase';
+				brandTag.style.opacity = '0.72';
+				brandTag.style.color = colorInfo.foreground || 'var(--vscode-descriptionForeground)';
+
+				brandCopy.append(brandName, brandTag);
+				brand.append(logo, brandCopy);
+				titleDiv.appendChild(brand);
+
 				if (!modernUI && colorInfo.titleBarBorder) {
 					const titleBorder = document.createElement('div');
 					titleBorder.style.position = 'absolute';

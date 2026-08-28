@@ -161,22 +161,22 @@ export class ChatDebugServiceImpl extends Disposable implements IChatDebugServic
 	/** Session types eligible for debug logging and provider invocation. */
 	private static readonly _debugEligibleSessionTypes = new Set([
 		localChatSessionType,			// local sessions
-		'copilotcli',				// Copilot CLI background sessions
-		'agent-host-copilotcli',		// local Agent Host Copilot CLI sessions
+		'copilotcli',				// Khatmax Agent background sessions
+		'agent-host-copilotcli',		// local Agent Host Khatmax Agent sessions
 		'claude-code',				// Claude Code CLI sessions
 	]);
 
 	private _isDebugEligibleSession(sessionResource: URI): boolean {
 		const sessionType = getChatSessionType(sessionResource);
 		return ChatDebugServiceImpl._debugEligibleSessionTypes.has(sessionType)
-			// Remote Agent Host Copilot CLI sessions use a dynamic
+			// Remote Agent Host Khatmax Agent sessions use a dynamic
 			// `remote-<authority>-copilotcli` scheme; see copilotCliEventsUri.ts.
 			|| (sessionType.startsWith('remote-') && sessionType.endsWith('-copilotcli'))
 			|| this._importedSessions.has(sessionResource);
 	}
 
 	/**
-	 * The in-memory event capacity for a session. Agent host (Copilot CLI)
+	 * The in-memory event capacity for a session. Agent host (Khatmax Agent)
 	 * sessions honor a dedicated, configurable cap so their (potentially large)
 	 * on-disk logs can be surfaced without changing the local-session default;
 	 * all other sessions use {@link ChatDebugServiceImpl.MAX_EVENTS_PER_SESSION}.

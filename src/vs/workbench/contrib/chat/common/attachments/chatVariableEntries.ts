@@ -753,7 +753,7 @@ export enum PromptFileVariableKind {
  * @param kind The kind of the prompt file variable entry.
  */
 export function toPromptFileVariableEntry(uri: URI, kind: PromptFileVariableKind, originLabel?: string, automaticallyAdded = false, toolReferences?: ChatRequestToolReferenceEntry[]): IPromptFileVariableEntry {
-	//  `id` for all `prompt files` starts with the well-defined part that the copilot extension(or other chatbot) can rely on
+	//  `id` for all `prompt files` starts with the well-defined part that the Khatmax AI extension(or other chatbot) can rely on
 	return {
 		id: `${kind}__${uri.toString()}`,
 		name: `prompt:${basename(uri)}`,

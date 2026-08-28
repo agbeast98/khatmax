@@ -1,0 +1,26 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Khatmax app icon">
+  <defs>
+    <linearGradient id="kmFill" x1="48" y1="37" x2="208" y2="219" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#59F0E0"/>
+      <stop offset="0.52" stop-color="#43C7FF"/>
+      <stop offset="1" stop-color="#7C6CFF"/>
+    </linearGradient>
+    <linearGradient id="kmStroke" x1="26" y1="21" x2="230" y2="235" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D9FFFF" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#8AA7FF" stop-opacity="0.12"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <!-- Solid background -->
+  <rect width="256" height="256" rx="52" fill="#060C13"/>
+  <rect x="10" y="10" width="236" height="236" rx="48" fill="#0A1220" stroke="url(#kmStroke)" stroke-width="2"/>
+  <!-- Inner card -->
+  <path d="M69 80C69 74.477 73.477 70 79 70H177C182.523 70 187 74.477 187 80V176C187 181.523 182.523 186 177 186H79C73.477 186 69 181.523 69 176V80Z" fill="#0B1B2A"/>
+  <!-- K letter -->
+  <path d="M83 165V91H97.6V120.8L125.3 91H144.2L115.6 121.5L148 165H129.4L104.5 132.5L97.6 140.3V165H83Z" fill="url(#kmFill)" filter="url(#glow)"/>
+  <!-- M letter -->
+  <path d="M153 165V91H165.6L192.7 128.7L219.8 91H232V165H218.5V113.5L195.6 145H190.8L166.5 113.3V165H153Z" fill="url(#kmFill)" filter="url(#glow)"/>
+</svg>

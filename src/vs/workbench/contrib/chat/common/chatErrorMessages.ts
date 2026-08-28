@@ -9,9 +9,9 @@ import { ChatEntitlement } from '../../../services/chat/common/chatEntitlementSe
 import { ChatErrorLevel, IChatResponseErrorDetails } from './chatService/chatService.js';
 
 /**
- * Mirror of the Copilot extension's `ChatFetchResponseType` (see
+ * Mirror of the Khatmax AI extension's `ChatFetchResponseType` (see
  * `extensions/copilot/src/platform/chat/common/commonTypes.ts`). These string
- * values are forwarded verbatim from the agent host harnesses (Copilot CLI,
+ * values are forwarded verbatim from the agent host harnesses (Khatmax Agent,
  * Claude, Codex) over `_meta`, so they MUST stay in sync with the extension.
  */
 export const enum ChatFetchResponseType {
@@ -36,7 +36,7 @@ export const enum ChatFetchResponseType {
 }
 
 /**
- * Mirror of the Copilot extension's `FilterReason` (see
+ * Mirror of the Khatmax AI extension's `FilterReason` (see
  * `extensions/copilot/src/platform/networking/common/openai.ts`).
  */
 export const enum FilterReason {
@@ -50,7 +50,7 @@ export const enum FilterReason {
 
 /**
  * Raw error payload forwarded from an agent host harness. This is the
- * serialized `ChatFetchError` from the Copilot extension. Because it crosses
+ * serialized `ChatFetchError` from the Khatmax AI extension. Because it crosses
  * the extension/core boundary as untyped JSON inside `_meta`, every field is
  * optional and consumers type-cast based on `type`.
  */
@@ -69,7 +69,7 @@ export interface IChatFetchErrorPayload {
 
 /**
  * The full forwarded chat error payload, including the user-context fields that
- * the extension would normally read from the Copilot token. This is the value
+ * the extension would normally read from the Khatmax AI token. This is the value
  * placed at `_meta.chatError` by the harnesses.
  */
 export interface IForwardedChatError {
@@ -91,7 +91,7 @@ const CanceledMessage: IChatResponseErrorDetails = { message: localize('chatErro
 
 /**
  * Converts a number of seconds into a human readable, localized string like
- * "6 hours 50 minutes". Based on the Copilot extension's
+ * "6 hours 50 minutes". Based on the Khatmax AI extension's
  * `secondsToHumanReadableTime` (`extensions/copilot/src/util/common/time.ts`),
  * but the unit fragments are externalized so they translate in non-English
  * locales.
@@ -154,7 +154,7 @@ function getRateLimitMessage(fetchError: IChatFetchErrorPayload, copilotPlan: st
 		return localize({ key: 'chatError.rateLimit.model', comment: [`{Locked=']({'}`] }, "You've hit the rate limit for this model. Please try switching to Auto or try again in {0}. [Learn More]({1})", retryAfterString, RATE_LIMIT_LEARN_MORE_URL);
 	}
 	if (code?.startsWith('integration_rate_limited')) {
-		return localize({ key: 'chatError.rateLimit.integration', comment: [`{Locked=']({'}`] }, "Sorry, GitHub Copilot Chat is currently experiencing high demand. Please try again in {0}. [Learn More]({1})", retryAfterString, RATE_LIMIT_LEARN_MORE_URL);
+		return localize({ key: 'chatError.rateLimit.integration', comment: [`{Locked=']({'}`] }, "Sorry, Khatmax AI Chat is currently experiencing high demand. Please try again in {0}. [Learn More]({1})", retryAfterString, RATE_LIMIT_LEARN_MORE_URL);
 	}
 
 	if (fetchError.capiError?.code && fetchError.capiError?.message) {
@@ -179,16 +179,16 @@ export function getQuotaMessageForPlan(copilotPlan: string | undefined, isUsageB
 		switch (copilotPlan) {
 			case 'free':
 				return resetDateString
-					? localize('chatError.quota.ubb.freeDate', "You've reached your monthly credit limit. Upgrade to Copilot Pro or wait until your credits reset on {0}.", resetDateString)
-					: localize('chatError.quota.ubb.free', "You've reached your monthly credit limit. Upgrade to Copilot Pro or wait for your credits to reset.");
+					? localize('chatError.quota.ubb.freeDate', "You've reached your monthly credit limit. Upgrade to Khatmax Pro or wait until your credits reset on {0}.", resetDateString)
+					: localize('chatError.quota.ubb.free', "You've reached your monthly credit limit. Upgrade to Khatmax Pro or wait for your credits to reset.");
 			case 'individual':
 				return resetDateString
-					? localize('chatError.quota.ubb.individualDate', "You've reached your monthly credit limit. Please enable additional paid credits, upgrade to Copilot Pro+, or wait until your credits reset on {0}.", resetDateString)
-					: localize('chatError.quota.ubb.individual', "You've reached your monthly credit limit. Please enable additional paid credits, upgrade to Copilot Pro+, or wait for your credits to reset.");
+					? localize('chatError.quota.ubb.individualDate', "You've reached your monthly credit limit. Please enable additional paid credits, upgrade to Khatmax Pro+, or wait until your credits reset on {0}.", resetDateString)
+					: localize('chatError.quota.ubb.individual', "You've reached your monthly credit limit. Please enable additional paid credits, upgrade to Khatmax Pro+, or wait for your credits to reset.");
 			case 'edu':
 				return resetDateString
-					? localize('chatError.quota.ubb.eduDate', "You've reached your monthly credit limit. Please enable additional paid credits, upgrade to Copilot Pro, or wait until your credits reset on {0}.", resetDateString)
-					: localize('chatError.quota.ubb.edu', "You've reached your monthly credit limit. Please enable additional paid credits, upgrade to Copilot Pro, or wait for your credits to reset.");
+					? localize('chatError.quota.ubb.eduDate', "You've reached your monthly credit limit. Please enable additional paid credits, upgrade to Khatmax Pro, or wait until your credits reset on {0}.", resetDateString)
+					: localize('chatError.quota.ubb.edu', "You've reached your monthly credit limit. Please enable additional paid credits, upgrade to Khatmax Pro, or wait for your credits to reset.");
 			case 'individual_pro':
 			case 'individual_max':
 				return resetDateString
@@ -208,11 +208,11 @@ export function getQuotaMessageForPlan(copilotPlan: string | undefined, isUsageB
 
 	switch (copilotPlan) {
 		case 'free':
-			return localize('chatError.quota.free', "You've reached your monthly chat messages quota. Upgrade to Copilot Pro or wait for your allowance to renew.");
+			return localize('chatError.quota.free', "You've reached your monthly chat messages quota. Upgrade to Khatmax Pro or wait for your allowance to renew.");
 		case 'individual':
-			return localize('chatError.quota.individual', "You've exhausted your premium model quota. Please enable additional paid premium requests, upgrade to Copilot Pro+, or wait for your allowance to renew.");
+			return localize('chatError.quota.individual', "You've exhausted your premium model quota. Please enable additional paid premium requests, upgrade to Khatmax Pro+, or wait for your allowance to renew.");
 		case 'edu':
-			return localize('chatError.quota.edu', "You've exhausted your premium model quota. Please enable additional paid premium requests, upgrade to Copilot Pro, or wait for your allowance to renew.");
+			return localize('chatError.quota.edu', "You've exhausted your premium model quota. Please enable additional paid premium requests, upgrade to Khatmax Pro, or wait for your allowance to renew.");
 		case 'individual_pro':
 		case 'individual_max':
 			return localize('chatError.quota.pro', "You've exhausted your premium model quota. Please enable additional paid premium requests or wait for your allowance to renew.");
@@ -266,7 +266,7 @@ export function getFilteredMessage(category: FilterReason | string, supportsMark
 
 /**
  * Builds the user-facing {@link IChatResponseErrorDetails} from a forwarded raw
- * chat fetch error. This is the core analog of the Copilot extension's
+ * chat fetch error. This is the core analog of the Khatmax AI extension's
  * `getErrorDetailsFromChatFetchError`. Unlike the extension, core has no
  * access to the GitHub outage status, so the outage note is never appended
  * (assume no outage).
@@ -378,8 +378,8 @@ export interface IChatErrorContext {
 }
 
 /**
- * Maps a core {@link ChatEntitlement} to the Copilot plan string understood by
- * the quota/rate-limit message helpers (mirrors the Copilot extension's
+ * Maps a core {@link ChatEntitlement} to the Khatmax AI plan string understood by
+ * the quota/rate-limit message helpers (mirrors the Khatmax AI extension's
  * `CopilotToken.copilotPlan` values).
  */
 export function getCopilotPlanFromEntitlement(entitlement: ChatEntitlement): string | undefined {

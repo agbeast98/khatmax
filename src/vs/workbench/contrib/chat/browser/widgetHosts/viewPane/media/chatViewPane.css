@@ -116,6 +116,7 @@
 .chat-viewpane {
 	display: flex;
 	flex-direction: column;
+	background: linear-gradient(180deg, #060C13 0%, #0A1220 100%);
 
 	/* wrapper that holds sessions + chat controls */
 	> .voice-agent-controls-wrapper {

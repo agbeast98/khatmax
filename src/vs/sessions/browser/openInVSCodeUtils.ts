@@ -9,11 +9,11 @@ import { isAgentHostProvider } from '../common/agentHostSessionsProvider.js';
 import { encodeHex, VSBuffer } from '../../base/common/buffer.js';
 
 /**
- * Resolves the VS Code remote authority for the given session provider,
+ * Resolves the Khatmax remote authority for the given session provider,
  * e.g. `ssh-remote+myhost` or `tunnel+myTunnel`.
  *
  * Returns `undefined` for local or WebSocket-only providers where no
- * VS Code remote extension can handle the connection.
+ * Khatmax remote extension can handle the connection.
  */
 export function resolveRemoteAuthority(
 	providerId: string,

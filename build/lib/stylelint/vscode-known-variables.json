@@ -967,6 +967,7 @@
 		"--chat-smooth-duration",
 		"--inline-chat-frame-progress",
 		"--insert-border-color",
+		"--khatmax-sidebar-logo-url",
 		"--last-tab-margin-right",
 		"--last-tab-layout-actions-width",
 		"--list-scroll-right-offset",

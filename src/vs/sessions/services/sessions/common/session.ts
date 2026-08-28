@@ -15,7 +15,7 @@ import { IChatSessionFileChange, IChatSessionFileChange2, isIChatSessionFileChan
 export interface ISessionType {
 	/** Unique identifier (e.g., 'copilot-cli', 'copilot-cloud', 'claude-code'). */
 	readonly id: string;
-	/** Display label (e.g., 'Copilot CLI', 'Cloud'). */
+	/** Display label (e.g., 'Khatmax AI CLI', 'Cloud'). */
 	readonly label: string;
 	/** Icon for this session type. */
 	readonly icon: ThemeIcon;

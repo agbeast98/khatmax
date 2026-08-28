@@ -6,12 +6,12 @@
 import { VSCODE_LOGO_PATH } from './vscodeLogoPath.js';
 
 /**
- * VS Code logo "fish" used by the Agents window aquarium. Each fish is a small
+ * Khatmax logo "fish" used by the Agents window aquarium. Each fish is a small
  * SVG element styled with `color:` so the silhouette inherits via `currentColor`,
  * with animated body strips providing the swimming motion.
  */
 
-/** The three VS Code release channel colors used as fish "species". */
+/** The three Khatmax release channel colors used as fish "species". */
 export const enum FishSpecies {
 	Stable = 'stable',
 	Insiders = 'insiders',
@@ -185,7 +185,7 @@ const BODY_X_END = 90;
 
 /**
  * Lazily-built shared SVG element holding both the strip clipPath defs AND
- * a single `<symbol>` containing the VS Code logo path. All fish reference
+ * a single `<symbol>` containing the Khatmax logo path. All fish reference
  * these via `clip-path: url(#…)` and `<use href="#…">` instead of duplicating
  * the path data per strip per fish (which previously caused 50 fish * 10
  * strips = 500 path parses on every aquarium activation).
@@ -256,7 +256,7 @@ function createVSCodeLogoSymbol(targetDocument: Document): SVGSymbolElement {
 
 /**
  * Build the inline SVG element tree for a fish:
- *   - VS Code logo body, sliced into N vertical strips that each oscillate in
+ *   - Khatmax logo body, sliced into N vertical strips that each oscillate in
  *     Y with a phase-offset CSS animation (the "swimming" sine wave)
  *
  * Colors come from `currentColor` on the parent element. Built with
@@ -271,7 +271,7 @@ function buildFishSvg(targetDocument: Document): SVGSVGElement {
 	const svg = targetDocument.createElementNS(SVG_NS, 'svg');
 	svg.setAttribute('xmlns', SVG_NS);
 	svg.setAttribute('focusable', 'false');
-	// viewBox 0..96 matches the original VS Code icon.
+	// viewBox 0..96 matches the original Khatmax icon.
 	svg.setAttribute('viewBox', '0 0 96 96');
 	svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 	// Tell the rasterizer to optimize for visual quality, not speed: smoother

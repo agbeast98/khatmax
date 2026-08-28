@@ -79,7 +79,7 @@ export class DelegationSessionPickerActionItem extends SessionTypePickerActionIt
 		const contribution = allContributions.find(contribution => getAgentSessionProvider(contribution.type) === type || contribution.type === type);
 
 		// Delegation is allowed:
-		// - in core VS Code: from local sessions, plus from any agent host session;
+		// - in core Khatmax: from local sessions, plus from any agent host session;
 		// - in the sessions window: from background sessions, plus from any agent
 		//   host session (local `agent-host-*` or remote `remote-*`).
 		const activeProvider = this.delegate.getActiveSessionProvider();

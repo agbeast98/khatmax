@@ -7,7 +7,10 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background-color: var(--vscode-welcomePage-background);
+	background:
+		radial-gradient(circle at top left, rgba(73, 213, 224, 0.14), transparent 30%),
+		radial-gradient(circle at top right, rgba(124, 108, 255, 0.12), transparent 34%),
+		linear-gradient(180deg, rgba(5, 13, 22, 0.92), rgba(5, 13, 22, 0.98));
 	overflow: hidden;
 }
 
@@ -22,10 +25,11 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 40px;
-	max-width: 900px;
+	padding: 48px;
+	max-width: 1120px;
 	width: 100%;
 	box-sizing: border-box;
+	gap: 28px;
 }
 
 /* Header */
@@ -34,15 +38,79 @@
 	flex-direction: column;
 	align-items: flex-start;
 	width: 100%;
-	max-width: 800px;
+	max-width: 1120px;
+	padding: 22px 24px;
+	border: 1px solid color-mix(in srgb, var(--vscode-foreground) 10%, transparent);
+	border-radius: 28px;
+	background: color-mix(in srgb, var(--vscode-editor-background) 74%, transparent);
+	box-shadow: 0 30px 100px rgba(0, 0, 0, 0.24);
+	backdrop-filter: blur(18px);
+	box-sizing: border-box;
+}
+
+.agentSessionsWelcome-brand {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	width: 100%;
+}
+
+.agentSessionsWelcome-logo {
+	width: 72px;
+	height: 72px;
+	flex: 0 0 auto;
+}
+
+.agentSessionsWelcome-brandCopy {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+.agentSessionsWelcome-eyebrow {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
+	color: var(--vscode-textLink-foreground);
+	margin-bottom: 8px;
 }
 
 .agentSessionsWelcome-header h1.product-name {
 	font-size: 32px;
-	font-weight: 400;
+	font-weight: 650;
 	line-height: 1;
 	margin: 0 0 12px 0;
 	color: var(--vscode-foreground);
+}
+
+.agentSessionsWelcome-subtitle {
+	margin: 0;
+	max-width: 700px;
+	color: var(--vscode-descriptionForeground);
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.agentSessionsWelcome-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 18px;
+}
+
+.agentSessionsWelcome-chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 7px 12px;
+	border-radius: 999px;
+	border: 1px solid color-mix(in srgb, var(--vscode-foreground) 12%, transparent);
+	background: color-mix(in srgb, var(--vscode-editor-background) 66%, transparent);
+	color: var(--vscode-foreground);
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
 .agentSessionsWelcome-startEntries {
@@ -50,6 +118,7 @@
 	gap: 16px;
 	flex-wrap: wrap;
 	justify-content: flex-start;
+	margin-top: 18px;
 }
 
 .agentSessionsWelcome-startEntry {
@@ -77,8 +146,15 @@
 /* Chat widget section */
 .agentSessionsWelcome-chatSection {
 	width: 100%;
-	max-width: 800px;
-	margin-top: 24px;
+	max-width: 1120px;
+	margin-top: 0;
+	padding: 22px 24px;
+	border: 1px solid color-mix(in srgb, var(--vscode-foreground) 10%, transparent);
+	border-radius: 28px;
+	background: color-mix(in srgb, var(--vscode-editor-background) 66%, transparent);
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+	backdrop-filter: blur(16px);
+	box-sizing: border-box;
 }
 
 /* Hide the chat tree/list - we only want the input */
@@ -106,8 +182,15 @@
 /* Suggested prompts */
 .agentSessionsWelcome-sessionsSection {
 	width: 100%;
-	max-width: 800px;
-	margin-top: 24px;
+	max-width: 1120px;
+	margin-top: 0;
+	padding: 22px 24px;
+	border: 1px solid color-mix(in srgb, var(--vscode-foreground) 10%, transparent);
+	border-radius: 28px;
+	background: color-mix(in srgb, var(--vscode-editor-background) 66%, transparent);
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+	backdrop-filter: blur(16px);
+	box-sizing: border-box;
 }
 
 .agentSessionsWelcome-suggestedPrompts {
@@ -345,8 +428,9 @@
 	align-items: center;
 	gap: 8px;
 	width: 100%;
-	max-width: 800px;
-	margin-top: 24px;
+	max-width: 1120px;
+	margin-top: 0;
+	padding: 0 4px;
 }
 
 .agentSessionsWelcome-footerLink {

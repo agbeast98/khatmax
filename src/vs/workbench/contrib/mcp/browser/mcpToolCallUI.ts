@@ -166,7 +166,7 @@ class LocalMcpAppCallTransport extends Disposable implements IMcpAppCallTranspor
  * {@link IAgentHostService.handleMcpRequest}, and filters
  * {@link IAgentHostService.onMcpNotification} down to this channel.
  *
- * Used for MCP servers owned by an agent host (e.g. Copilot CLI).
+ * Used for MCP servers owned by an agent host (e.g. Khatmax Agent).
  */
 class AhpMcpAppCallTransport extends Disposable implements IMcpAppCallTransport {
 	private readonly _onNotification = this._register(new Emitter<{ readonly method: string; readonly params?: unknown }>());

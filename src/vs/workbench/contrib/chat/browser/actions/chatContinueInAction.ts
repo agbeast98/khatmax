@@ -224,7 +224,7 @@ export class ChatContinueInSessionActionItem extends ActionWidgetDropdownActionV
 				}
 
 				// Continue in any agent host session (local `agent-host-*` or remote
-				// `remote-*`), e.g. Copilot CLI / Codex / Claude agent-host sessions.
+				// `remote-*`), e.g. Khatmax Agent / Codex / Claude agent-host sessions.
 				for (const contrib of contributions) {
 					if (contrib.canDelegate && isAgentHostTarget(contrib.type)) {
 						actions.push(this.toAction(contrib.type, contrib, instantiationService, location));
@@ -520,7 +520,7 @@ export class CreateRemoteAgentJobAction {
 			// (history-import) instead of sending to the current (incompatible)
 			// session resource. This happens for any cross-type delegation in the
 			// sessions window, and whenever either the source or the target is an
-			// agent host session (e.g. Copilot CLI / Codex / Claude agent host),
+			// agent host session (e.g. Khatmax Agent / Codex / Claude agent host),
 			// so delegation works from anything to any agent host session and from
 			// any agent host session to any target.
 			const isSessionsWindow = IsSessionsWindowContext.getValue(contextKeyService);
@@ -541,7 +541,7 @@ export class CreateRemoteAgentJobAction {
 				const sourceName = sourceContribution?.displayName ?? getAgentSessionProviderName(sourceSessionType);
 				const continuationContext = attachedContext.asArray();
 				let handoffPrompt = userPrompt;
-				// Continuing a local chat into Copilot CLI (main window) imports the
+				// Continuing a local chat into Khatmax Agent (main window) imports the
 				// prior conversation as real, editable turns seeded into the new
 				// session, instead of handing it over as a read-only transcript
 				// attachment. The turns are threaded through the normal
@@ -552,8 +552,8 @@ export class CreateRemoteAgentJobAction {
 					: undefined;
 				// Carry the source session's selected model so the imported session
 				// resumes on the same model rather than the host default. The raw
-				// model id (`metadata.id`) matches the Copilot catalog shared by the
-				// local models and Copilot CLI.
+				// model id (`metadata.id`) matches the Khatmax AI catalog shared by the
+				// local models and Khatmax Agent.
 				const importConversationModelId = importConversationTurns ? widget.input.selectedLanguageModel.get()?.metadata.id : undefined;
 				const importConversationModel: ModelSelection | undefined = importConversationModelId ? { id: importConversationModelId } : undefined;
 				if (transcript && !importConversationTurns) {

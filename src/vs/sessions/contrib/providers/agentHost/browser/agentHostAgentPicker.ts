@@ -52,7 +52,7 @@ registerAction2(class extends Action2 {
 				when: ContextKeyExpr.and(IsActiveSessionAgentHost, IsPhoneLayoutContext.negate()),
 			}, {
 				// Running-session input bar — only inside the dedicated
-				// Agents Window. The regular VS Code chat editor uses the
+				// Agents Window. The regular Khatmax chat editor uses the
 				// built-in mode picker for Agent Host custom agents.
 				id: MenuId.ChatInput,
 				group: 'navigation',

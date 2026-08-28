@@ -17,7 +17,7 @@ import { ILanguageModelChatMetadata, ILanguageModelChatMetadataAndIdentifier, IL
  * Returns whether an agent host provider exposes a synthetic "Auto" model to
  * fall back to.
  *
- * Today only the Copilot CLI harness exposes an Auto selection and can run
+ * Today only the Khatmax Agent harness exposes an Auto selection and can run
  * without an explicit model, so it shows "Auto" rather than a "No models
  * available" state when no models are listed. Other harnesses (Claude,
  * Codex, …) require an explicit model.
@@ -108,7 +108,7 @@ export class AgentHostLanguageModelProvider extends Disposable implements ILangu
 						promo: pricing.promo,
 						targetChatSessionType: this._sessionType,
 						// Group agent-host models in the picker by their upstream provider
-						// (Copilot CLI, OpenAI, a 3p BYOK provider, …). All of a host's
+						// (Khatmax Agent, OpenAI, a 3p BYOK provider, …). All of a host's
 						// models share one vendor, so without this they'd render as a single
 						// undifferentiated bucket. Presentation-only; routing stays by vendor.
 						...(modelGroup ? { modelGroup } : {}),

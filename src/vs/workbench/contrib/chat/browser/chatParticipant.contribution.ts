@@ -39,7 +39,7 @@ const chatViewIcon = registerIcon('chat-view-icon', Codicon.chatSparkle, localiz
 
 const chatViewContainer: ViewContainer = Registry.as<IViewContainersRegistry>(ViewExtensions.ViewContainersRegistry).registerViewContainer({
 	id: ChatViewContainerId,
-	title: localize2('chat.viewContainer.label', "Chat"),
+	title: localize2('chat.viewContainer.label', "Khatmax"),
 	icon: chatViewIcon,
 	ctorDescriptor: new SyncDescriptor(ViewPaneContainer, [ChatViewContainerId, { mergeViewWithContainerWhenSingleView: true }]),
 	storageId: ChatViewContainerId,
@@ -52,13 +52,13 @@ const chatViewDescriptor: IViewDescriptor = {
 	containerIcon: chatViewContainer.icon,
 	containerTitle: chatViewContainer.title.value,
 	singleViewPaneContainerTitle: chatViewContainer.title.value,
-	name: localize2('chat.viewContainer.label', "Chat"),
+	name: localize2('chat.viewContainer.label', "Khatmax"),
 	canToggleVisibility: false,
 	canMoveView: true,
 	openCommandActionDescriptor: {
 		id: ChatViewContainerId,
 		title: chatViewContainer.title,
-		mnemonicTitle: localize({ key: 'miToggleChat', comment: ['&& denotes a mnemonic'] }, "&&Chat"),
+		mnemonicTitle: localize({ key: 'miToggleChat', comment: ['&& denotes a mnemonic'] }, "&&Khatmax"),
 		keybindings: {
 			primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KeyI,
 			mac: {
@@ -359,9 +359,9 @@ export class ChatCompatibilityNotifier extends Disposable implements IWorkbenchC
 
 		this.registeredWelcomeView = true;
 		const showExtensionLabel = localize('showExtension', "Show Extension");
-		const mainMessage = localize('chatFailErrorMessage', "Chat failed to load because the installed version of the Copilot Chat extension is not compatible with this version of {0}. Please ensure that the Copilot Chat extension is up to date.", this.productService.nameLong);
+		const mainMessage = localize('chatFailErrorMessage', "Chat failed to load because the installed version of the Khatmax AI Chat extension is not compatible with this version of {0}. Please ensure that the Khatmax AI Chat extension is up to date.", this.productService.nameLong);
 		const commandButton = `[${showExtensionLabel}](${createCommandUri(showExtensionsWithIdsCommandId, [this.productService.defaultChatAgent?.chatExtensionId])})`;
-		const versionMessage = `Copilot Chat version: ${chatExtension.version}`;
+		const versionMessage = `Khatmax AI Chat version: ${chatExtension.version}`;
 		const viewsRegistry = Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry);
 		this._register(viewsRegistry.registerViewWelcomeContent(ChatViewId, {
 			content: [mainMessage, commandButton, versionMessage].join('\n\n'),

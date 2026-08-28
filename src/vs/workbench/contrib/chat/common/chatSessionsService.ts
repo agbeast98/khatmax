@@ -181,7 +181,7 @@ export interface IChatSessionsExtensionPoint {
 	 *
 	 * This is distinct from {@link requiresCustomModels}, which only controls
 	 * whether the picker is filtered to the session's own model pool — a
-	 * session can own a custom pool yet still support Auto (e.g. the Copilot
+	 * session can own a custom pool yet still support Auto (e.g. the Khatmax AI
 	 * CLI agent host).
 	 */
 	readonly supportsAutoModel?: boolean;
@@ -192,8 +192,8 @@ export interface IChatSessionsExtensionPoint {
 	 */
 	readonly agentHostProviderId?: string;
 	/**
-	 * Whether this type needs a GitHub Copilot account and so is unusable until the user signs in. Set by
-	 * Copilot-backed types (Copilot CLI / agent host, cloud agent) where BYOK isn't supported. Defaults to false, so
+	 * Whether this type needs a Khatmax AI account and so is unusable until the user signs in. Set by
+	 * Copilot-backed types (Khatmax Agent / agent host, cloud agent) where BYOK isn't supported. Defaults to false, so
 	 * third-party types that don't depend on Copilot stay usable while signed out.
 	 */
 	readonly requiresCopilotSignIn?: boolean;

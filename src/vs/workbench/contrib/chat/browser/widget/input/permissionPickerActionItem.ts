@@ -65,7 +65,7 @@ export interface IPermissionPickerDelegate {
 	 * Whether the experimental "Sandboxing for terminal" toggle may be shown on
 	 * the Default Approvals option. The toggle is specific to the local harness
 	 * (which runs the built-in terminal tool); agent-host harnesses such as
-	 * Copilot CLI and Claude Code do not implement this and never show it.
+	 * Khatmax Agent and Claude Code do not implement this and never show it.
 	 * Evaluated each time the picker opens so a harness switch is reflected.
 	 */
 	readonly isSandboxToggleApplicable?: () => boolean;
@@ -117,7 +117,7 @@ function getPermissionLevelMeta(level: ChatPermissionLevel): IPermissionLevelMet
 				id: 'chat.permissions.default',
 				label: localize('permissions.default', "Default Approvals"),
 				shortLabel: localize('permissions.default.label', "Default Approvals"),
-				detail: localize('permissions.default.subtext', "Copilot uses your configured settings"),
+				detail: localize('permissions.default.subtext', "Khatmax AI uses your configured settings"),
 				icon: ThemeIcon.fromId(Codicon.shield.id),
 				description: localize('permissions.default.description', "Use configured approval settings"),
 				elevated: false,

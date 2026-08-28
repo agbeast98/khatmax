@@ -1,0 +1,19 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Khatmax KM mark">
+  <defs>
+    <linearGradient id="kmFill" x1="18" y1="14" x2="78" y2="82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#59F0E0"/>
+      <stop offset="0.52" stop-color="#43C7FF"/>
+      <stop offset="1" stop-color="#7C6CFF"/>
+    </linearGradient>
+    <linearGradient id="kmStroke" x1="10" y1="8" x2="86" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D9FFFF" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#8AA7FF" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+  <!-- Solid dark background for proper display on any surface -->
+  <rect width="96" height="96" rx="20" fill="#060C13"/>
+  <rect x="4" y="4" width="88" height="88" rx="22" fill="#0A1220" stroke="url(#kmStroke)" stroke-width="1.5"/>
+  <path d="M26 30C26 27.791 27.791 26 30 26H66C68.209 26 70 27.791 70 30V66C70 68.209 68.209 70 66 70H30C27.791 70 26 68.209 26 66V30Z" fill="#0B1B2A"/>
+  <path d="M31 62V34H36.5V45.2L46.75 34H53.85L43.1 45.55L55.3 62H48.3L39.2 49.65L36.5 52.6V62H31Z" fill="url(#kmFill)"/>
+  <path d="M57.25 62V34H61.95L72.15 48.15L82.35 34H87V62H81.95V42.65L73.35 54.55H71.55L62.3 42.55V62H57.25Z" fill="url(#kmFill)"/>
+</svg>

@@ -36,13 +36,13 @@ export const DEFAULT_RAW_LOG_VIEW_CAP_BYTES = 2 * 1024 * 1024;
  * points at, so the viewer can pick the appropriate reader and syntax.
  */
 export const enum AgentHostLogSourceKind {
-	/** The Copilot CLI `events.jsonl` model/conversation stream. */
+	/** The Khatmax Agent `events.jsonl` model/conversation stream. */
 	Events = 'events',
 	/** The client-side AHP JSON-RPC wire log (`<logsHome>/ahp/*.jsonl`). */
 	WireLog = 'wire',
-	/** The Copilot SDK process logs under `~/.copilot/logs`. */
+	/** the Khatmax AI SDK process logs under `~/.copilot/logs`. */
 	CliLog = 'cliLog',
-	/** A VS Code output channel (agent host process, renderer, shared). */
+	/** A Khatmax output channel (agent host process, renderer, shared). */
 	ProcessChannel = 'processChannel',
 	/** The remote machine's `agenthost.log`, downloaded on demand. */
 	RemoteProcessLog = 'remoteProcessLog',
@@ -95,7 +95,7 @@ export interface IAgentHostLogContent {
 
 /**
  * Returns true when the chat session belongs to an agent host (local or
- * remote Copilot CLI). Only these sessions have AHP logs and agent-host
+ * remote Khatmax Agent). Only these sessions have AHP logs and agent-host
  * process logs, so the AHP Log view is gated on this.
  */
 export function isAgentHostSession(resource: URI | undefined): boolean {
@@ -216,7 +216,7 @@ export async function enumerateAgentHostLogSources(
 		if (copilotLogsDir) {
 			sources.push({
 				id: 'cliLog',
-				label: localize('agentHostLogs.cliLog', "Copilot CLI Logs"),
+				label: localize('agentHostLogs.cliLog', "Khatmax Agent Logs"),
 				kind: AgentHostLogSourceKind.CliLog,
 				isRemote: !isLocal,
 				cliLogs: { dir: copilotLogsDir, rawSessionId },

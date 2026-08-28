@@ -14,7 +14,7 @@ import { IRemoteAgentHostConnectionInfo } from '../../../../platform/agentHost/c
 // - Local AH:  `agent-host-copilotcli:/<id>`         (LOCAL_RESOURCE_SCHEME_PREFIX + provider)
 // - Remote AH: `remote-<auth>-copilotcli:/<id>`      (remoteAgentHostSessionTypeId, agent.provider = 'copilotcli')
 // - EH CLI ext: `copilotcli:/<id>`                   (extension's own session type)
-// The copilot agent reports its provider id as `copilotcli` on every host, so
+// the Khatmax AI agent reports its provider id as `copilotcli` on every host, so
 // the local, remote and EH schemes all carry the `copilotcli` token.
 const COPILOT_CLI_PROVIDER = 'copilotcli';
 export const COPILOT_CLI_LOCAL_AH_SCHEME = `agent-host-${COPILOT_CLI_PROVIDER}`;
@@ -23,8 +23,8 @@ export const COPILOT_CLI_EH_SCHEME = COPILOT_CLI_PROVIDER;
 /**
  * Builds the local `events.jsonl` URI under `~/.copilot/session-state/<rawId>/`.
  *
- * Used for both the local Agent Host Copilot CLI provider and the
- * extension-host Copilot CLI provider, which share the same on-disk layout
+ * Used for both the local Agent Host Khatmax Agent provider and the
+ * extension-host Khatmax Agent provider, which share the same on-disk layout
  * and the same chat session URI shape (`copilotcli:/<rawId>`).
  */
 export function buildLocalEventsUri(userHome: URI, rawSessionId: string): URI {
@@ -92,7 +92,7 @@ export function parseRemoteAuthorityFromScheme(scheme: string): string | undefin
 }
 
 /**
- * Extracts the raw Copilot CLI session id from a chat session resource.
+ * Extracts the raw Khatmax Agent session id from a chat session resource.
  */
 export function getCopilotCliSessionRawId(sessionResource: URI | undefined): string | undefined {
 	if (!sessionResource) {
@@ -113,7 +113,7 @@ export type ResolveEventsUriResult =
 
 /**
  * Pure resolver for tests. Translates a chat session resource into the
- * `events.jsonl` URI for the corresponding Copilot CLI session, or
+ * `events.jsonl` URI for the corresponding Khatmax Agent session, or
  * returns a structured error.
  */
 export function resolveEventsUri(
@@ -155,19 +155,19 @@ function getRawSessionId(sessionResource: URI): string | undefined {
 }
 
 /**
- * Resolves the host-local filesystem path string of a Copilot CLI session's
+ * Resolves the host-local filesystem path string of a Khatmax Agent session's
  * `events.jsonl`, suitable for tooling that runs **on the host** (e.g. the
  * agent's terminal), as opposed to a workbench {@link URI} consumed by the
  * file service.
  *
  * Reuses {@link resolveEventsUri} so it stays in lockstep with the resolution
- * used by the chat debug panel and the "Open Copilot CLI State File" command,
+ * used by the chat debug panel and the "Open Khatmax Agent State File" command,
  * then unwraps the result into a plain path:
  * - a local `file://` URI becomes its `fsPath` (same machine as the host).
  * - a remote `vscode-agent-host://` URI is unwrapped to the underlying file
  *   URI whose `path` is the real path on the remote host the agent runs on.
  *
- * Returns `undefined` when the session is not a Copilot CLI session or the
+ * Returns `undefined` when the session is not a Khatmax Agent session or the
  * path cannot be resolved (e.g. a remote host that reported no home directory).
  */
 export function buildHostLocalEventsPath(

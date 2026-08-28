@@ -625,7 +625,7 @@ export class ConfiguredAgentPluginDiscovery extends AbstractAgentPluginDiscovery
 
 		// Enterprise-managed plugin IDs in `chat.plugins.enabledPlugins` (delivered
 		// via the `ChatEnabledPlugins` policy) — IDs of the form
-		// `<plugin>@<marketplace>`, resolved to the Copilot CLI install convention.
+		// `<plugin>@<marketplace>`, resolved to the Khatmax Agent install convention.
 		// Non-removable from the UI (enterprise-managed).
 		for (const [key, enabled] of Object.entries(this._enterpriseEnabledPluginsConfig.get())) {
 			const trimmed = key.trim();
@@ -690,7 +690,7 @@ export class ConfiguredAgentPluginDiscovery extends AbstractAgentPluginDiscovery
 
 	/**
 	 * Resolves an enterprise plugin ID of the form `<plugin>@<marketplace>` to
-	 * the Copilot CLI install convention `~/.copilot/installed-plugins/<marketplace>/<plugin>/`.
+	 * the Khatmax Agent install convention `~/.copilot/installed-plugins/<marketplace>/<plugin>/`.
 	 * Returns `undefined` for anything that doesn't match the ID shape.
 	 */
 	private _resolveEnterprisePluginId(id: string, userHome: string): URI | undefined {
@@ -803,23 +803,23 @@ export class MarketplaceAgentPluginDiscovery extends AbstractAgentPluginDiscover
 }
 
 // ---------------------------------------------------------------------------
-// Copilot CLI plugin discovery
+// Khatmax Agent plugin discovery
 // ---------------------------------------------------------------------------
 
 /**
- * Directory under the Copilot CLI home where installed plugins are cached.
+ * Directory under the Khatmax Agent home where installed plugins are cached.
  * Layout is two levels deep: `<marketplace>/<plugin>/`. Direct (non-marketplace)
  * installs use the reserved marketplace segment `_direct`.
  *
- * See `src/plugins/manager.ts` in the copilot-agent-runtime repo.
+ * See `src/plugins/manager.ts` in the Khatmax AI-agent-runtime repo.
  */
 const COPILOT_CLI_INSTALLED_PLUGINS_DIR = '.copilot/installed-plugins';
 
 /**
- * Discovers plugins installed by the Copilot CLI under
+ * Discovers plugins installed by the Khatmax Agent under
  * `~/.copilot/installed-plugins/<marketplace>/<plugin>/`. Each leaf directory
  * is treated as a plugin root, allowing CLI-installed plugins (both
- * marketplace and direct) to surface in VS Code without a separate install.
+ * marketplace and direct) to surface in Khatmax without a separate install.
  */
 export class CopilotCliAgentPluginDiscovery extends AbstractAgentPluginDiscovery {
 
@@ -915,7 +915,7 @@ export class CopilotCliAgentPluginDiscovery extends AbstractAgentPluginDiscovery
 		try {
 			rootStat = await this._fileService.resolve(root);
 		} catch {
-			// Directory doesn't exist — Copilot CLI hasn't installed any plugins.
+			// Directory doesn't exist — Khatmax Agent hasn't installed any plugins.
 			return [];
 		}
 
@@ -959,8 +959,8 @@ export class CopilotCliAgentPluginDiscovery extends AbstractAgentPluginDiscovery
 
 	private async _promptRemove(resource: URI): Promise<void> {
 		const { confirmed } = await this._dialogService.confirm({
-			message: localize('copilotCliPlugin.remove.confirm', "This plugin was installed by the Copilot CLI. Remove it from disk?"),
-			detail: localize('copilotCliPlugin.remove.detail', "The plugin directory '{0}' will be moved to the trash. You can reinstall it later via the Copilot CLI.", resource.fsPath),
+			message: localize('copilotCliPlugin.remove.confirm', "This plugin was installed by the Khatmax Agent. Remove it from disk?"),
+			detail: localize('copilotCliPlugin.remove.detail', "The plugin directory '{0}' will be moved to the trash. You can reinstall it later via the Khatmax Agent.", resource.fsPath),
 			primaryButton: localize('copilotCliPlugin.remove.primary', "Remove"),
 		});
 		if (!confirmed) {

@@ -475,10 +475,10 @@ export class ChatModelsViewModel extends Disposable {
 					continue;
 				}
 				// Agent-host BYOK models are copies of the user's own BYOK models surfaced
-				// by an agent host (e.g. Copilot CLI). They already appear under their real
+				// by an agent host (e.g. Khatmax Agent). They already appear under their real
 				// provider group, so listing them again under the agent-host vendor would
 				// duplicate the entire BYOK catalogue (e.g. hundreds of OpenRouter models
-				// under "Copilot"). Skip them here.
+				// under "Khatmax AI"). Skip them here.
 				if (getAgentHostByokManageModelsIdentifier(metadata) !== undefined) {
 					continue;
 				}

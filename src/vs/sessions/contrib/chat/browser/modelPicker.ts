@@ -57,7 +57,7 @@ function getModelPickerOptionsForSession(session: ISession | undefined, sessions
  * Whether the session cannot currently produce a request because it has no
  * selectable model and cannot fall back to Auto (its provider reports
  * {@link ISessionModelPickerOptions.showAutoModel} as `false`). Used to
- * disable sending — e.g. the Claude agent for a Copilot Free / Student user
+ * disable sending — e.g. the Claude agent for a Khatmax Free / Student user
  * shows "No models available" and must not send. Not reactive on its own;
  * callers should re-evaluate when the session provider's
  * {@link ISessionsProvider.onDidChangeModels} fires.
@@ -218,7 +218,7 @@ export class ModelPicker extends Disposable {
 
 		const models = getModelsForSession(session, this._sessionsProvidersService);
 		// When a session type's Auto model is unavailable (e.g. the Claude
-		// agent for a Copilot Free / Student user), keep the picker visible even
+		// agent for a Khatmax Free / Student user), keep the picker visible even
 		// with no models so the shared widget can render its "No models
 		// available" state (with an upgrade prompt). Otherwise fall back to the
 		// historical behavior of hiding the picker when the provider offers no

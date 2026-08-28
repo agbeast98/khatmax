@@ -49,12 +49,12 @@ export interface ISurveyDefinition {
 }
 
 /**
- * Product-Market Fit survey for GitHub Copilot.
+ * Product-Market Fit survey for Khatmax AI.
  * Based on the Sean Ellis "very disappointed" test.
  */
 export const CopilotPMFSurvey: ISurveyDefinition = {
 	id: 'copilot-pmf',
-	title: localize('survey.copilotPmf.title', "Help Us Improve GitHub Copilot"),
+	title: localize('survey.copilotPmf.title', "Help Us Improve Khatmax AI"),
 	description: localize('survey.copilotPmf.description', "This short survey helps us understand how well Copilot fits into your workflow."),
 	questions: [
 		{
@@ -63,7 +63,7 @@ export const CopilotPMFSurvey: ISurveyDefinition = {
 			required: true,
 			telemetryKey: 'score',
 			asMeasurement: true,
-			label: localize('survey.copilotPmf.q1', "How disappointed would you be if you could no longer use Copilot?"),
+			label: localize('survey.copilotPmf.q1', "How disappointed would you be if you could no longer use Khatmax AI?"),
 			options: [
 				{ id: 'not-at-all', label: localize('survey.copilotPmf.q1.notAtAll', "Not at all") },
 				{ id: 'slightly', label: localize('survey.copilotPmf.q1.slightly', "Slightly") },

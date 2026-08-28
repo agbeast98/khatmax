@@ -39,7 +39,7 @@ export enum ThemeSettings {
 }
 
 export namespace ThemeSettingDefaults {
-	export const COLOR_THEME_DARK = 'Dark 2026';
+	export const COLOR_THEME_DARK = 'Khatmax Dark';
 	export const COLOR_THEME_LIGHT = 'Light 2026';
 	export const COLOR_THEME_HC_DARK = 'Default High Contrast';
 	export const COLOR_THEME_HC_LIGHT = 'Default High Contrast Light';
@@ -51,7 +51,7 @@ export namespace ThemeSettingDefaults {
 /**
  * Migrates legacy theme settings IDs to their current equivalents.
  * Theme IDs were simplified: "Default" prefix was removed from built-in themes,
- * and "Experimental" prefix was replaced when VS Code themes became GA.
+ * and "Experimental" prefix was replaced when Khatmax themes became GA.
  */
 export function migrateThemeSettingsId(settingsId: string): string {
 	switch (settingsId) {
@@ -60,10 +60,10 @@ export function migrateThemeSettingsId(settingsId: string): string {
 		case 'Default Dark+': return 'Dark+';
 		case 'Default Light+': return 'Light+';
 		case 'Experimental Dark':
-		case 'VS Code Dark':
+		case 'Khatmax Dark':
 			return ThemeSettingDefaults.COLOR_THEME_DARK;
 		case 'Experimental Light':
-		case 'VS Code Light':
+		case 'Khatmax Light':
 			return ThemeSettingDefaults.COLOR_THEME_LIGHT;
 	}
 	return settingsId;
@@ -72,15 +72,15 @@ export function migrateThemeSettingsId(settingsId: string): string {
 export const COLOR_THEME_DARK_INITIAL_COLORS = {
 	'actionBar.toggledBackground': '#383a49',
 	'activityBar.activeBorder': '#0078D4',
-	'activityBar.background': '#181818',
-	'activityBar.border': '#2B2B2B',
+	'activityBar.background': '#070D14',
+	'activityBar.border': '#1A2B3D',
 	'activityBar.foreground': '#D7D7D7',
 	'activityBar.inactiveForeground': '#868686',
-	'activityBarBadge.background': '#0078D4',
+	'activityBarBadge.background': '#0D9488',
 	'activityBarBadge.foreground': '#FFFFFF',
 	'badge.background': '#616161',
 	'badge.foreground': '#F8F8F8',
-	'button.background': '#0078D4',
+	'button.background': '#0D9488',
 	'button.border': '#FFFFFF12',
 	'button.foreground': '#FFFFFF',
 	'button.hoverBackground': '#026EC1',
@@ -98,14 +98,14 @@ export const COLOR_THEME_DARK_INITIAL_COLORS = {
 	'dropdown.border': '#3C3C3C',
 	'dropdown.foreground': '#CCCCCC',
 	'dropdown.listBackground': '#1F1F1F',
-	'editor.background': '#1F1F1F',
+	'editor.background': '#060C13',
 	'editor.findMatchBackground': '#9E6A03',
 	'editor.foreground': '#CCCCCC',
 	'editor.inactiveSelectionBackground': '#3A3D41',
 	'editor.selectionHighlightBackground': '#ADD6FF26',
 	'editorGroup.border': '#FFFFFF17',
-	'editorGroupHeader.tabsBackground': '#181818',
-	'editorGroupHeader.tabsBorder': '#2B2B2B',
+	'editorGroupHeader.tabsBackground': '#0A1220',
+	'editorGroupHeader.tabsBorder': '#1A2B3D',
 	'editorGutter.addedBackground': '#2EA043',
 	'editorGutter.deletedBackground': '#F85149',
 	'editorGutter.modifiedBackground': '#0078D4',
@@ -116,8 +116,8 @@ export const COLOR_THEME_DARK_INITIAL_COLORS = {
 	'editorOverviewRuler.border': '#010409',
 	'editorWidget.background': '#202020',
 	'errorForeground': '#F85149',
-	'focusBorder': '#0078D4',
-	'foreground': '#CCCCCC',
+	'focusBorder': '#2DD4BFB3',
+	'foreground': '#C8D1DA',
 	'icon.foreground': '#CCCCCC',
 	'input.background': '#313131',
 	'input.border': '#3C3C3C',
@@ -138,8 +138,8 @@ export const COLOR_THEME_DARK_INITIAL_COLORS = {
 	'notifications.background': '#1F1F1F',
 	'notifications.border': '#2B2B2B',
 	'notifications.foreground': '#CCCCCC',
-	'panel.background': '#181818',
-	'panel.border': '#2B2B2B',
+	'panel.background': '#0A1220',
+	'panel.border': '#1A2B3D',
 	'panelInput.border': '#2B2B2B',
 	'panelTitle.activeBorder': '#0078D4',
 	'panelTitle.activeForeground': '#CCCCCC',
@@ -150,22 +150,22 @@ export const COLOR_THEME_DARK_INITIAL_COLORS = {
 	'peekViewResult.matchHighlightBackground': '#BB800966',
 	'pickerGroup.border': '#3C3C3C',
 	'ports.iconRunningProcessForeground': '#369432',
-	'progressBar.background': '#0078D4',
+	'progressBar.background': '#2DD4BF',
 	'quickInput.background': '#222222',
 	'quickInput.foreground': '#CCCCCC',
 	'settings.dropdownBackground': '#313131',
 	'settings.dropdownBorder': '#3C3C3C',
 	'settings.headerForeground': '#FFFFFF',
 	'settings.modifiedItemIndicator': '#BB800966',
-	'sideBar.background': '#181818',
-	'sideBar.border': '#2B2B2B',
+	'sideBar.background': '#0A1220',
+	'sideBar.border': '#1A2B3D',
 	'sideBar.foreground': '#CCCCCC',
 	'sideBarSectionHeader.background': '#181818',
 	'sideBarSectionHeader.border': '#2B2B2B',
 	'sideBarSectionHeader.foreground': '#CCCCCC',
 	'sideBarTitle.foreground': '#CCCCCC',
-	'statusBar.background': '#181818',
-	'statusBar.border': '#2B2B2B',
+	'statusBar.background': '#070D14',
+	'statusBar.border': '#1A2B3D',
 	'statusBar.debuggingBackground': '#0078D4',
 	'statusBar.debuggingForeground': '#FFFFFF',
 	'statusBar.focusBorder': '#0078D4',
@@ -175,13 +175,13 @@ export const COLOR_THEME_DARK_INITIAL_COLORS = {
 	'statusBarItem.prominentBackground': '#6E768166',
 	'statusBarItem.remoteBackground': '#0078D4',
 	'statusBarItem.remoteForeground': '#FFFFFF',
-	'tab.activeBackground': '#1F1F1F',
+	'tab.activeBackground': '#060C13',
 	'tab.activeBorder': '#1F1F1F',
-	'tab.activeBorderTop': '#0078D4',
+	'tab.activeBorderTop': '#2DD4BF',
 	'tab.activeForeground': '#FFFFFF',
 	'tab.border': '#2B2B2B',
 	'tab.hoverBackground': '#1F1F1F',
-	'tab.inactiveBackground': '#181818',
+	'tab.inactiveBackground': '#0A1220',
 	'tab.inactiveForeground': '#9D9D9D',
 	'tab.lastPinnedBorder': '#ccc3',
 	'tab.selectedBackground': '#222222',
@@ -201,9 +201,9 @@ export const COLOR_THEME_DARK_INITIAL_COLORS = {
 	'textPreformat.background': '#3C3C3C',
 	'textPreformat.foreground': '#D0D0D0',
 	'textSeparator.foreground': '#21262D',
-	'titleBar.activeBackground': '#181818',
+	'titleBar.activeBackground': '#070D14',
 	'titleBar.activeForeground': '#CCCCCC',
-	'titleBar.border': '#2B2B2B',
+	'titleBar.border': '#1A2B3D',
 	'titleBar.inactiveBackground': '#1F1F1F',
 	'titleBar.inactiveForeground': '#9D9D9D',
 	'welcomePage.progress.foreground': '#0078D4',

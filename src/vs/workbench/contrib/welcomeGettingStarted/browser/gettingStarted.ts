@@ -21,7 +21,7 @@ import { splitRecentLabel } from '../../../../base/common/labels.js';
 import { DisposableStore, MutableDisposable, toDisposable } from '../../../../base/common/lifecycle.js';
 import { ILink, LinkedText } from '../../../../base/common/linkedText.js';
 import { parse } from '../../../../base/common/marshalling.js';
-import { Schemas, matchesScheme } from '../../../../base/common/network.js';
+import { Schemas, matchesScheme, FileAccess } from '../../../../base/common/network.js';
 import { OS } from '../../../../base/common/platform.js';
 import { ThemeIcon } from '../../../../base/common/themables.js';
 import { assertReturnsDefined } from '../../../../base/common/types.js';
@@ -924,8 +924,19 @@ export class GettingStartedPage extends EditorPane {
 		}));
 
 		const header = $('.header', {},
-			$('h1.product-name.caption', {}, this.productService.nameLong),
-			$('p.subtitle.description', {}, localize({ key: 'gettingStarted.editingEvolved', comment: ['Shown as subtitle on the Welcome page.'] }, "Editing evolved"))
+			$('div.product-mark', {},
+				$('img.product-mark-logo', { src: FileAccess.asBrowserUri('resources/khatmax/khatmax-logo.png').toString(true), alt: this.productService.nameLong }),
+				$('div.product-mark-copy', {},
+					$('div.product-mark-eyebrow', {}, 'Khatmax'),
+					$('h1.product-name.caption', {}, this.productService.nameLong),
+					$('p.subtitle.description', {}, localize({ key: 'gettingStarted.editingEvolved', comment: ['Shown as subtitle on the Welcome page.'] }, "AI workspace for developers, builders, and teams"))
+				)
+			),
+			$('div.product-mark-chips', {},
+				$('span.product-mark-chip', {}, 'AI-First IDE'),
+				$('span.product-mark-chip', {}, 'Transparent Agents'),
+				$('span.product-mark-chip', {}, 'Live Workspace')
+			)
 		);
 
 		const leftColumn = $('.categories-column.categories-column-left', {},);
@@ -1658,7 +1669,7 @@ export class GettingStartedPage extends EditorPane {
 		const optOutCopy = localize('optOut', "opt out");
 		const optOutButton = `[${optOutCopy}](command:settings.filterByTelemetry)`;
 
-		const text = localize({ key: 'footer', comment: ['fist substitution is "vs code", second is "privacy statement", third is "opt out".'] },
+		const text = localize({ key: 'footer', comment: ['fist substitution is "Khatmax", second is "privacy statement", third is "opt out".'] },
 			"{0} collects usage data. Read our {1} and learn how to {2}.", this.productService.nameShort, privacyStatementButton, optOutButton);
 
 		const renderedContents = this.detailsPageDisposables.add(this.markdownRendererService.render({ value: text, isTrusted: true }));

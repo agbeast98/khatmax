@@ -19,7 +19,7 @@ export enum SessionTypeAvailability {
 	Available,
 	/** Unusable until the user signs in (the type needs a Copilot account; BYOK is not supported here). */
 	SignInRequired,
-	/** Unusable, but the user can resolve it by upgrading (Copilot Free / Student). */
+	/** Unusable, but the user can resolve it by upgrading (Khatmax Free / Student). */
 	UpgradeRequired,
 	/** Unusable with no upgrade path — no models target it and the user is already on a paid plan. */
 	NoModels,
@@ -33,7 +33,7 @@ export enum SessionTypeAvailability {
  * does not require its own models ({@link IChatSessionsService.requiresCustomModelsForSessionType})
  * — e.g. the cloud delegation agent, which runs remotely without a local model —
  * also stays usable on a paid plan even with neither an Auto fallback nor a
- * targeted model. When a type is not usable, Copilot Free / Student (EDU) users
+ * targeted model. When a type is not usable, Khatmax Free / Student (EDU) users
  * see an Upgrade affordance ({@link SessionTypeAvailability.UpgradeRequired});
  * paid users whose type genuinely requires its own models but has none simply
  * have no models ({@link SessionTypeAvailability.NoModels}) and are shown an
@@ -70,7 +70,7 @@ export function getSessionTypeAvailability(
 		return SessionTypeAvailability.SignInRequired;
 	}
 	// Signed in: a model targeting the type (e.g. BYOK) or an "Auto" fallback
-	// (e.g. the Copilot CLI harness) makes it usable.
+	// (e.g. the Khatmax Agent harness) makes it usable.
 	if (hasModelsTargetingSessionType(languageModelsService, type) || chatSessionsService.supportsAutoModelForSessionType(type)) {
 		return SessionTypeAvailability.Available;
 	}
@@ -132,12 +132,12 @@ export function getSessionTypeUnavailableHover(availability: SessionTypeAvailabi
 	switch (availability) {
 		case SessionTypeAvailability.SignInRequired: {
 			const hover = new MarkdownString('', { isTrusted: { enabledCommands: ['workbench.action.chat.triggerSetup'] }, supportThemeIcons: true });
-			hover.appendMarkdown(localize('chat.sessionType.signInHover', "[Sign in to GitHub Copilot](command:workbench.action.chat.triggerSetup) to use this agent."));
+			hover.appendMarkdown(localize('chat.sessionType.signInHover', "[Sign in to Khatmax AI](command:workbench.action.chat.triggerSetup) to use this agent."));
 			return hover;
 		}
 		case SessionTypeAvailability.UpgradeRequired: {
 			const hover = new MarkdownString('', { isTrusted: { enabledCommands: ['workbench.action.chat.upgradePlan'] }, supportThemeIcons: true });
-			hover.appendMarkdown(localize('chat.sessionType.upgradeHover', "[Upgrade to GitHub Copilot Pro](command:workbench.action.chat.upgradePlan) to use this agent."));
+			hover.appendMarkdown(localize('chat.sessionType.upgradeHover', "[Upgrade to Khatmax AI Pro](command:workbench.action.chat.upgradePlan) to use this agent."));
 			return hover;
 		}
 		case SessionTypeAvailability.NoModels:
@@ -156,7 +156,7 @@ export function getSessionTypeUnavailableLabel(availability: SessionTypeAvailabi
 		case SessionTypeAvailability.SignInRequired:
 			return localize('chat.sessionType.signInMobile', "Requires sign in");
 		case SessionTypeAvailability.UpgradeRequired:
-			return localize('chat.sessionType.upgradeMobile', "Requires GitHub Copilot Pro");
+			return localize('chat.sessionType.upgradeMobile', "Requires Khatmax AI Pro");
 		case SessionTypeAvailability.NoModels:
 			return localize('chat.sessionType.noModels', "No models available");
 		default:

@@ -344,7 +344,7 @@ async function collectNetworkDiagnostics(connectionsService: IAgentHostConnectio
 
 	let output = '# Agent Host Network Diagnostics\n\n';
 	output += `- Connections: ${connections.length} (1 ambient, ${remoteCount} remote)\n`;
-	output += 'Connectivity probes run inside each agent host process (local or remote), so results reflect the environment the Copilot SDK actually connects from.\n\n';
+	output += 'Connectivity probes run inside each agent host process (local or remote), so results reflect the environment the Khatmax AI SDK actually connects from.\n\n';
 
 	for (const info of connections) {
 		const heading = info.isAmbient ? 'Ambient agent host' : `Remote: ${info.name}`;

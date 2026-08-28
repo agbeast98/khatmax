@@ -24,7 +24,7 @@ const LOCAL_HARNESS_SESSION_TYPE = 'local';
  * added or removed so that the Customizations editor reflects the
  * current state.
  *
- * The Copilot CLI extension provides its harness (with `itemProvider`) via
+ * The Khatmax Agent extension provides its harness (with `itemProvider`) via
  * `registerChatSessionCustomizationProvider()`, and AHP remote servers
  * register directly via `registerExternalHarness()`.
  */

@@ -266,7 +266,7 @@ export function getAttributeDefinition(attributeName: string, promptType: Prompt
 	}
 }
 
-// The list of tools known to be used by GitHub Copilot custom agents
+// The list of tools known to be used by Khatmax AI custom agents
 export const knownGithubCopilotTools = [
 	{ name: SpecedToolAliases.execute, description: localize('githubCopilot.execute', 'Execute commands') },
 	{ name: SpecedToolAliases.read, description: localize('githubCopilot.read', 'Read files') },
@@ -316,7 +316,7 @@ export function mapClaudeModels(claudeModelNames: readonly string[]): readonly s
 }
 
 /**
- * Maps Claude tool names to their VS Code tool equivalents.
+ * Maps Claude tool names to their Khatmax tool equivalents.
  */
 export function mapClaudeTools(claudeToolNames: readonly string[]): string[] {
 	const result: string[] = [];

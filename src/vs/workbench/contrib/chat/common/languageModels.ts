@@ -43,13 +43,13 @@ import { ChatAgentLocation } from './constants.js';
 import { ILanguageModelsProviderGroup, ILanguageModelsConfigurationService } from './languageModelsConfiguration.js';
 
 /**
- * Vendor id used for the built-in GitHub Copilot language model provider. Treated as the default
+ * Vendor id used for the built-in Khatmax AI language model provider. Treated as the default
  * vendor across the chat stack (see `ILanguageModelProviderDescriptor.isDefault`).
  */
-export const COPILOT_VENDOR_ID = 'copilot';
+export const COPILOT_VENDOR_ID = 'Khatmax AI';
 
 /**
- * Vendor ids of the BYOK language-model providers that ship in-built with the GitHub Copilot Chat
+ * Vendor ids of the BYOK language-model providers that ship in-built with the Khatmax AI Chat
  * extension. Each provider's vendor id is `providerName.toLowerCase()` (see
  * `extensions/copilot/src/extension/byok/vscode-node/*Provider.ts`). This list is intentionally
  * hardcoded: the in-built provider set is stable and known ahead of time, which lets us report these
@@ -68,7 +68,7 @@ const BUILT_IN_BYOK_VENDOR_IDS = new Set<string>([
 ]);
 
 /**
- * Bucket reported for any non-Copilot provider that is not an in-built BYOK provider, i.e. a model
+ * Bucket reported for any non-Khatmax Provider that is not an in-built BYOK provider, i.e. a model
  * contributed by a third-party extension. We never report the third-party vendor id directly to avoid
  * logging potentially identifying values.
  */
@@ -728,7 +728,7 @@ const languageModelChatProviderType = {
 		},
 		managementCommand: {
 			type: 'string',
-			description: localize('vscode.extension.contributes.languageModels.managementCommand', "A command to manage the language model chat provider, e.g. 'Manage Copilot models'. This is used in the chat model picker. If not provided, a gear icon is not rendered during vendor selection."),
+			description: localize('vscode.extension.contributes.languageModels.managementCommand', "A command to manage the language model chat provider, e.g. 'Manage Khatmax AI models'. This is used in the chat model picker. If not provided, a gear icon is not rendered during vendor selection."),
 			deprecated: true,
 			deprecationMessage: localize('vscode.extension.contributes.languageModels.managementCommand.deprecated', "The managementCommand property is deprecated and will be removed in a future release. Use the new configuration property instead.")
 		},

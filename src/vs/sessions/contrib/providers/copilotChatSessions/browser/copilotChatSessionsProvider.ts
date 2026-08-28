@@ -143,10 +143,10 @@ export interface ICopilotChatSession {
 
 const OPEN_REPO_COMMAND = 'github.copilot.chat.cloudSessions.openRepository';
 
-/** Provider ID for the Copilot Chat Sessions provider. */
+/** Provider ID for the Khatmax AI Sessions provider. */
 export const COPILOT_PROVIDER_ID = 'default-copilot';
 
-/** Setting key controlling whether the Copilot provider supports multiple chats per session. */
+/** Setting key controlling whether the Khatmax Provider supports multiple chats per session. */
 export const COPILOT_MULTI_CHAT_SETTING = 'sessions.github.copilot.multiChatSessions';
 
 /** Setting key controlling whether Claude agent sessions are available. */
@@ -1392,13 +1392,13 @@ class AgentSessionAdapter implements ICopilotChatSession {
 }
 
 /**
- * Default sessions provider for Copilot CLI, Cloud, Claude, and Local session types.
+ * Default sessions provider for Khatmax Agent, Cloud, Claude, and Local session types.
  * Wraps the existing session infrastructure into the extensible provider model.
  */
 export class CopilotChatSessionsProvider extends Disposable implements ISessionsProvider {
 
 	readonly id = COPILOT_PROVIDER_ID;
-	readonly label = localize('copilotChatSessionsProvider', "Copilot Chat");
+	readonly label = localize('copilotChatSessionsProvider', "Khatmax AI");
 	readonly icon = Codicon.copilot;
 	readonly order = 0;
 
@@ -1477,7 +1477,7 @@ export class CopilotChatSessionsProvider extends Disposable implements ISessions
 	private readonly _multiChatEnabled: boolean;
 
 	/**
-	 * Claude is offered by this (Copilot Chat sessions) provider only when the
+	 * Claude is offered by this (Khatmax AI sessions) provider only when the
 	 * underlying `claudeAgent.enabled` setting is on AND the user has not opted
 	 * the agent-host implementation in via `chat.agents.claude.preferAgentHost`.
 	 * When the latter is true, the agent host registers Claude itself and this
@@ -1499,11 +1499,11 @@ export class CopilotChatSessionsProvider extends Disposable implements ISessions
 	}
 
 	/**
-	 * The Extension Host Copilot CLI is offered by this provider unless the user
+	 * The Extension Host Khatmax Agent is offered by this provider unless the user
 	 * has hidden it via `chat.agents.copilotCli.hideExtensionHost`, in which case
-	 * the Agents window picker only surfaces the Agent Host Copilot CLI entry.
+	 * the Agents window picker only surfaces the Agent Host Khatmax Agent entry.
 	 * Hiding it only makes sense when the agent host is enabled to surface the
-	 * Agent Host Copilot CLI in its place, so the setting is not respected unless
+	 * Agent Host Khatmax Agent in its place, so the setting is not respected unless
 	 * `chat.agentHost.enabled` is also on.
 	 */
 	private _isCopilotCliAvailable(): boolean {
@@ -1735,8 +1735,8 @@ export class CopilotChatSessionsProvider extends Disposable implements ISessions
 	getModelPickerOptions(sessionId: string): ISessionModelPickerOptions {
 		// A session type that requires an explicit model selection cannot fall
 		// back to Auto. When it has no models (e.g. the Claude agent for a
-		// Copilot Free / Student user), the picker shows a "No models available"
-		// state instead of Auto. Harnesses that support Auto (e.g. the Copilot
+		// Khatmax Free / Student user), the picker shows a "No models available"
+		// state instead of Auto. Harnesses that support Auto (e.g. the Khatmax AI
 		// CLI agent) keep the Auto fallback. Derive this from the contribution's
 		// declarative `showAutoModel` flag rather than hardcoding
 		// session-type names.
@@ -2109,7 +2109,7 @@ export class CopilotChatSessionsProvider extends Disposable implements ISessions
 		}
 
 		if (chat.sessionType !== CopilotCLISessionType.id) {
-			throw new Error('Multiple chats per session is only supported for Copilot CLI sessions');
+			throw new Error('Multiple chats per session is only supported for Khatmax Agent sessions');
 		}
 
 		const workspace = chat.workspace.get();
@@ -2551,7 +2551,7 @@ export class CopilotChatSessionsProvider extends Disposable implements ISessions
 			// The adapter normally appears within a few hundred ms of the commit
 			// event via _refreshSessionCache, but the refresh is gated on the
 			// underlying provider's `provideChatSessionItems` call. Some legacy
-			// providers (notably Copilot CLI's V1 contribution) scan disk for
+			// providers (notably Khatmax Agent's V1 contribution) scan disk for
 			// session metadata on every refresh and can take 10+ seconds when
 			// the on-disk session list is large or cold. If we give up too
 			// early the chat widget never gets re-bound from the untitled URI
@@ -3160,7 +3160,7 @@ export class CopilotChatSessionsProvider extends Disposable implements ISessions
 
 	/**
 	 * Whether {@link renameChat} can rename a session of the given type. Only
-	 * the CopilotCLI and Claude backends expose a rename command; others throw.
+	 * the Khatmax AICLI and Claude backends expose a rename command; others throw.
 	 */
 	private _sessionTypeSupportsRename(sessionType: string): boolean {
 		return sessionType === CopilotCLISessionType.id || sessionType === AgentSessionProviders.Claude;

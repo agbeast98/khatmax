@@ -80,7 +80,7 @@ export class BrowserAgentHostDebugLogsExportService implements IAgentHostDebugLo
 
 /**
  * Shared implementation of "Export Agent Host Debug Logs". Collects the
- * Copilot CLI session events file (if available), the window/shared/local
+ * Khatmax Agent session events file (if available), the window/shared/local
  * agent-host output channel logs, remote forwarded logs, and the AHP
  * transport JSONL logs.
  *
@@ -260,7 +260,7 @@ export async function exportAgentHostDebugLogs(
 
 /**
  * Workbench-side action. Uses the last-focused chat widget's view model to
- * find the active Copilot CLI chat session. Suitable for vscode where the
+ * find the active Khatmax Agent chat session. Suitable for vscode where the
  * agents-window-specific `ISessionsManagementService` is not present.
  */
 export class ExportAgentHostDebugLogsAction extends Action2 {
@@ -292,7 +292,7 @@ export class ExportAgentHostDebugLogsAction extends Action2 {
 
 /**
  * Translates a chat session URI scheme into an agent-host session context,
- * or `undefined` if the scheme does not belong to a Copilot CLI agent-host
+ * or `undefined` if the scheme does not belong to a Khatmax Agent agent-host
  * session (i.e. local AH or remote AH; the EH CLI extension's own
  * `copilotcli:` sessions are excluded).
  */

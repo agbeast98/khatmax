@@ -113,7 +113,7 @@ export function getPermissionLevelMeta(level: ChatPermissionLevel): IPermissionL
 		default:
 			return {
 				label: localize('permissions.default', "Default Approvals"),
-				detail: localize('permissions.default.subtext', "Copilot uses your configured settings"),
+				detail: localize('permissions.default.subtext', "Khatmax AI uses your configured settings"),
 				icon: Codicon.shield,
 			};
 	}

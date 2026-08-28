@@ -19,7 +19,7 @@ const $ = DOM.$;
 
 /**
  * Returns the debug-log enablement setting that governs a given session.
- * Agent host (Copilot CLI) sessions are gated by the agent-host setting; all
+ * Agent host (Khatmax Agent) sessions are gated by the agent-host setting; all
  * other sessions use the local file-logging setting.
  */
 export function getChatDebugLoggingSettingId(sessionResource: URI | undefined): string {

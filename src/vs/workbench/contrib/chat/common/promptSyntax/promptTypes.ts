@@ -52,14 +52,14 @@ export const AGENT_DEBUG_LOG_ENABLED_SETTING = 'github.copilot.chat.agentDebugLo
 export const AGENT_DEBUG_LOG_FILE_LOGGING_ENABLED_SETTING = 'github.copilot.chat.agentDebugLog.fileLogging.enabled';
 
 /**
- * Configuration key for enabling agent debug logging for agent host (Copilot CLI) sessions.
+ * Configuration key for enabling agent debug logging for agent host (Khatmax Agent) sessions.
  * Registered in core (see `chat.shared.contribution.ts`) since only core consumes it.
  */
 export const AgentHostAgentDebugLogEnabledSettingId = 'chat.agentHost.agentDebugLog.enabled';
 
 /**
  * Configuration key for the maximum number of debug events kept in memory for
- * agent host (Copilot CLI) sessions. Registered in core (see
+ * agent host (Khatmax Agent) sessions. Registered in core (see
  * `chat.shared.contribution.ts`) since only core consumes it.
  */
 export const AgentHostAgentDebugLogMaxEventsSettingId = 'chat.agentHost.agentDebugLog.maxEventsInMemory';
@@ -70,7 +70,7 @@ export const AgentHostAgentDebugLogMaxEventsSettingId = 'chat.agentHost.agentDeb
 export const TROUBLESHOOT_COMMAND_NAME = 'troubleshoot';
 
 /**
- * URI scheme used by the Copilot extension for built-in skills.
+ * URI scheme used by the Khatmax AI extension for built-in skills.
  */
 export const COPILOT_SKILL_URI_SCHEME = 'copilot-skill';
 
@@ -167,9 +167,9 @@ export function getSourceDescription(source: PromptFileSource): string | undefin
 		case PromptFileSource.AgentsPersonal:
 			return localize('source.agentsPersonal', "Global");
 		case PromptFileSource.GitHubWorkspace:
-			return localize('source.githubWorkspace', "Workspace (only used by Copilot agents)");
+			return localize('source.githubWorkspace', "Workspace (only used by Khatmax AI agents)");
 		case PromptFileSource.CopilotPersonal:
-			return localize('source.copilotPersonal', "Global (only used by Copilot agents)");
+			return localize('source.copilotPersonal', "Global (only used by Khatmax AI agents)");
 		case PromptFileSource.ClaudeWorkspace:
 			return localize('source.claudeWorkspace', "Workspace (only used by Claude agents)");
 		case PromptFileSource.ClaudeWorkspaceLocal:
@@ -177,7 +177,7 @@ export function getSourceDescription(source: PromptFileSource): string | undefin
 		case PromptFileSource.ClaudePersonal:
 			return localize('source.claudePersonal', "Global (only used by Claude agents)");
 		case PromptFileSource.UserData:
-			return localize('source.userData', "Global (roams with Settings Sync, only used by VS Code)");
+			return localize('source.userData', "Global (roams with Settings Sync, only used by Khatmax)");
 		case PromptFileSource.ConfigWorkspace:
 			return localize('source.configWorkspace', "Workspace (contributed from settings)");
 		case PromptFileSource.ConfigPersonal:

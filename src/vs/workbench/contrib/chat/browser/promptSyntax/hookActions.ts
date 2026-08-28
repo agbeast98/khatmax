@@ -62,12 +62,12 @@ interface IHookFileQuickPickItem extends IQuickPickItem {
 }
 
 /**
- * Detects if existing hooks use Copilot CLI naming convention (camelCase).
- * Returns true if any existing key matches the Copilot CLI format.
+ * Detects if existing hooks use Khatmax AI CLI naming convention (camelCase).
+ * Returns true if any existing key matches the Khatmax Agent format.
  */
 function usesCopilotCliNaming(hooksObj: Record<string, unknown>): boolean {
 	for (const key of Object.keys(hooksObj)) {
-		// Check if any key resolves to a Copilot CLI hook type
+		// Check if any key resolves to a Khatmax Agent hook type
 		if (resolveCopilotCliHookType(key) !== undefined) {
 			return true;
 		}
@@ -400,7 +400,7 @@ export async function showConfigureHooksQuickPick(
 							.filter(([hookType]) => targetHookTypes.has(hookType))
 							.map(makeItem);
 					} else {
-						// No target: group into Default (shared), VS Code Only, Copilot CLI Only
+						// No target: group into Default (shared), Khatmax Only, Khatmax Agent Only
 						const vscodeTypes = new Set(Object.values(HOOKS_BY_TARGET[Target.VSCode]));
 						const copilotTypes = new Set(Object.values(HOOKS_BY_TARGET[Target.GitHubCopilot]));
 						const allEntries = Object.entries(HOOK_METADATA) as [HookType, IHookTypeMeta][];
@@ -411,7 +411,7 @@ export async function showConfigureHooksQuickPick(
 
 						pickerItems = [];
 						if (shared.length > 0) {
-							pickerItems.push({ type: 'separator', label: localize('hookSection.default', "Local/Copilot CLI Agents") });
+							pickerItems.push({ type: 'separator', label: localize('hookSection.default', "Local/Khatmax Agent Agents") });
 							pickerItems.push(...shared.map(makeItem));
 						}
 						if (vscodeOnly.length > 0) {
@@ -419,7 +419,7 @@ export async function showConfigureHooksQuickPick(
 							pickerItems.push(...vscodeOnly.map(makeItem));
 						}
 						if (copilotOnly.length > 0) {
-							pickerItems.push({ type: 'separator', label: localize('hookSection.copilotCliOnly', "Copilot CLI Agents") });
+							pickerItems.push({ type: 'separator', label: localize('hookSection.copilotCliOnly', "Khatmax Agent Agents") });
 							pickerItems.push(...copilotOnly.map(makeItem));
 						}
 					}

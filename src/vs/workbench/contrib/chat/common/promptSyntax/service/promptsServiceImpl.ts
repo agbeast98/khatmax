@@ -107,7 +107,7 @@ export class PromptsService extends Disposable implements IPromptsService {
 
 	/**
 	 * Cache for parsed prompt files keyed by URI.
-	 * The number in the returned tuple is textModel.getVersionId(), which is an internal VS Code counter that increments every time the text model's content changes.
+	 * The number in the returned tuple is textModel.getVersionId(), which is an internal Khatmax counter that increments every time the text model's content changes.
 	 */
 	private readonly cachedParsedPromptFromModels = new ResourceMap<[number, ParsedPromptFile]>();
 
@@ -410,7 +410,7 @@ export class PromptsService extends Disposable implements IPromptsService {
 		const result: IPromptPath[] = [];
 
 		if (type === PromptsType.hook) {
-			// For hooks, return the Copilot hooks folder for creating new hooks
+			// For hooks, return the Khatmax AI hooks folder for creating new hooks
 			// (Claude paths are read-only and not included here)
 			const hooksFolders = await this.fileLocator.getHookSourceFolders();
 			for (const folder of hooksFolders) {
@@ -784,7 +784,7 @@ export class PromptsService extends Disposable implements IPromptsService {
 		}
 		const useCopilotInstructionsFiles = this.configurationService.getValue(PromptsConfig.USE_COPILOT_INSTRUCTION_FILES);
 		if (!useCopilotInstructionsFiles) {
-			logger?.logInfo('Copilot instructions files are disabled via configuration.');
+			logger?.logInfo('Khatmax AI instructions files are disabled via configuration.');
 		} else {
 			const copilotInstructionsFile = { fileName: COPILOT_CUSTOM_INSTRUCTIONS_FILENAME, type: AgentInstructionFileType.copilotInstructionsMd };
 			promises.push(this.fileLocator.findFilesInRoots(rootFolders, GITHUB_CONFIG_FOLDER, [copilotInstructionsFile], token, resolvedAgentFiles)); // copilot-instructions.md in .github folder under workspace root

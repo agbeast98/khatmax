@@ -61,6 +61,7 @@ import { IViewDescriptorService, ViewContainerLocation } from '../../../common/v
 import { toErrorMessage } from '../../../../base/common/errorMessage.js';
 import { ILogService } from '../../../../platform/log/common/log.js';
 import { canShowAgentsBanner, createAgentsBanner } from '../../chat/browser/agentSessions/agentSessionsBanner.js';
+import { FileAccess } from '../../../../base/common/network.js';
 
 const configurationKey = 'workbench.startupEditor';
 const MAX_SESSIONS = 6;
@@ -249,7 +250,19 @@ export class AgentSessionsWelcomePage extends EditorPane {
 
 		// Header
 		const header = append(this.contentContainer, $('.agentSessionsWelcome-header'));
-		append(header, $('h1.product-name', {}, this.productService.nameLong));
+		append(header, $('div.agentSessionsWelcome-brand', {},
+			$('img.agentSessionsWelcome-logo', { src: FileAccess.asBrowserUri('resources/khatmax/khatmax-logo.png').toString(true), alt: this.productService.nameLong }),
+			$('div.agentSessionsWelcome-brandCopy', {},
+				$('div.agentSessionsWelcome-eyebrow', {}, 'Khatmax'),
+				$('h1.product-name', {}, this.productService.nameLong),
+				$('p.agentSessionsWelcome-subtitle', {}, localize('agentSessionsWelcome.subtitle', "A calm AI workspace where agents, code, and runtime stay visible.")),
+				$('div.agentSessionsWelcome-chips', {},
+					$('span.agentSessionsWelcome-chip', {}, 'Simple Agent'),
+					$('span.agentSessionsWelcome-chip', {}, 'Live Browser'),
+					$('span.agentSessionsWelcome-chip', {}, 'Transparent Reasoning')
+				)
+			)
+		));
 
 		const startEntries = append(header, $('.agentSessionsWelcome-startEntries'));
 		await this.buildStartEntries(startEntries);
@@ -732,7 +745,7 @@ export class AgentSessionsWelcomePage extends EditorPane {
 		// Content
 		const content = append(tosCard, $('.agentSessionsWelcome-walkthroughCard-content'));
 		const title = append(content, $('.agentSessionsWelcome-walkthroughCard-title'));
-		title.textContent = localize('tosTitle', "Try GitHub Copilot for free, no sign-in required!");
+		title.textContent = localize('tosTitle', "Try Khatmax AI for free, no sign-in required!");
 
 		const desc = append(content, $('.agentSessionsWelcome-walkthroughCard-description'));
 		const descriptionMarkdown = new MarkdownString(

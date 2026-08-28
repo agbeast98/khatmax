@@ -76,7 +76,7 @@ export class LocalAgentHostSessionsProvider extends BaseAgentHostSessionsProvide
 	 * When the experimental {@link LocalAgentHostDefaultProviderSettingId}
 	 * setting is enabled, the local agent host becomes the default sessions
 	 * provider: its session types sort before every other provider (negative
-	 * order). Otherwise it sorts after the default providers so Copilot Chat
+	 * order). Otherwise it sorts after the default providers so Khatmax AI
 	 * keeps precedence.
 	 */
 	override get order(): number {
@@ -181,7 +181,7 @@ export class LocalAgentHostSessionsProvider extends BaseAgentHostSessionsProvide
 
 	/**
 	 * Suppress the agent host's Claude when this window prefers the
-	 * extension-host Claude (provided by the GitHub Copilot Chat extension),
+	 * extension-host Claude (provided by the Khatmax AI Chat extension),
 	 * mirroring the gate {@link AgentHostContribution} applies to the chat
 	 * session contribution. Without this, the welcome picker's "Local Agent
 	 * Host" group would list Claude even though the running Claude session is

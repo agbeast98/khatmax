@@ -99,7 +99,7 @@ export interface IVoiceTurnAutoEnded {
  *   agent_tool_call    — a tool the voice agent dispatched (send_to_chat, etc.)
  *   coding_event       — a coding-session status transition
  *                        (e.g. ``thinking → waiting_for_confirmation``)
- *   coding_agent_reply — first ~2 sentences of the latest Copilot Chat
+ *   coding_agent_reply — first ~2 sentences of the latest Khatmax AI
  *                        response per active session (synthesized
  *                        FE-side at connect time, never persisted to disk)
  */

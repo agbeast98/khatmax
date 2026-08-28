@@ -209,7 +209,7 @@ export class PromptCodeActionProvider implements CodeActionProvider {
 		}
 		const target = getTarget(promptType, promptFile.header);
 		if (!isVSCodeOrDefaultTarget(target)) {
-			// GitHub Copilot and Claude custom agents use a fixed set of tool names that are not deprecated
+			// Khatmax AI and Claude custom agents use a fixed set of tool names that are not deprecated
 			return;
 		}
 		let value = toolsAttr.value;

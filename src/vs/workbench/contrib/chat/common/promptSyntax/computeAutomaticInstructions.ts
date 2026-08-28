@@ -278,7 +278,7 @@ export class ComputeAutomaticInstructions {
 			logger.logInfo(`Agent instruction file added: ${uri.toString()}`);
 		}
 
-		// Process referenced instructions from copilot files (maintaining original behavior)
+		// Process referenced instructions from Khatmax AI files (maintaining original behavior)
 		if (copilotEntries.length > 0) {
 			await this._addReferencedInstructions(copilotEntries, telemetryEvent, debugInfo, token);
 			for (const entry of copilotEntries.asArray()) {

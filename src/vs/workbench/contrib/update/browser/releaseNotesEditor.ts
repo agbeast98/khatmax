@@ -623,10 +623,10 @@ export class ReleaseNotesManager extends Disposable {
  * ```
  *
  * Supported conditions:
- * - `IN_PRODUCT` - Content shown in VS Code (both Stable and Insiders)
+ * - `IN_PRODUCT` - Content shown in Khatmax (both Stable and Insiders)
  * - `WEB` - Content shown on the website only
- * - `STABLE` - Content shown in VS Code Stable only
- * - `INSIDERS` - Content shown in VS Code Insiders only
+ * - `STABLE` - Content shown in Khatmax Stable only
+ * - `INSIDERS` - Content shown in Khatmax Insiders only
  *
  * On the website, the entire block is a single HTML comment, so the
  * content is hidden by default. The website renderer would activate

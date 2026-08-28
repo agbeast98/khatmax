@@ -194,9 +194,9 @@ export class ChatSetupController extends Disposable {
 		try {
 			if (
 				!options.forceAnonymous &&						// User is not asking for anonymous access
-				entitlement !== ChatEntitlement.Free &&			// User is not signed up to Copilot Free
+				entitlement !== ChatEntitlement.Free &&			// User is not signed up to Khatmax Free
 				!isProUser(entitlement) &&						// User is not signed up for a Copilot subscription
-				entitlement !== ChatEntitlement.Unavailable		// User is eligible for Copilot Free
+				entitlement !== ChatEntitlement.Unavailable		// User is eligible for Khatmax Free
 			) {
 				signUpResult = await this.requests.signUpFree();
 
